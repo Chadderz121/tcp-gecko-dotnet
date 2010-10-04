@@ -185,7 +185,7 @@ namespace GeckoApp
 
             codesModified = false;
 
-            AbtText.Text = "gecko dotNET Beta 0.62 by Link and dcx2\n\n"
+            AbtText.Text = "gecko dotNET Beta 0.63 by Link and dcx2\n\n"
                           + "Special thanks to:\n\n"
                           + "kenobi: for original WiiRd GUI!\n"
                           + "Nuke: for the USB Gecko!\n"

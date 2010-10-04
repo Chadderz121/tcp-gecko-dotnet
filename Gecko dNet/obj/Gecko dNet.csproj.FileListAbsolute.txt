@@ -216,3 +216,55 @@ F:\Wii\googlecode\geckowii\trunk\Gecko dNet\obj\Debug\GeckoApp.WatchDialog.resou
 F:\Wii\googlecode\geckowii\trunk\Gecko dNet\obj\Debug\Gecko dNet.csproj.GenerateResource.Cache
 F:\Wii\googlecode\geckowii\trunk\Gecko dNet\obj\Debug\Gecko dNet.exe
 F:\Wii\googlecode\geckowii\trunk\Gecko dNet\obj\Debug\Gecko dNet.pdb
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Release\Gecko dNet.exe.config
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Debug\Gecko dNet.exe.config
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Debug\Gecko dNet.exe
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Debug\Gecko dNet.pdb
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Debug\Ionic.Zip.Reduced.dll
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Debug\System.Data.dll
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Debug\System.Web.dll
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Debug\System.Data.OracleClient.dll
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Debug\System.EnterpriseServices.dll
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Debug\System.Transactions.dll
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Debug\System.EnterpriseServices.Wrapper.dll
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\ResolveAssemblyReference.cache
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\GeckoApp.external.AddressTextBox.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\GeckoApp.BPList.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\GeckoApp.external.HistoryTextBox.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\GeckoApp.GCTWizard.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\GeckoApp.InputBox.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\GeckoApp.MainForm.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\GeckoApp.NoteSheets.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\GeckoApp.NotePage.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\GeckoApp.Properties.Resources.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\GeckoApp.RegisterDialog.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\GeckoApp.ValueInput.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\GeckoApp.WatchDialog.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\Gecko dNet.csproj.GenerateResource.Cache
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\Gecko dNet.exe
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Debug\Gecko dNet.pdb
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Release\Gecko dNet.exe
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Release\Gecko dNet.pdb
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Release\Ionic.Zip.Reduced.dll
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Release\System.Data.dll
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Release\System.Web.dll
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Release\System.Data.OracleClient.dll
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Release\System.EnterpriseServices.dll
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Release\System.Transactions.dll
+F:\Wii\googlecode\geckowii\Gecko dNet\bin\Release\System.EnterpriseServices.Wrapper.dll
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\ResolveAssemblyReference.cache
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\GeckoApp.external.AddressTextBox.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\GeckoApp.BPList.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\GeckoApp.external.HistoryTextBox.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\GeckoApp.GCTWizard.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\GeckoApp.InputBox.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\GeckoApp.MainForm.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\GeckoApp.NoteSheets.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\GeckoApp.NotePage.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\GeckoApp.Properties.Resources.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\GeckoApp.RegisterDialog.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\GeckoApp.ValueInput.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\GeckoApp.WatchDialog.resources
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\Gecko dNet.csproj.GenerateResource.Cache
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\Gecko dNet.exe
+F:\Wii\googlecode\geckowii\Gecko dNet\obj\Release\Gecko dNet.pdb
