@@ -1,0 +1,45 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GeckoApp.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="AlwaysOnTop" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="FPS" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">6.0</Value>
+    </Setting>
+    <Setting Name="DisAsmAddr" Type="System.String" Scope="User">
+      <Value Profile="(Default)">80000000</Value>
+    </Setting>
+    <Setting Name="BPAddr" Type="System.String" Scope="User">
+      <Value Profile="(Default)">80000000</Value>
+    </Setting>
+    <Setting Name="MemViewAddr" Type="System.String" Scope="User">
+      <Value Profile="(Default)">80000000</Value>
+    </Setting>
+    <Setting Name="BPType" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="LastSize" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">577, 442</Value>
+    </Setting>
+    <Setting Name="LastSplitterSize" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">121</Value>
+    </Setting>
+    <Setting Name="PauseCodes" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="BPNext" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="addressHistory" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="MemViewFontSize" Type="System.Single" Scope="User">
+      <Value Profile="(Default)">8.75</Value>
+    </Setting>
+    <Setting Name="ViewFloatsInHex" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

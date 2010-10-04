@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{93C697C4-1798-4822-BA5D-B0313435E6C0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GeckoApp</RootNamespace>
+    <AssemblyName>Gecko dNet</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkSubset>
+    </TargetFrameworkSubset>
+    <ApplicationIcon>gecko2.ico</ApplicationIcon>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <StartupObject>GeckoApp.Program</StartupObject>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;_LOG_TIMING</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;_LOG_TIMING</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ionic.Zip.Reduced, Version=1.9.1.5, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AddressTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AddressTextBox.designer.cs">
+      <DependentUpon>AddressTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="bplist.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="bplist.designer.cs">
+      <DependentUpon>bplist.cs</DependentUpon>
+    </Compile>
+    <Compile Include="breakpoints.cs" />
+    <Compile Include="codecontroller.cs" />
+    <Compile Include="HistoryTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="HistoryTextBox.designer.cs">
+      <DependentUpon>HistoryTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="d2xxwrapper.cs" />
+    <Compile Include="disassembly.cs" />
+    <Compile Include="ExceptionHandler.cs" />
+    <Compile Include="external\Config.cs" />
+    <Compile Include="external\Events.cs" />
+    <Compile Include="external\IProfile.cs" />
+    <Compile Include="external\Profile.cs" />
+    <Compile Include="external\Xml.cs" />
+    <Compile Include="external\XmlHelper.cs" />
+    <Compile Include="fst.cs" />
+    <Compile Include="GCTWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GCTWizard.Designer.cs">
+      <DependentUpon>GCTWizard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="globfunc.cs" />
+    <Compile Include="IconHelper.cs" />
+    <Compile Include="inputbox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="inputbox.designer.cs">
+      <DependentUpon>inputbox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="libftdi.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemAreas.cs" />
+    <Compile Include="MemSearch.cs" />
+    <Compile Include="MemViewer.cs" />
+    <Compile Include="Notepad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notepad.designer.cs">
+      <DependentUpon>Notepad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NotePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NotePage.Designer.cs">
+      <DependentUpon>NotePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoteSheet.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AddressTextBox.resx">
+      <DependentUpon>AddressTextBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bplist.resx">
+      <DependentUpon>bplist.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistoryTextBox.resx">
+      <DependentUpon>HistoryTextBox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GCTWizard.resx">
+      <DependentUpon>GCTWizard.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="inputbox.resx">
+      <DependentUpon>inputbox.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notepad.resx">
+      <DependentUpon>Notepad.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NotePage.resx">
+      <DependentUpon>NotePage.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterDialog.resx">
+      <DependentUpon>RegisterDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ValueInput.resx">
+      <DependentUpon>ValueInput.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WatchDialog.resx">
+      <DependentUpon>WatchDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="RegisterDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterDialog.designer.cs">
+      <DependentUpon>RegisterDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screenshots.cs" />
+    <Compile Include="SearchHistoryManager.cs" />
+    <Compile Include="Settings.cs" />
+    <Compile Include="USBGecko.cs" />
+    <Compile Include="ValueInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ValueInput.designer.cs">
+      <DependentUpon>ValueInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WatchDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WatchDialog.designer.cs">
+      <DependentUpon>WatchDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="watchlist.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="gecko2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="C:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>if $(ConfigurationName) == Release move "$(TargetPath)" "$(TargetDir)GDNPreMerge.exe"
+
+if $(ConfigurationName) == Release "$(ProjectDir)ilmerge" /target:winexe /out:"$(TargetPath)" "$(TargetDir)GDNPreMerge.exe" "$(ProjectDir)Ionic.Zip.Reduced.dll"</PostBuildEvent>
+  </PropertyGroup>
+</Project>
