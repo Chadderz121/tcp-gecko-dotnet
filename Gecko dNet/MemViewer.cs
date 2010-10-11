@@ -424,7 +424,7 @@ namespace GeckoApp
 
                 if (valueFound)
                 {
-                    UInt32 address = (UInt32)(startAddr + index);
+                    UInt32 address = (UInt32)(beginAddress + index);
                     //UInt32 address = (UInt32)(beginAddress + streamPos);
                     cAddress = address;
                     //Update();
