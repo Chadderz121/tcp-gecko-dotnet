@@ -378,7 +378,7 @@ namespace GeckoApp
             UInt32 cVal;
             char cChar;
 
-            UInt32 SearchBufferSize = 0xF800 * 4;   // F800 is the packet size in USBGecko.cs
+            UInt32 SearchBufferSize = 0xF800 * 8;   // F800 is the packet size in USBGecko.cs
 
             UInt32 dumpHigh = Math.Min(startAddr + SearchBufferSize, endAddress);     
 
@@ -416,6 +416,8 @@ namespace GeckoApp
                 {
                     // hack to fix the jumping disassembly window
                     cAddress = beginAddress - 4;
+                    if (dumpHigh == endAddress)
+                        MessageBox.Show("Could not find search query");
                 }
             }
             catch (EUSBGeckoException exc)

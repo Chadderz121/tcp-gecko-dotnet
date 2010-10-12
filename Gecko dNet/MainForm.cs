@@ -71,6 +71,7 @@ namespace GeckoApp
         private bool Connecting;
         private bool SteppingOut;
         private bool SteppingUntil;
+        private bool SearchingDisassembly;
 
         #region Initialization stuff
         public MainForm()
@@ -4422,8 +4423,15 @@ namespace GeckoApp
 
         private uint RecursivePromptDisassemblySearch(uint searchStartAddress, bool searchDown, string regex, int count)
         {
+            UInt32 bAddress;
+            do
+            {
+                bAddress = FindRegexAddressInDisassembly(ref searchStartAddress, searchDown, regex, count);
+            } while (bAddress == 0 && SearchingDisassembly);
 
-            UInt32 bAddress = FindRegexAddressInDisassembly(ref searchStartAddress, searchDown, regex, count);
+
+
+
             if (bAddress != 0)
             {
                 // Found something!  return it
@@ -4448,6 +4456,11 @@ namespace GeckoApp
 
         private void buttonDisassemblySearch_Click(object sender, EventArgs e)
         {
+            if (SearchingDisassembly)
+            {
+                SearchingDisassembly = false;
+                return;
+            }
             uint searchStartAddress;
             if (!AsAddress.IsValidGet(out searchStartAddress))
             {
@@ -4468,13 +4481,36 @@ namespace GeckoApp
                 searchString = System.Text.RegularExpressions.Regex.Escape(searchString);
             }
 
-            UInt32 bAddress = RecursivePromptDisassemblySearch(searchStartAddress, radioButtonSearchDisassemblyDown.Checked,
-                                                            searchString, 1000);
+            SearchingDisassembly = true;
+            buttonDisassemblySearch.Text = "Cancel";
+
+
+            //UInt32 bAddress = RecursivePromptDisassemblySearch(searchStartAddress, radioButtonSearchDisassemblyDown.Checked,
+                                                            //searchString, 16256);   // should be one full packet of dump
+            UInt32 bAddress;
+            UInt32 searchStartAddressCopy = searchStartAddress;
+            bool searchDown = radioButtonSearchDisassemblyDown.Checked;
+            do
+            {
+                bAddress = FindRegexAddressInDisassembly(ref searchStartAddressCopy, searchDown, searchString, 0xFE00 / 4 * 2);
+            } while (bAddress == 0 && SearchingDisassembly && searchStartAddressCopy != 0x817FFFFC && searchStartAddressCopy != 0x80000000);
+
+
+            
+
             if (bAddress != 0)
             {
                 // Found something!  Go there
                 disassembler.DissToBox(bAddress);
             }
+            else
+            {
+                if (SearchingDisassembly)
+                    MessageBox.Show("Could not find search query");
+            }
+            
+            SearchingDisassembly = false;
+            buttonDisassemblySearch.Text = "Search";
         }
 
         public uint FindRegexAddressInDisassembly(ref uint searchStartAddress, bool searchDown, string regex, int count)
