@@ -29,6 +29,7 @@ namespace GeckoApp
         private UInt32 cAddress;
         private UInt32 selAddress;
         private MemoryViewMode PViewMode;
+        private bool searching;
 
         private ExceptionHandler exceptionHandling;
 
@@ -69,6 +70,12 @@ namespace GeckoApp
             {
                 PViewMode = value;
             }
+        }
+
+        public bool Searching
+        {
+            get { return searching; }
+            set { searching = value; }
         }
 
         public MemoryViewer(USBGecko UGecko, UInt32 initAddress,DataGridView UGView,
@@ -371,7 +378,9 @@ namespace GeckoApp
             UInt32 cVal;
             char cChar;
 
-            UInt32 dumpHigh = Math.Min(startAddr + 0x00100000, endAddress);
+            UInt32 SearchBufferSize = 0xF800 * 4;   // F800 is the packet size in USBGecko.cs
+
+            UInt32 dumpHigh = Math.Min(startAddr + SearchBufferSize, endAddress);     
 
             try
             {
@@ -382,7 +391,6 @@ namespace GeckoApp
                     ms.Seek(0, SeekOrigin.End);
                     int startIndex = (int)ms.Position;
                     gecko.Dump(startAddr, dumpHigh, ms);
-                    //ms.Seek(streamPos, SeekOrigin.Begin);
 
                     byte[] streamArray = ms.GetBuffer();
 
@@ -393,41 +401,16 @@ namespace GeckoApp
                         valueFound = true;
                         break;
                     }
-                    //while (streamPos < (ms.Length - dumpLength))
-                    //{
-                    //    cVal = MemSearch.ReadStream(ms, dumpLength);
-                    //    streamPos += dumpLength;
-                    //    cChar = (char)cVal;
-                    //    if (!caseSensitive)
-                    //        cChar = cChar.ToString().ToUpper()[0];
-                    //    if (cChar == sString[inpos])
-                    //    {
-                    //        inpos++;
-                    //        if (inpos == sString.Length)
-                    //        {
-                    //            valueFound = true;
-                    //            streamPos -= inpos * dumpLength;
-                    //            break;
-                    //        }
-                    //    }
-                    //    else if (inpos != 0)
-                    //    {
-                    //        streamPos -= inpos * dumpLength;
-                    //        ms.Seek((-1) * inpos * dumpLength, SeekOrigin.Current);
-                    //        inpos = 0;
-                    //    }
-                    //}
 
                     startAddr = dumpHigh;
-                    dumpHigh = Math.Min(startAddr + 0x00100000, endAddress);
-                } while (dumpHigh != endAddress && !valueFound);
+                    dumpHigh = Math.Min(startAddr + SearchBufferSize, endAddress);
+                    Application.DoEvents();     // check for cancel search
+                } while (dumpHigh != endAddress && !valueFound && searching);
 
                 if (valueFound)
                 {
                     UInt32 address = (UInt32)(beginAddress + index);
-                    //UInt32 address = (UInt32)(beginAddress + streamPos);
                     cAddress = address;
-                    //Update();
                 }
                 else
                 {

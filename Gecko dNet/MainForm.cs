@@ -1665,6 +1665,13 @@ namespace GeckoApp
 
         private void MemViewSearchPerfom_Click(object sender, EventArgs e)
         {
+            if (viewer.Searching)
+            {
+                // Let the user cancel the search by pressing the button again
+                viewer.Searching = false;
+                return;
+            }
+
             String sString = MemViewSearchString.Text;
             bool hex = MemViewSearchType.SelectedIndex == 4;
             bool caseSensitive = (MemViewSearchType.SelectedIndex % 2 == 1) || hex;
@@ -1689,7 +1696,11 @@ namespace GeckoApp
                 }
             }
 
-            viewer.SearchString(stringBytes, caseSensitive, unicode, hex);
+            viewer.Searching = true;
+            MemViewSearchPerfom.Text = "Cancel";
+            viewer.SearchString(stringBytes, caseSensitive, unicode, hex);  // Synchronous, but pumps messages!
+            viewer.Searching = false;
+            MemViewSearchPerfom.Text = "Search";
             CenteredMemViewSelection(sender, e, viewer.address);
         }
 

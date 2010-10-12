@@ -30,26 +30,26 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("hupa");
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("hupa");
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.memViewGrid = new System.Windows.Forms.DataGridView();
             this.address = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,7 +102,6 @@
             this.comboBoxDisplayType = new System.Windows.Forms.ComboBox();
             this.PButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.PAddress = new GeckoApp.external.AddressTextBox();
             this.HistoryContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -117,6 +116,9 @@
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripSeparator();
             this.showHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.autoHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem19 = new System.Windows.Forms.ToolStripSeparator();
+            this.addOffsetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripTextBoxAddressAddOffset = new System.Windows.Forms.ToolStripTextBox();
             this.NxtPage = new System.Windows.Forms.Button();
             this.ResList = new System.Windows.Forms.Label();
             this.SearchResults = new System.Windows.Forms.DataGridView();
@@ -140,9 +142,7 @@
             this.PrvPage = new System.Windows.Forms.Button();
             this.ResSrch = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.memEnd = new GeckoApp.external.AddressTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.memStart = new GeckoApp.external.AddressTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.memRange = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -167,12 +167,10 @@
             this.comboBoxPokeOperation = new System.Windows.Forms.ComboBox();
             this.memViewPButton = new System.Windows.Forms.Button();
             this.memViewPValue = new System.Windows.Forms.TextBox();
-            this.memViewPAddress = new GeckoApp.external.AddressTextBox();
             this.MemViewAutoUp = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.MemViewShowMode = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.memViewAValue = new GeckoApp.external.AddressTextBox();
             this.MemViewScrollbar = new System.Windows.Forms.NumericUpDown();
             this.MemViewUpdate = new System.Windows.Forms.Button();
             this.MemViewARange = new System.Windows.Forms.ComboBox();
@@ -229,7 +227,6 @@
             this.leafToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerRegASM = new System.Windows.Forms.SplitContainer();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.BPList = new GeckoApp.BPList();
             this.BPClassic = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.BPDiss = new System.Windows.Forms.TextBox();
@@ -240,7 +237,6 @@
             this.BPType = new System.Windows.Forms.ComboBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.BPExact = new System.Windows.Forms.CheckBox();
-            this.BPAddress = new GeckoApp.external.AddressTextBox();
             this.DisPage = new System.Windows.Forms.TabPage();
             this.groupBoxDisasmCallStack = new System.Windows.Forms.GroupBox();
             this.listBoxCallStack = new System.Windows.Forms.ListBox();
@@ -254,12 +250,9 @@
             this.buttonDisassemblySearch = new System.Windows.Forms.Button();
             this.textBoxDisassemblySearch = new System.Windows.Forms.TextBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.AsText = new GeckoApp.external.HistoryTextBox();
             this.Assemble = new System.Windows.Forms.Button();
-            this.AsAddress = new GeckoApp.external.AddressTextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.DisUpDown = new System.Windows.Forms.NumericUpDown();
-            this.DisRegion = new GeckoApp.external.AddressTextBox();
             this.DisUpdateBtn = new System.Windows.Forms.Button();
             this.DisScroll = new System.Windows.Forms.VScrollBar();
             this.DisAssBox = new System.Windows.Forms.ListBox();
@@ -367,7 +360,6 @@
             this.numericUpDownFPS = new System.Windows.Forms.NumericUpDown();
             this.checkBoxAlwaysOnTop = new System.Windows.Forms.CheckBox();
             this.AbtText = new System.Windows.Forms.Label();
-            this.addressTextBoxBPNext = new GeckoApp.external.AddressTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.OpenNotePad = new System.Windows.Forms.Button();
             this.RGame = new System.Windows.Forms.Button();
@@ -387,9 +379,17 @@
             this.openFileDialogSearch = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialogSearch = new System.Windows.Forms.SaveFileDialog();
             this.saveFileDialogLogSteps = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripMenuItem19 = new System.Windows.Forms.ToolStripSeparator();
-            this.addOffsetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripTextBoxAddressAddOffset = new System.Windows.Forms.ToolStripTextBox();
+            this.PAddress = new GeckoApp.external.AddressTextBox();
+            this.memEnd = new GeckoApp.external.AddressTextBox();
+            this.memStart = new GeckoApp.external.AddressTextBox();
+            this.memViewPAddress = new GeckoApp.external.AddressTextBox();
+            this.memViewAValue = new GeckoApp.external.AddressTextBox();
+            this.BPList = new GeckoApp.BPList();
+            this.BPAddress = new GeckoApp.external.AddressTextBox();
+            this.AsText = new GeckoApp.external.HistoryTextBox();
+            this.AsAddress = new GeckoApp.external.AddressTextBox();
+            this.DisRegion = new GeckoApp.external.AddressTextBox();
+            this.addressTextBoxBPNext = new GeckoApp.external.AddressTextBox();
             toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.memViewGrid)).BeginInit();
             this.memViewContextMenu.SuspendLayout();
@@ -475,8 +475,8 @@
             // 
             this.memViewGrid.AllowUserToAddRows = false;
             this.memViewGrid.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Courier New", 20F);
-            this.memViewGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 20F);
+            this.memViewGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.memViewGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
@@ -484,14 +484,14 @@
             this.memViewGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.memViewGrid.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             this.memViewGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Courier New", 10F);
-            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.memViewGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Courier New", 10F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.memViewGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.memViewGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.memViewGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.address,
@@ -500,34 +500,34 @@
             this.c3,
             this.c4});
             this.memViewGrid.ContextMenuStrip = this.memViewContextMenu;
-            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle27.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle27.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.memViewGrid.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Courier New", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.memViewGrid.DefaultCellStyle = dataGridViewCellStyle8;
             this.memViewGrid.Location = new System.Drawing.Point(198, 12);
             this.memViewGrid.MultiSelect = false;
             this.memViewGrid.Name = "memViewGrid";
             this.memViewGrid.ReadOnly = true;
             this.memViewGrid.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle28.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle28.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.memViewGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.memViewGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.memViewGrid.RowHeadersVisible = false;
             this.memViewGrid.RowHeadersWidth = 80;
             this.memViewGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Courier New", 12F);
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.memViewGrid.RowsDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Courier New", 12F);
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.memViewGrid.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.memViewGrid.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
             this.memViewGrid.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Courier New", 10F);
             this.memViewGrid.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
@@ -550,13 +550,13 @@
             // address
             // 
             this.address.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.address.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.address.DefaultCellStyle = dataGridViewCellStyle3;
             this.address.Frozen = true;
             this.address.HeaderText = "80000000";
             this.address.MaxInputLength = 8;
@@ -568,9 +568,9 @@
             // c1
             // 
             this.c1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c1.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c1.DefaultCellStyle = dataGridViewCellStyle4;
             this.c1.HeaderText = "00010203";
             this.c1.MaxInputLength = 8;
             this.c1.Name = "c1";
@@ -581,9 +581,9 @@
             // c2
             // 
             this.c2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c2.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c2.DefaultCellStyle = dataGridViewCellStyle5;
             this.c2.HeaderText = "04050607";
             this.c2.MaxInputLength = 8;
             this.c2.Name = "c2";
@@ -594,9 +594,9 @@
             // c3
             // 
             this.c3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle25.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c3.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c3.DefaultCellStyle = dataGridViewCellStyle6;
             this.c3.HeaderText = "08090A0B";
             this.c3.MaxInputLength = 8;
             this.c3.Name = "c3";
@@ -607,9 +607,9 @@
             // c4
             // 
             this.c4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle26.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.c4.DefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.c4.DefaultCellStyle = dataGridViewCellStyle7;
             this.c4.HeaderText = "0C0D0E0F";
             this.c4.MaxInputLength = 8;
             this.c4.Name = "c4";
@@ -1075,22 +1075,6 @@
             this.label5.Text = "View Mode";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // PAddress
-            // 
-            this.PAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PAddress.AutoHistory = true;
-            this.PAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.PAddress.ContextMenuStrip = this.HistoryContextMenu;
-            this.PAddress.EndingAddress = false;
-            this.PAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PAddress.Location = new System.Drawing.Point(290, 269);
-            this.PAddress.MaxLength = 8;
-            this.PAddress.MultiPokeAddress = true;
-            this.PAddress.Name = "PAddress";
-            this.PAddress.Size = new System.Drawing.Size(62, 20);
-            this.PAddress.TabIndex = 10;
-            this.PAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PAddress_KeyPress);
-            // 
             // HistoryContextMenu
             // 
             this.HistoryContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1110,7 +1094,7 @@
             this.toolStripMenuItem19,
             this.addOffsetToolStripMenuItem});
             this.HistoryContextMenu.Name = "addressContextMenu";
-            this.HistoryContextMenu.Size = new System.Drawing.Size(264, 292);
+            this.HistoryContextMenu.Size = new System.Drawing.Size(264, 270);
             this.HistoryContextMenu.Opened += new System.EventHandler(this.addressContextMenu_Opened);
             // 
             // copyToolStripMenuItem1
@@ -1198,6 +1182,26 @@
             this.autoHistoryToolStripMenuItem.Text = "&Auto Add History";
             this.autoHistoryToolStripMenuItem.Click += new System.EventHandler(this.autoHistoryToolStripMenuItem_Click);
             // 
+            // toolStripMenuItem19
+            // 
+            this.toolStripMenuItem19.Name = "toolStripMenuItem19";
+            this.toolStripMenuItem19.Size = new System.Drawing.Size(260, 6);
+            // 
+            // addOffsetToolStripMenuItem
+            // 
+            this.addOffsetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripTextBoxAddressAddOffset});
+            this.addOffsetToolStripMenuItem.Name = "addOffsetToolStripMenuItem";
+            this.addOffsetToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
+            this.addOffsetToolStripMenuItem.Text = "Add &Offset";
+            this.addOffsetToolStripMenuItem.MouseMove += new System.Windows.Forms.MouseEventHandler(this.addOffsetToolStripMenuItem_MouseMove);
+            // 
+            // toolStripTextBoxAddressAddOffset
+            // 
+            this.toolStripTextBoxAddressAddOffset.Name = "toolStripTextBoxAddressAddOffset";
+            this.toolStripTextBoxAddressAddOffset.Size = new System.Drawing.Size(80, 21);
+            this.toolStripTextBoxAddressAddOffset.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxAddressAddOffset_KeyDown);
+            // 
             // NxtPage
             // 
             this.NxtPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1229,14 +1233,14 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.SearchResults.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.SearchResults.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.SearchResults.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.SearchResults.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.SearchResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.SearchResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ACol,
@@ -1244,30 +1248,30 @@
             this.NVal,
             this.DifferCol});
             this.SearchResults.ContextMenuStrip = this.SearchResMenu;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.SearchResults.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.SearchResults.DefaultCellStyle = dataGridViewCellStyle12;
             this.SearchResults.GridColor = System.Drawing.SystemColors.ActiveBorder;
             this.SearchResults.Location = new System.Drawing.Point(285, 25);
             this.SearchResults.Name = "SearchResults";
             this.SearchResults.ReadOnly = true;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.SearchResults.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.SearchResults.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.SearchResults.RowHeadersVisible = false;
             this.SearchResults.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchResults.RowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SearchResults.RowsDefaultCellStyle = dataGridViewCellStyle14;
             this.SearchResults.RowTemplate.Height = 24;
             this.SearchResults.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.SearchResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -1446,21 +1450,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Memory Range";
             // 
-            // memEnd
-            // 
-            this.memEnd.AutoHistory = true;
-            this.memEnd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.memEnd.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.memEnd.ContextMenuStrip = this.HistoryContextMenu;
-            this.memEnd.EndingAddress = true;
-            this.memEnd.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memEnd.Location = new System.Drawing.Point(199, 19);
-            this.memEnd.MaxLength = 8;
-            this.memEnd.MultiPokeAddress = false;
-            this.memEnd.Name = "memEnd";
-            this.memEnd.Size = new System.Drawing.Size(62, 20);
-            this.memEnd.TabIndex = 4;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -1469,21 +1458,6 @@
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "End:";
-            // 
-            // memStart
-            // 
-            this.memStart.AutoHistory = true;
-            this.memStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.memStart.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.memStart.ContextMenuStrip = this.HistoryContextMenu;
-            this.memStart.EndingAddress = false;
-            this.memStart.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memStart.Location = new System.Drawing.Point(93, 19);
-            this.memStart.MaxLength = 8;
-            this.memStart.MultiPokeAddress = false;
-            this.memStart.Name = "memStart";
-            this.memStart.Size = new System.Drawing.Size(62, 20);
-            this.memStart.TabIndex = 2;
             // 
             // label1
             // 
@@ -1792,22 +1766,6 @@
             this.memViewPValue.Text = "00000000";
             this.memViewPValue.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lowerValue_MouseClick);
             // 
-            // memViewPAddress
-            // 
-            this.memViewPAddress.AutoHistory = true;
-            this.memViewPAddress.BackColor = System.Drawing.SystemColors.Window;
-            this.memViewPAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.memViewPAddress.ContextMenuStrip = this.HistoryContextMenu;
-            this.memViewPAddress.EndingAddress = false;
-            this.memViewPAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memViewPAddress.Location = new System.Drawing.Point(27, 19);
-            this.memViewPAddress.MaxLength = 8;
-            this.memViewPAddress.MultiPokeAddress = false;
-            this.memViewPAddress.Name = "memViewPAddress";
-            this.memViewPAddress.Size = new System.Drawing.Size(62, 20);
-            this.memViewPAddress.TabIndex = 5;
-            this.memViewPAddress.Text = "80000000";
-            // 
             // MemViewAutoUp
             // 
             this.MemViewAutoUp.AutoSize = true;
@@ -1859,25 +1817,6 @@
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Address";
-            // 
-            // memViewAValue
-            // 
-            this.memViewAValue.AutoHistory = true;
-            this.memViewAValue.BackColor = System.Drawing.SystemColors.Window;
-            this.memViewAValue.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.memViewAValue.ContextMenuStrip = this.HistoryContextMenu;
-            this.memViewAValue.EndingAddress = false;
-            this.memViewAValue.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memViewAValue.Location = new System.Drawing.Point(48, 19);
-            this.memViewAValue.MaxLength = 8;
-            this.memViewAValue.MultiPokeAddress = false;
-            this.memViewAValue.Name = "memViewAValue";
-            this.memViewAValue.Size = new System.Drawing.Size(62, 20);
-            this.memViewAValue.TabIndex = 6;
-            this.memViewAValue.Text = "80000000";
-            this.memViewAValue.TextChanged += new System.EventHandler(this.memViewAValue_TextChanged);
-            this.memViewAValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.memViewAValue_KeyDown);
-            this.memViewAValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PAddress_KeyPress);
             // 
             // MemViewScrollbar
             // 
@@ -2426,18 +2365,6 @@
             this.panel6.Size = new System.Drawing.Size(426, 125);
             this.panel6.TabIndex = 12;
             // 
-            // BPList
-            // 
-            this.BPList.AutoScroll = true;
-            this.BPList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.BPList.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BPList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BPList.Location = new System.Drawing.Point(0, 0);
-            this.BPList.Margin = new System.Windows.Forms.Padding(4);
-            this.BPList.Name = "BPList";
-            this.BPList.Size = new System.Drawing.Size(426, 125);
-            this.BPList.TabIndex = 2;
-            // 
             // BPClassic
             // 
             this.BPClassic.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2555,23 +2482,6 @@
             this.BPExact.TabIndex = 8;
             this.BPExact.Text = "Exact match";
             this.BPExact.UseVisualStyleBackColor = true;
-            // 
-            // BPAddress
-            // 
-            this.BPAddress.AutoHistory = true;
-            this.BPAddress.BackColor = System.Drawing.SystemColors.Window;
-            this.BPAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.BPAddress.ContextMenuStrip = this.HistoryContextMenu;
-            this.BPAddress.EndingAddress = false;
-            this.BPAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BPAddress.Location = new System.Drawing.Point(18, 19);
-            this.BPAddress.MaxLength = 8;
-            this.BPAddress.MultiPokeAddress = false;
-            this.BPAddress.Name = "BPAddress";
-            this.BPAddress.Size = new System.Drawing.Size(62, 20);
-            this.BPAddress.TabIndex = 7;
-            this.BPAddress.Text = "80000000";
-            this.BPAddress.TextChanged += new System.EventHandler(this.BPAddress_TextChanged);
             // 
             // DisPage
             // 
@@ -2706,18 +2616,6 @@
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Selected Address";
             // 
-            // AsText
-            // 
-            this.AsText.AutoHistory = false;
-            this.AsText.ContextMenuStrip = this.HistoryContextMenu;
-            this.AsText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AsText.Location = new System.Drawing.Point(6, 46);
-            this.AsText.MaxLength = 100;
-            this.AsText.Name = "AsText";
-            this.AsText.Size = new System.Drawing.Size(177, 20);
-            this.AsText.TabIndex = 7;
-            this.AsText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AsText_KeyDown);
-            // 
             // Assemble
             // 
             this.Assemble.Location = new System.Drawing.Point(76, 19);
@@ -2728,22 +2626,6 @@
             this.Assemble.Text = "Assemble";
             this.Assemble.UseVisualStyleBackColor = true;
             this.Assemble.Click += new System.EventHandler(this.Assemble_Click);
-            // 
-            // AsAddress
-            // 
-            this.AsAddress.AutoHistory = true;
-            this.AsAddress.BackColor = System.Drawing.SystemColors.Window;
-            this.AsAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.AsAddress.ContextMenuStrip = this.HistoryContextMenu;
-            this.AsAddress.EndingAddress = false;
-            this.AsAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AsAddress.Location = new System.Drawing.Point(7, 20);
-            this.AsAddress.MaxLength = 8;
-            this.AsAddress.MultiPokeAddress = false;
-            this.AsAddress.Name = "AsAddress";
-            this.AsAddress.Size = new System.Drawing.Size(62, 20);
-            this.AsAddress.TabIndex = 5;
-            this.AsAddress.Text = "80000000";
             // 
             // groupBox12
             // 
@@ -2778,24 +2660,6 @@
             0,
             0});
             this.DisUpDown.ValueChanged += new System.EventHandler(this.DisUpDown_ValueChanged);
-            // 
-            // DisRegion
-            // 
-            this.DisRegion.AutoHistory = true;
-            this.DisRegion.BackColor = System.Drawing.SystemColors.Window;
-            this.DisRegion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.DisRegion.ContextMenuStrip = this.HistoryContextMenu;
-            this.DisRegion.EndingAddress = false;
-            this.DisRegion.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DisRegion.Location = new System.Drawing.Point(11, 18);
-            this.DisRegion.MaxLength = 8;
-            this.DisRegion.MultiPokeAddress = false;
-            this.DisRegion.Name = "DisRegion";
-            this.DisRegion.Size = new System.Drawing.Size(62, 20);
-            this.DisRegion.TabIndex = 6;
-            this.DisRegion.Text = "80000000";
-            this.DisRegion.TextChanged += new System.EventHandler(this.DisRegion_TextChanged);
-            this.DisRegion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DisRegion_KeyPress);
             // 
             // DisUpdateBtn
             // 
@@ -3255,9 +3119,9 @@
             this.GCTCodeList.ContextMenuStrip = this.gctCodeMenu;
             this.GCTCodeList.FullRowSelect = true;
             this.GCTCodeList.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            listViewItem2.StateImageIndex = 0;
+            listViewItem1.StateImageIndex = 0;
             this.GCTCodeList.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem1});
             this.GCTCodeList.LabelEdit = true;
             this.GCTCodeList.Location = new System.Drawing.Point(161, 12);
             this.GCTCodeList.MultiSelect = false;
@@ -3424,14 +3288,14 @@
             this.WatchList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.WatchList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle15.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.WatchList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.WatchList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.WatchList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.WatchCName,
@@ -3439,25 +3303,25 @@
             this.WatchCType,
             this.WatchCValue});
             this.WatchList.ContextMenuStrip = this.WatchCM;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.WatchList.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.WatchList.DefaultCellStyle = dataGridViewCellStyle18;
             this.WatchList.Location = new System.Drawing.Point(9, 8);
             this.WatchList.Name = "WatchList";
             this.WatchList.ReadOnly = true;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.WatchList.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.WatchList.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.WatchList.RowHeadersVisible = false;
             this.WatchList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.WatchList.RowTemplate.Height = 24;
@@ -3482,8 +3346,8 @@
             // 
             // WatchCAddress
             // 
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WatchCAddress.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle16.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WatchCAddress.DefaultCellStyle = dataGridViewCellStyle16;
             this.WatchCAddress.HeaderText = "Address";
             this.WatchCAddress.Name = "WatchCAddress";
             this.WatchCAddress.ReadOnly = true;
@@ -3499,8 +3363,8 @@
             // 
             // WatchCValue
             // 
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WatchCValue.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.WatchCValue.DefaultCellStyle = dataGridViewCellStyle17;
             this.WatchCValue.HeaderText = "Value";
             this.WatchCValue.Name = "WatchCValue";
             this.WatchCValue.ReadOnly = true;
@@ -3984,23 +3848,6 @@
             this.AbtText.TabIndex = 0;
             this.AbtText.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // addressTextBoxBPNext
-            // 
-            this.addressTextBoxBPNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addressTextBoxBPNext.AutoHistory = true;
-            this.addressTextBoxBPNext.BackColor = System.Drawing.SystemColors.Window;
-            this.addressTextBoxBPNext.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.addressTextBoxBPNext.ContextMenuStrip = this.HistoryContextMenu;
-            this.addressTextBoxBPNext.EndingAddress = false;
-            this.addressTextBoxBPNext.Font = new System.Drawing.Font("Courier New", 8.25F);
-            this.addressTextBoxBPNext.Location = new System.Drawing.Point(291, 272);
-            this.addressTextBoxBPNext.MaxLength = 8;
-            this.addressTextBoxBPNext.MultiPokeAddress = false;
-            this.addressTextBoxBPNext.Name = "addressTextBoxBPNext";
-            this.addressTextBoxBPNext.Size = new System.Drawing.Size(62, 20);
-            this.addressTextBoxBPNext.TabIndex = 5;
-            this.addressTextBoxBPNext.Text = "800018A8";
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -4167,25 +4014,178 @@
             this.saveFileDialogLogSteps.Filter = "Logs|*.log|All Files|*.*";
             this.saveFileDialogLogSteps.Title = "Save Step Log";
             // 
-            // toolStripMenuItem19
+            // PAddress
             // 
-            this.toolStripMenuItem19.Name = "toolStripMenuItem19";
-            this.toolStripMenuItem19.Size = new System.Drawing.Size(260, 6);
+            this.PAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PAddress.AutoHistory = true;
+            this.PAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.PAddress.ContextMenuStrip = this.HistoryContextMenu;
+            this.PAddress.EndingAddress = false;
+            this.PAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PAddress.Location = new System.Drawing.Point(290, 269);
+            this.PAddress.MaxLength = 8;
+            this.PAddress.MultiPokeAddress = true;
+            this.PAddress.Name = "PAddress";
+            this.PAddress.Size = new System.Drawing.Size(62, 20);
+            this.PAddress.TabIndex = 10;
+            this.PAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PAddress_KeyPress);
             // 
-            // addOffsetToolStripMenuItem
+            // memEnd
             // 
-            this.addOffsetToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripTextBoxAddressAddOffset});
-            this.addOffsetToolStripMenuItem.Name = "addOffsetToolStripMenuItem";
-            this.addOffsetToolStripMenuItem.Size = new System.Drawing.Size(263, 22);
-            this.addOffsetToolStripMenuItem.Text = "Add &Offset";
-            this.addOffsetToolStripMenuItem.MouseMove += new System.Windows.Forms.MouseEventHandler(this.addOffsetToolStripMenuItem_MouseMove);
+            this.memEnd.AutoHistory = true;
+            this.memEnd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.memEnd.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.memEnd.ContextMenuStrip = this.HistoryContextMenu;
+            this.memEnd.EndingAddress = true;
+            this.memEnd.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memEnd.Location = new System.Drawing.Point(199, 19);
+            this.memEnd.MaxLength = 8;
+            this.memEnd.MultiPokeAddress = false;
+            this.memEnd.Name = "memEnd";
+            this.memEnd.Size = new System.Drawing.Size(62, 20);
+            this.memEnd.TabIndex = 4;
             // 
-            // toolStripTextBoxAddressAddOffset
+            // memStart
             // 
-            this.toolStripTextBoxAddressAddOffset.Name = "toolStripTextBoxAddressAddOffset";
-            this.toolStripTextBoxAddressAddOffset.Size = new System.Drawing.Size(80, 21);
-            this.toolStripTextBoxAddressAddOffset.KeyDown += new System.Windows.Forms.KeyEventHandler(this.toolStripTextBoxAddressAddOffset_KeyDown);
+            this.memStart.AutoHistory = true;
+            this.memStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.memStart.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.memStart.ContextMenuStrip = this.HistoryContextMenu;
+            this.memStart.EndingAddress = false;
+            this.memStart.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memStart.Location = new System.Drawing.Point(93, 19);
+            this.memStart.MaxLength = 8;
+            this.memStart.MultiPokeAddress = false;
+            this.memStart.Name = "memStart";
+            this.memStart.Size = new System.Drawing.Size(62, 20);
+            this.memStart.TabIndex = 2;
+            // 
+            // memViewPAddress
+            // 
+            this.memViewPAddress.AutoHistory = true;
+            this.memViewPAddress.BackColor = System.Drawing.SystemColors.Window;
+            this.memViewPAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.memViewPAddress.ContextMenuStrip = this.HistoryContextMenu;
+            this.memViewPAddress.EndingAddress = false;
+            this.memViewPAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memViewPAddress.Location = new System.Drawing.Point(27, 19);
+            this.memViewPAddress.MaxLength = 8;
+            this.memViewPAddress.MultiPokeAddress = false;
+            this.memViewPAddress.Name = "memViewPAddress";
+            this.memViewPAddress.Size = new System.Drawing.Size(62, 20);
+            this.memViewPAddress.TabIndex = 5;
+            this.memViewPAddress.Text = "80000000";
+            // 
+            // memViewAValue
+            // 
+            this.memViewAValue.AutoHistory = true;
+            this.memViewAValue.BackColor = System.Drawing.SystemColors.Window;
+            this.memViewAValue.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.memViewAValue.ContextMenuStrip = this.HistoryContextMenu;
+            this.memViewAValue.EndingAddress = false;
+            this.memViewAValue.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memViewAValue.Location = new System.Drawing.Point(48, 19);
+            this.memViewAValue.MaxLength = 8;
+            this.memViewAValue.MultiPokeAddress = false;
+            this.memViewAValue.Name = "memViewAValue";
+            this.memViewAValue.Size = new System.Drawing.Size(62, 20);
+            this.memViewAValue.TabIndex = 6;
+            this.memViewAValue.Text = "80000000";
+            this.memViewAValue.TextChanged += new System.EventHandler(this.memViewAValue_TextChanged);
+            this.memViewAValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.memViewAValue_KeyDown);
+            this.memViewAValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PAddress_KeyPress);
+            // 
+            // BPList
+            // 
+            this.BPList.AutoScroll = true;
+            this.BPList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.BPList.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BPList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BPList.Location = new System.Drawing.Point(0, 0);
+            this.BPList.Margin = new System.Windows.Forms.Padding(4);
+            this.BPList.Name = "BPList";
+            this.BPList.Size = new System.Drawing.Size(426, 125);
+            this.BPList.TabIndex = 2;
+            // 
+            // BPAddress
+            // 
+            this.BPAddress.AutoHistory = true;
+            this.BPAddress.BackColor = System.Drawing.SystemColors.Window;
+            this.BPAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.BPAddress.ContextMenuStrip = this.HistoryContextMenu;
+            this.BPAddress.EndingAddress = false;
+            this.BPAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BPAddress.Location = new System.Drawing.Point(18, 19);
+            this.BPAddress.MaxLength = 8;
+            this.BPAddress.MultiPokeAddress = false;
+            this.BPAddress.Name = "BPAddress";
+            this.BPAddress.Size = new System.Drawing.Size(62, 20);
+            this.BPAddress.TabIndex = 7;
+            this.BPAddress.Text = "80000000";
+            this.BPAddress.TextChanged += new System.EventHandler(this.BPAddress_TextChanged);
+            // 
+            // AsText
+            // 
+            this.AsText.AutoHistory = false;
+            this.AsText.ContextMenuStrip = this.HistoryContextMenu;
+            this.AsText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AsText.Location = new System.Drawing.Point(6, 46);
+            this.AsText.MaxLength = 100;
+            this.AsText.Name = "AsText";
+            this.AsText.Size = new System.Drawing.Size(177, 20);
+            this.AsText.TabIndex = 7;
+            this.AsText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AsText_KeyDown);
+            // 
+            // AsAddress
+            // 
+            this.AsAddress.AutoHistory = true;
+            this.AsAddress.BackColor = System.Drawing.SystemColors.Window;
+            this.AsAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.AsAddress.ContextMenuStrip = this.HistoryContextMenu;
+            this.AsAddress.EndingAddress = false;
+            this.AsAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AsAddress.Location = new System.Drawing.Point(7, 20);
+            this.AsAddress.MaxLength = 8;
+            this.AsAddress.MultiPokeAddress = false;
+            this.AsAddress.Name = "AsAddress";
+            this.AsAddress.Size = new System.Drawing.Size(62, 20);
+            this.AsAddress.TabIndex = 5;
+            this.AsAddress.Text = "80000000";
+            // 
+            // DisRegion
+            // 
+            this.DisRegion.AutoHistory = true;
+            this.DisRegion.BackColor = System.Drawing.SystemColors.Window;
+            this.DisRegion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.DisRegion.ContextMenuStrip = this.HistoryContextMenu;
+            this.DisRegion.EndingAddress = false;
+            this.DisRegion.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisRegion.Location = new System.Drawing.Point(11, 18);
+            this.DisRegion.MaxLength = 8;
+            this.DisRegion.MultiPokeAddress = false;
+            this.DisRegion.Name = "DisRegion";
+            this.DisRegion.Size = new System.Drawing.Size(62, 20);
+            this.DisRegion.TabIndex = 6;
+            this.DisRegion.Text = "80000000";
+            this.DisRegion.TextChanged += new System.EventHandler(this.DisRegion_TextChanged);
+            this.DisRegion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DisRegion_KeyPress);
+            // 
+            // addressTextBoxBPNext
+            // 
+            this.addressTextBoxBPNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addressTextBoxBPNext.AutoHistory = true;
+            this.addressTextBoxBPNext.BackColor = System.Drawing.SystemColors.Window;
+            this.addressTextBoxBPNext.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.addressTextBoxBPNext.ContextMenuStrip = this.HistoryContextMenu;
+            this.addressTextBoxBPNext.EndingAddress = false;
+            this.addressTextBoxBPNext.Font = new System.Drawing.Font("Courier New", 8.25F);
+            this.addressTextBoxBPNext.Location = new System.Drawing.Point(291, 272);
+            this.addressTextBoxBPNext.MaxLength = 8;
+            this.addressTextBoxBPNext.MultiPokeAddress = false;
+            this.addressTextBoxBPNext.Name = "addressTextBoxBPNext";
+            this.addressTextBoxBPNext.Size = new System.Drawing.Size(62, 20);
+            this.addressTextBoxBPNext.TabIndex = 5;
+            this.addressTextBoxBPNext.Text = "800018A8";
             // 
             // MainForm
             // 
