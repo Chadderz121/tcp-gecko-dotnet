@@ -1936,13 +1936,13 @@ namespace GeckoApp
             comparer.oldDump = oldDump;
             comparer.newDump = newDump;
 
-            DateTime SortStart = Logger.WriteLineTimedStarted("sorting column " + comparer.sortedColumn.ToString());
+            //DateTime SortStart = Logger.WriteLineTimedStarted("sorting column " + comparer.sortedColumn.ToString());
 
             // TODO: reverse if possible?
 
             resultAddressList.Sort(comparer);
 
-            Logger.WriteLineTimedFinished("sorting", SortStart);
+            //Logger.WriteLineTimedFinished("sorting", SortStart);
 
             PrintPageAlt();
         }

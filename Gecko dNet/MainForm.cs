@@ -1378,6 +1378,11 @@ namespace GeckoApp
             memViewAValue.Text = GlobalFunctions.toHex(mAddress);
 
             MainControl.SelectedTab = MemView;
+            if (memViewGrid.Rows.Count == 0)
+            {
+                viewer.Update();    // trick the memviewgrid into being populated
+            }
+
             memViewGrid.Rows[(int)offset / 0x10].Cells[((int)mAddress & 0xF) / 4 + 1].Selected = true;
 
             tAddress &= 0xFFFFFFFC;
@@ -1421,18 +1426,31 @@ namespace GeckoApp
         #region Memory Viewer stuff
         private void tabPage2_Enter(object sender, EventArgs e)
         {
-            viewer.Update();
+            UInt32 Address;
+            if (memViewAValue.IsValidGet(out Address))
+            {
+                CenteredMemViewSelection(sender, e, Address);
+            }
             toolStripTextBoxMemViewFontSize_KeyDown(null, new KeyEventArgs(Keys.Enter));
         }
 
         private void MemViewARange_SelectedIndexChanged(object sender, EventArgs e)
         {
             //if (MemViewARange.SelectedIndex != 
-            UInt32 sAddress = ValidMemory.ValidAreas[MemViewARange.SelectedIndex].low;
+            UInt32 oldValue, oldRange;
+            double percent = 0;
+            if (memViewAValue.IsValidGet(out oldValue))
+            {
+                int index = ValidMemory.rangeCheckId(oldValue);
+                oldRange = ValidMemory.ValidAreas[index].high - ValidMemory.ValidAreas[index].low;
+                percent = (oldValue - ValidMemory.ValidAreas[index].low) / (double)(oldRange);
+            }
+            UInt32 newRange = ValidMemory.ValidAreas[MemViewARange.SelectedIndex].high - ValidMemory.ValidAreas[MemViewARange.SelectedIndex].low;
+            UInt32 sAddress = ValidMemory.ValidAreas[MemViewARange.SelectedIndex].low + (uint)(percent * newRange);
             memViewAValue.Text = GlobalFunctions.toHex(sAddress);
             viewer.address = sAddress;
             if (MainControl.SelectedTab == MemView)
-                viewer.Update();
+                CenteredMemViewSelection(sender, e, sAddress);
         }
 
         // TODO: Move the body of this code to MemViewer and have this function call into MemViewer instead and pass MemViewARange
@@ -3140,7 +3158,6 @@ namespace GeckoApp
                 range -= ValidMemory.ValidAreas[rangeID].low;
                 vScrollBarMemViewGrid.Maximum = (int)range;
 
-
                 uint offset = address - ValidMemory.ValidAreas[rangeID].low;
                 //uint offset = address - ValidMemory.ValidAreas[MemViewARange.SelectedIndex].low;
 
@@ -3648,7 +3665,14 @@ namespace GeckoApp
 
         private void vScrollBarMemViewGrid_Scroll(object sender, ScrollEventArgs e)
         {
-            uint vAddress = ValidMemory.ValidAreas[MemViewARange.SelectedIndex].low + (uint)e.NewValue;
+            uint vAddress;
+            memViewAValue.IsValidGet(out vAddress);
+            int index = ValidMemory.rangeCheckId(vAddress);
+            vAddress = ValidMemory.ValidAreas[index].low + (uint)e.NewValue;
+            if (vAddress >= ValidMemory.ValidAreas[index].high)
+            {
+                vAddress = ValidMemory.ValidAreas[index].low;
+            }
             if (!ValidMemory.validAddress(vAddress))
             {
                 MessageBox.Show("Invalid address");

@@ -11,9 +11,11 @@ namespace GeckoApp
     static class Logger
     {
         private static TextWriter debugLogWriter = null;
-        private static string path = "GDNdebug.log";
+        //private static string path = System.Windows.Forms.Application.StartupPath + "\\Logs\\GDNdebug" + DateTime.Now + ".log";
+        private static string folder = System.Windows.Forms.Application.StartupPath + "\\Logs\\";
+        private static string filename = "GDNdebug " + DateTime.Now.ToString("yy-mm-dd H.mm.ss") + ".log";
 
-        static void CreateOrAppendLoggingFile(string path)
+        static void CreateOrAppendLoggingFile(string Folder, string Filename)
         {
             if (debugLogWriter != null)
             {
@@ -21,14 +23,25 @@ namespace GeckoApp
                 debugLogWriter.Dispose();
             }
 
-            debugLogWriter = new StreamWriter(path, true);
+            try
+            {
+                if (!Directory.Exists(Folder))
+                    Directory.CreateDirectory(Folder);
+
+                debugLogWriter = new StreamWriter(Folder + Filename, true);
+            }
+            catch (System.IO.IOException)
+            {
+                filename = "GDNdebug " + DateTime.Now.ToString("yy-mm-dd H.mm.ss") + ".log";
+                CreateOrAppendLoggingFile(folder, filename);
+            }
         }
 
         public static void WriteLine(string write)
         {
             if (debugLogWriter == null)
             {
-                CreateOrAppendLoggingFile(path);
+                CreateOrAppendLoggingFile(folder, filename);
                 debugLogWriter.WriteLine();
                 debugLogWriter.WriteLine();
                 debugLogWriter.WriteLine(DateTime.Now.ToString("G") + ": Opened log");

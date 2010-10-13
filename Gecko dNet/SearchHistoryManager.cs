@@ -110,23 +110,23 @@ namespace GeckoApp
             // First entry is the dump
             outstream.PutNextEntry("dump");
 
-            DateTime start = Logger.WriteLineTimedStarted("compressing search dump");
+            //DateTime start = Logger.WriteLineTimedStarted("compressing search dump");
 
             // Must put the addresses first, so that it can derive the right number of bytes to read for the dump
             formatter.Serialize(outstream, searchDump.StartAddress);
             formatter.Serialize(outstream, searchDump.EndAddress);
             outstream.Write(searchDump.mem, 0, (int)(searchDump.EndAddress - searchDump.StartAddress));
 
-            Logger.WriteLineTimedFinished("compressing search dump", start);
+            //Logger.WriteLineTimedFinished("compressing search dump", start);
 
             // Second entry is the list
             outstream.PutNextEntry("list");
 
-            start = Logger.WriteLineTimedStarted("compressing search list");
+            //start = Logger.WriteLineTimedStarted("compressing search list");
 
             formatter.Serialize(outstream, resultsList);
 
-            Logger.WriteLineTimedFinished("compressing search list", start);
+            //Logger.WriteLineTimedFinished("compressing search list", start);
 
             outstream.Close();
             outstream.Dispose();
@@ -228,7 +228,7 @@ namespace GeckoApp
             outstream.PutNextEntry("dump");
 
 
-            Logger.WriteLineTimed("Started compressing search dump");
+            //Logger.WriteLineTimed("Started compressing search dump");
             DateTime startTime = DateTime.Now;
 
             formatter.Serialize(outstream, searchDump.StartAddress);
@@ -236,27 +236,27 @@ namespace GeckoApp
             outstream.Write(searchDump.mem, 0, (int)(searchDump.EndAddress - searchDump.StartAddress));
 
             DateTime endTime = DateTime.Now;
-            Logger.WriteLineTimed("Finished compressing search dump in " + (new TimeSpan(endTime.Ticks - startTime.Ticks).TotalSeconds));
+            //Logger.WriteLineTimed("Finished compressing search dump in " + (new TimeSpan(endTime.Ticks - startTime.Ticks).TotalSeconds));
 
 
             outstream.PutNextEntry("list");
 
-            Logger.WriteLineTimed("Started copying search list");
+            //Logger.WriteLineTimed("Started copying search list");
             startTime = DateTime.Now;
 
             List<UInt32> copy = new List<uint>(resultsList);
 
             endTime = DateTime.Now;
-            Logger.WriteLineTimed("Finished copying search list in " + (new TimeSpan(endTime.Ticks - startTime.Ticks).TotalSeconds));
+            //Logger.WriteLineTimed("Finished copying search list in " + (new TimeSpan(endTime.Ticks - startTime.Ticks).TotalSeconds));
 
 
-            Logger.WriteLineTimed("Started compressing search list");
+            //Logger.WriteLineTimed("Started compressing search list");
             startTime = DateTime.Now;
 
             formatter.Serialize(outstream, resultsList);
 
             endTime = DateTime.Now;
-            Logger.WriteLineTimed("Finished compressing search list in " + (new TimeSpan(endTime.Ticks - startTime.Ticks).TotalSeconds));
+            //Logger.WriteLineTimed("Finished compressing search list in " + (new TimeSpan(endTime.Ticks - startTime.Ticks).TotalSeconds));
 
 
             outstream.Close();
