@@ -399,9 +399,12 @@ namespace GeckoApp
             proc.StartInfo.FileName = GAs;
             proc.StartInfo.Arguments = "-mgekko -mregnames -o ass.o ass.txt";
             proc.StartInfo.CreateNoWindow = true;
+            proc.StartInfo.RedirectStandardError = true;
             proc.Start();
-            proc.WaitForExit();
-
+            String output = String.Empty;
+            while (!proc.StandardError.EndOfStream)
+                output += proc.StandardError.ReadLine() + "\n";
+            proc.WaitForExit(/*2000*/);
             int exitCode = proc.ExitCode;
             proc.Close();
             File.Delete("ass.txt");
@@ -409,7 +412,7 @@ namespace GeckoApp
             {
                 if (File.Exists("ass.o"))
                     File.Delete("ass.o");
-                MessageBox.Show("Command parsing error!");
+                MessageBox.Show(output);
                 return;
             }
 
@@ -419,7 +422,11 @@ namespace GeckoApp
             proc.StartInfo.FileName = GLd;
             proc.StartInfo.Arguments = " -Ttext 0x80000000 -o ass2.o ass.o";
             proc.StartInfo.CreateNoWindow = true;
+            proc.StartInfo.RedirectStandardError = true;
             proc.Start();
+            output = String.Empty;
+            while (!proc.StandardError.EndOfStream)
+                output += proc.StandardError.ReadLine() + "\n";
             proc.WaitForExit();
 
             exitCode = proc.ExitCode;
@@ -429,7 +436,7 @@ namespace GeckoApp
             {
                 if (File.Exists("ass2.o"))
                     File.Delete("ass2.o");
-                MessageBox.Show("Command parsing error!");
+                MessageBox.Show(output);
                 return;
             }
 
@@ -439,7 +446,11 @@ namespace GeckoApp
             proc.StartInfo.FileName = GOc;
             proc.StartInfo.Arguments = " -O binary ass2.o ass.bin";
             proc.StartInfo.CreateNoWindow = true;
+            proc.StartInfo.RedirectStandardError = true;
             proc.Start();
+            output = String.Empty;
+            while (!proc.StandardError.EndOfStream)
+                output += proc.StandardError.ReadLine() + "\n";
             proc.WaitForExit();
 
             exitCode = proc.ExitCode;
@@ -449,7 +460,7 @@ namespace GeckoApp
             {
                 if (File.Exists("ass.bin"))
                     File.Delete("ass.bin");
-                MessageBox.Show("Command parsing error!");
+                MessageBox.Show(output);
                 return;
             }
 
