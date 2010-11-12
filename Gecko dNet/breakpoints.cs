@@ -35,7 +35,7 @@ namespace GeckoApp
             }
             set
             {
-                if (value >= 0 && value < 72)
+                if (value >= 0 && value < 73)
                     PRegister = value;
                 else
                     PRegister = 0;
@@ -82,13 +82,35 @@ namespace GeckoApp
             GroupNumber = groupNumber;
         }
 
-        public bool Compare(Stream regStream)
+        public bool Compare(Stream regStream, BreakpointType bpType, UInt32 bpAddress, USBGecko gecko)
         {
             if (regStream.Length != 0x120)
                 return false;
+            
+            int spos = PRegister * 4;
 
-            regStream.Seek(PRegister * 4, SeekOrigin.Begin);
-            UInt32 val = GlobalFunctions.ReadStream(regStream);
+            UInt32 val = 0;
+            if (spos == 0x120) //Value of address is supposed to be checked
+            {
+                switch (bpType)
+                {                    
+                    case BreakpointType.Read:
+                        val = gecko.peek(bpAddress);
+                        break;
+                    case BreakpointType.ReadWrite:
+                    case BreakpointType.Write:
+                        gecko.Step();
+                        val = gecko.peek(bpAddress);
+                        break;
+                    default:
+                        return true;
+                }
+            }
+            else
+            {
+                regStream.Seek(spos, SeekOrigin.Begin);
+                val = GlobalFunctions.ReadStream(regStream);
+            }
 
             switch (PCondition)
             {
@@ -112,7 +134,10 @@ namespace GeckoApp
         public override String ToString()
         {
             String result = GroupNumber + ": ";
-            result += BPList.longRegNames[PRegister].Trim() + " ";
+            if(PRegister >= BPList.longRegNames.Length)
+                result += "VoA ";
+            else
+                result += BPList.longRegNames[PRegister].Trim() + " ";
             switch (PCondition)
             {
                 case BreakpointComparison.Equal:
@@ -137,6 +162,9 @@ namespace GeckoApp
             if (cond == String.Empty) return null;
             String[] sep = cond.Split(new char[] { ' ', ':' });
             int register = Convert.ToInt32(BPList.regTextToID(sep[2]));
+            
+            if (sep[2] == "VoA") register = BPList.longRegNames.Length;
+            
             uint value;
             if (!(GlobalFunctions.tryToHex(sep[4], out value)))
             {
@@ -208,7 +236,7 @@ namespace GeckoApp
             UpdateOutput();
         }
 
-        public bool Check(Stream regStream)
+        public bool Check(Stream regStream, BreakpointType bpType, UInt32 bpAddress, USBGecko gecko)
         {
             if (!Enabled)
                 return true;
@@ -228,7 +256,7 @@ namespace GeckoApp
             // If any condition fails, remove it's group number from the group
             foreach (BreakpointCondition cond in PConditions)
             {
-                if (groups.Contains(cond.GroupNumber) && !cond.Compare(regStream))
+                if (groups.Contains(cond.GroupNumber) && !cond.Compare(regStream, bpType, bpAddress, gecko))
                     groups.Remove(cond.GroupNumber);
             }
 
@@ -790,7 +818,7 @@ namespace GeckoApp
                     MemoryStream regStream = new MemoryStream();
                     gecko.GetRegisters(regStream);
 
-                    if (!conditions.Check(regStream))
+                    if (!conditions.Check(regStream, bpType, bpAddress, gecko))
                     {
                         PSkipCount++;
                         InvokeSkip();
@@ -974,6 +1002,8 @@ namespace GeckoApp
 
         public UInt32 GetRegisterValue(int regIndex)
         {
+            if (regIndex >= BPList.longRegNames.Length)
+                return 0;
             uint foo = 0;
             GlobalFunctions.tryToHex(bpOutput.longRegTextBox[regIndex].Text, out foo);
             return foo;

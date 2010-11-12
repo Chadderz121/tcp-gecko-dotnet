@@ -97,5 +97,10 @@ namespace GeckoApp
         {
             return validRange(low, high, addressDebug);
         }
+
+        public static void setMEM2Upper(UInt32 upper)
+        {
+            ValidAreas[1] = new AddressRange(AddressType.UncachedMem2, 0x90000000, upper);
+        }
     }
 }

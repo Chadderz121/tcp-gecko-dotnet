@@ -114,6 +114,8 @@ namespace GeckoApp
             //bpHandler = new Breakpoints(gecko, BPList, this, disassembler, richTextBox1, BPClassic, BPCondList, exceptionHandling);
             foreach (String reg in BPList.longRegNames)
                 BPConditionRegSelect.Items.Add(reg.Trim());
+            BPConditionRegSelect.Items.Add("VoA");
+
             BPConditionRegSelect.SelectedIndex = 0;
             BPConditionCompare.SelectedIndex = 0;
 
@@ -199,6 +201,9 @@ namespace GeckoApp
                           + "and you!";
 
             notes = new NoteSheets();
+
+            //Set MEM2 upper to 93400000
+            MEM2UpperBoundary.SelectedIndex = 0;
 
             // Restore previous settings
             checkBoxAlwaysOnTop.Checked = GeckoApp.Properties.Settings.Default.AlwaysOnTop;
@@ -4128,7 +4133,7 @@ namespace GeckoApp
                     MemoryStream regStream = new MemoryStream();
                     gecko.GetRegisters(regStream);
 
-                    while (!bpHandler.conditions.Check(regStream) && SteppingUntil)
+                    while (!bpHandler.conditions.Check(regStream, BreakpointType.Step, 0, gecko) && SteppingUntil)
                     {
                         BPStepButton_Click(sender, e);
                         System.Threading.Thread.Sleep(100);
@@ -5003,6 +5008,22 @@ namespace GeckoApp
                 HistoryContextMenu.Close();
                 toolStripTextBoxAddressAddOffset.Text = (0).ToString();
             }
+        }
+
+        private void MEM2UpperBoundary_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(MEM2UpperBoundary.SelectedIndex)
+            {
+                case 1: ValidMemory.setMEM2Upper(0x93800000);
+                    return;
+                case 2: ValidMemory.setMEM2Upper(0x93C00000);
+                    return;
+                case 3: ValidMemory.setMEM2Upper(0x94000000);
+                    return;
+                default: ValidMemory.setMEM2Upper(0x93400000);
+                    return;
+            }
+            
         }
     }
 }
