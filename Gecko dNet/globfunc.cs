@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
@@ -12,7 +12,7 @@ namespace GeckoApp
     {
         private static TextWriter debugLogWriter = null;
         //private static string path = System.Windows.Forms.Application.StartupPath + "\\Logs\\GDNdebug" + DateTime.Now + ".log";
-        private static string folder = System.Windows.Forms.Application.StartupPath + "\\Logs\\";
+        private static string folder = System.Windows.Forms.Application.StartupPath + Path.DirectorySeparatorChar + "Logs" + Path.DirectorySeparatorChar;
         private static string filename = "GDNdebug " + DateTime.Now.ToString("yy-mm-dd H.mm.ss") + ".log";
 
         static void CreateOrAppendLoggingFile(string Folder, string Filename)

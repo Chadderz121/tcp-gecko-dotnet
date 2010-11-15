@@ -1,10 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Ionic.Zip;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
 using FTDIUSBGecko;
+using System.IO;
 
 namespace GeckoApp
 {
@@ -98,7 +99,8 @@ namespace GeckoApp
         public void SaveSearch(int index, List<UInt32> resultsList, Dump searchDump)
         {
             // TODO subdir?  check file exists?
-            SaveSearch("DumpHistory\\DumpHistory" + index + ".zip", resultsList, searchDump);
+			char delim = Path.DirectorySeparatorChar;
+            SaveSearch("DumpHistory" + delim + "DumpHistory" + index + ".zip", resultsList, searchDump);
         }
 
         public void SaveSearch(string filepath, List<UInt32> resultsList, Dump searchDump)
@@ -134,7 +136,8 @@ namespace GeckoApp
 
         public Dump LoadSearchDump(int index)
         {
-            return LoadSearchDump("DumpHistory\\DumpHistory" + index + ".zip");
+			char delim = Path.DirectorySeparatorChar;
+            return LoadSearchDump("DumpHistory" + delim + "DumpHistory" + index + ".zip");
         }
 
         public Dump LoadSearchDump(string filepath)
@@ -158,7 +161,8 @@ namespace GeckoApp
 
         public List<UInt32> LoadSearchList(int index)
         {
-            return LoadSearchList("DumpHistory\\DumpHistory" + index + ".zip");
+			char delim = Path.DirectorySeparatorChar;
+            return LoadSearchList("DumpHistory" + delim + "DumpHistory" + index + ".zip");
         }
 
         public List<UInt32> LoadSearchList(string filepath)

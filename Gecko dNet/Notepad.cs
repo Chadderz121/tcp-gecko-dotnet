@@ -73,6 +73,7 @@ namespace GeckoApp
 
         public void Show(String gameID)
         {
+            char delim = Path.DirectorySeparatorChar;
             if (gameID.Length >= 3)
             {
                 gId = gameID.Substring(0, 3);
@@ -90,10 +91,10 @@ namespace GeckoApp
 
             List<Sheet> sheets = null;
 
-            if (File.Exists("notes\\" + gId + ".xml"))
+            if (File.Exists("notes" + delim + gId + ".xml"))
                 try
                 {
-                    sheets = ImportSheet("notes\\" + gId + ".xml");
+                    sheets = ImportSheet("notes" + delim + gId + ".xml");
                 }
                 catch 
                 {
@@ -184,7 +185,8 @@ namespace GeckoApp
 
         private void NoteSheets_FormClosing(object sender, FormClosingEventArgs e)
         {
-            String filename = "notes\\" + gId + ".xml";
+            char delim = Path.DirectorySeparatorChar;
+            String filename = "notes" + delim + gId + ".xml";
             if (File.Exists(filename))
                 File.Delete(filename);
             Xml ExportFile = new Xml(filename);

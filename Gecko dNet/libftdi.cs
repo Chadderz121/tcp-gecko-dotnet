@@ -1,4 +1,4 @@
-﻿#define BUILD_STRUCT
+#define BUILD_STRUCT
 
 using System;
 using System.Collections.Generic;
@@ -41,45 +41,45 @@ namespace libftdi
 
     public class LFTDI
     {
-        [DllImport("libftdi.so")]
+        [DllImport("ftdi")]
         private static extern int ftdi_init(ref ftdi_context ftdi);
 
-        [DllImport("libftdi.so")]
+        [DllImport("ftdi")]
         private static extern IntPtr ftdi_new();
 
-        [DllImport("libftdi.so")]
+        [DllImport("ftdi")]
         private static extern int ftdi_deinit(ref ftdi_context ftdi);
 
-        [DllImport("libftdi.so")]
+        [DllImport("ftdi")]
         private static extern int ftdi_usb_open(ref ftdi_context ftdi, int vendor, int product);
 
-        [DllImport("libftdi.so")]
+        [DllImport("ftdi")]
         private static extern int ftdi_usb_close(ref ftdi_context ftdi);
 
-        [DllImport("libftdi.so")]
+        [DllImport("ftdi")]
         private static extern int ftdi_usb_reset(ref ftdi_context ftdi);
         
-        [DllImport("libftdi.so")]
+        [DllImport("ftdi")]
         private static extern int ftdi_read_data_set_chunksize(
             ref ftdi_context ftdi, UInt32 chunksize);
         
-        [DllImport("libftdi.so")]
+        [DllImport("ftdi")]
         private static extern int ftdi_write_data_set_chunksize(
             ref ftdi_context ftdi, UInt32 chunksize);
 
-        [DllImport("libftdi.so")]
+        [DllImport("ftdi")]
         private static extern int ftdi_usb_purge_rx_buffer(ref ftdi_context ftdi);
 
-        [DllImport("libftdi.so")]
+        [DllImport("ftdi")]
         private static extern int ftdi_usb_purge_tx_buffer(ref ftdi_context ftdi);
 
-        [DllImport("libftdi.so")]
+        [DllImport("ftdi")]
         private static extern int ftdi_read_chipid(ref ftdi_context ftdi, ref int chipid);
 
-        [DllImport("libftdi.so")]
+        [DllImport("ftdi")]
         private static extern int ftdi_read_data(ref ftdi_context ftdi, Byte[] buf, int size);
 
-        [DllImport("libftdi.so")]
+        [DllImport("ftdi")]
         private static extern int ftdi_write_data(ref ftdi_context ftdi, Byte[] buf, int size);
 
 #if BUILD_STRUCT
@@ -122,7 +122,9 @@ namespace libftdi
             if (status == 0)
             {
                 status = ftdi_read_chipid(ref FFTHandle, ref origChipID);
-                System.Console.WriteLine(origChipID.ToString("X"));
+	#if DEBUG
+				System.Console.WriteLine(origChipID.ToString("X"));
+	#endif
             }
 #else
 			unsafe {
@@ -237,7 +239,9 @@ namespace libftdi
 #endif
 			}
 			bytes_read = (UInt32)read;
+#if DEBUG
 			System.Console.WriteLine("LFTDI::Read() " + read + " bytes");
+#endif
             if (bytes_read <= 0)
 			{				
             	return FT_STATUS.FT_FAIL;
@@ -255,7 +259,9 @@ namespace libftdi
 			unsafe { write = ftdi_write_data(ref (*(((ftdi_context*)PFFTHandle))), buffer, (int)nobytes); }
 #endif
             bytes_written = (UInt32)write;
- 			System.Console.WriteLine("LFTDI::Write() " + write + " bytes");
+#if DEBUG
+			System.Console.WriteLine("LFTDI::Write() " + write + " bytes");
+#endif
            if (bytes_written <= 0)
                 return FT_STATUS.FT_FAIL;
             else

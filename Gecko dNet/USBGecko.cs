@@ -1,4 +1,4 @@
-﻿#define DIRECT
+#define DIRECT
 
 using System;
 using System.IO;
@@ -457,7 +457,7 @@ namespace FTDIUSBGecko
                 Disconnect();
                 throw new EUSBGeckoException(EUSBErrorCode.FTDITimeoutSetError);
             }
-
+#if !MONO
            byte LatencyTimer = 2;
 
            ftStatus = PFTDI.SetLatencyTimer(LatencyTimer);
@@ -466,6 +466,7 @@ namespace FTDIUSBGecko
                Disconnect();
                throw new EUSBGeckoException(EUSBErrorCode.FTDITimeoutSetError);
            }
+#endif
 
             //Set Transfer rate
             ftStatus = PFTDI.InTransferSize(0x10000);

@@ -51,10 +51,15 @@ namespace GeckoApp
             mainBox.KeyDown += MainBoxKeyDown;
             scrollbar.Scroll += Scrolling;
             
-
+#if MONO
+			GAs = "powerpc-eabi-as";
+			GLd = "powerpc-eabi-ld";
+			GOc = "powerpc-eabi-objcopy";
+#else
             GAs = "powerpc-gekko-as.exe";
             GLd = "powerpc-gekko-ld.exe";
             GOc = "powerpc-gekko-objcopy.exe";
+#endif
         }
 
         private void ChangeBy(int offset)
@@ -218,7 +223,11 @@ namespace GeckoApp
 
             if (!File.Exists(vdappPath))
             {
+#if MONO
+				return new String[] { "vdappc not found!" };
+#else
                 return new String[] { "vdappc.exe not found!" };
+#endif
             }
 
             // TODO: who is leaving this file open?
