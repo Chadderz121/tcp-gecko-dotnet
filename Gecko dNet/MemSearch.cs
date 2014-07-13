@@ -5,7 +5,7 @@ using System.IO;
 using System.Windows.Forms;
 using Ionic.Zip;
 
-using FTDIUSBGecko;
+using TCPTCPGecko;
 
 namespace GeckoApp
 {
@@ -150,7 +150,7 @@ namespace GeckoApp
         private UInt32 UnknownLAddress;
         private UInt32 UnknownHAddress;
 
-        private USBGecko gecko;
+        private TCPGecko gecko;
         private DataGridView gView;
         private Button prvButton;
         private Button nxButton;
@@ -203,7 +203,7 @@ namespace GeckoApp
         { get { return PBlockEnd; } }
         
 
-        public MemSearch(USBGecko uGecko,DataGridView uGView,Button uPrvButton,Button uNxButton,
+        public MemSearch(TCPGecko uGecko,DataGridView uGView,Button uPrvButton,Button uNxButton,
             Label UResLab, NumericUpDown UPageUpDown, ExceptionHandler UEHandler)
         {
             exceptionHandling = UEHandler;
@@ -1054,14 +1054,14 @@ namespace GeckoApp
                     gecko.Dump(newDump);
                 }
             }
-            catch (EUSBGeckoException e)
+            catch (ETCPGeckoException e)
             {
                 exceptionHandling.HandleException(e);
             }
 
             if (doCompare)
             {
-                // The "original stream" is always the one we just read from the USB Gecko
+                // The "original stream" is always the one we just read from the TCP Gecko
                 //Stream originalStream, compareStream;
                 //originalStream = newDump.dumpStream;
                 //compareStream = newDump.dumpStream;
@@ -1220,7 +1220,7 @@ namespace GeckoApp
             //        }
             //        orgStream = null;
             //    }
-            //    catch (EUSBGeckoException e)
+            //    catch (ETCPGeckoException e)
             //    {
             //        Reset();
             //        exceptionHandling.HandleException(e);
@@ -1314,7 +1314,7 @@ namespace GeckoApp
             //            }
             //        }
             //    }
-            //    catch (EUSBGeckoException e)
+            //    catch (ETCPGeckoException e)
             //    {
             //        Reset();
             //        exceptionHandling.HandleException(e);
@@ -1591,7 +1591,7 @@ namespace GeckoApp
                     gecko.Dump(startdump, enddump, memdump);
                     finished = true;
                 }
-                catch (EUSBGeckoException e)
+                catch (ETCPGeckoException e)
                 {
                     exceptionHandling.HandleException(e);
                     if (startdump == memdump.ReadCompletedAddress)

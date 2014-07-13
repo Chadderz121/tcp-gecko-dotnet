@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 
 using System.Windows.Forms;
-using FTDIUSBGecko;
+using TCPTCPGecko;
 
 using IconHelper;
 
@@ -166,7 +166,7 @@ namespace GeckoApp
 
     public class FST
     {
-        private USBGecko gecko;
+        private TCPGecko gecko;
         private TreeView treeView;
         private fileStructure root;
         private TextBox fileSwapCode;
@@ -188,7 +188,7 @@ namespace GeckoApp
         private int selectedFile;
         private String selFile;
 
-        public FST(USBGecko UGecko, TreeView UTreeView, TextBox UFileSwapCode,
+        public FST(TCPGecko UGecko, TreeView UTreeView, TextBox UFileSwapCode,
             Button USetAsSourceButton, Button USetAsTargetButton, Button UGenerateFileSwap,
             Label USourceFileName, Label UTargetFileName, TextBox UGeneratedSwapCode, 
             Button USwapNowButton, ExceptionHandler UExceptionHandling)
@@ -395,7 +395,7 @@ namespace GeckoApp
                 root.Sort();
                 root.ToTreeView(treeView);
             }
-            catch (EUSBGeckoException e)
+            catch (ETCPGeckoException e)
             {
                 exceptionHandling.HandleException(e);
             }
@@ -507,7 +507,7 @@ namespace GeckoApp
                 gecko.Resume();
                 MessageBox.Show("Files swapped");
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }

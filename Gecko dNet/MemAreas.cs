@@ -6,13 +6,10 @@ namespace GeckoApp
 {
     public enum AddressType
     {
-        UncachedMem1,
-        UncachedMem2,
-        CachedMem1,
-        CachedMem2,
-        HardwareRegs,
-        EFBBuffer,
-        XFBBuffer,
+        Rw,
+        Ro,
+        Ex,
+        Hardware,
         Unknown
     }
 
@@ -44,14 +41,17 @@ namespace GeckoApp
     public static class ValidMemory {
         public static bool addressDebug = false;
 
-        public static readonly AddressRange[] ValidAreas = new AddressRange[7] {
-             new AddressRange(AddressType.UncachedMem1,0x80000000,0x81800000),
-             new AddressRange(AddressType.UncachedMem2,0x90000000,0x93400000),
-             new AddressRange(AddressType.CachedMem1,  0xC0000000,0xC1800000),
-             new AddressRange(AddressType.CachedMem2,  0xD0000000,0xD3400000),
-             new AddressRange(AddressType.EFBBuffer,   0xC8000000,0xCC000000),
-             new AddressRange(AddressType.XFBBuffer,   0xCC000000,0xCC008000),
-             new AddressRange(AddressType.HardwareRegs,0xCD000000,0xCD008000),
+        public static readonly AddressRange[] ValidAreas = new AddressRange[] {
+             new AddressRange(AddressType.Ex,  0x01000000,0x03000000),
+             new AddressRange(AddressType.Ex,  0x03000000,0x10000000),
+             new AddressRange(AddressType.Rw,  0x10000000,0x50000000),
+             new AddressRange(AddressType.Ro,  0xe0000000,0xe4000000),
+             new AddressRange(AddressType.Ro,  0xe8000000,0xea000000),
+             new AddressRange(AddressType.Ro,  0xf4000000,0xf6000000),
+             new AddressRange(AddressType.Ro,  0xf6000000,0xf6800000),
+             new AddressRange(AddressType.Ro,  0xf8000000,0xfb000000),
+             new AddressRange(AddressType.Ro,  0xfb000000,0xfb800000),
+             new AddressRange(AddressType.Rw,  0xfffe0000,0xffffffff)
         };
 
         public static AddressType rangeCheck(UInt32 address)
@@ -98,9 +98,9 @@ namespace GeckoApp
             return validRange(low, high, addressDebug);
         }
 
-        public static void setMEM2Upper(UInt32 upper)
+        public static void setDataUpper(UInt32 upper)
         {
-            ValidAreas[1] = new AddressRange(AddressType.UncachedMem2, 0x90000000, upper);
+            ValidAreas[2] = new AddressRange(AddressType.Rw, 0x10000000, upper);
         }
     }
 }

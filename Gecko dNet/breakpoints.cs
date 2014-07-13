@@ -6,7 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 
-using FTDIUSBGecko;
+using TCPTCPGecko;
 
 namespace GeckoApp
 {
@@ -82,7 +82,7 @@ namespace GeckoApp
             GroupNumber = groupNumber;
         }
 
-        public bool Compare(Stream regStream, BreakpointType bpType, UInt32 bpAddress, USBGecko gecko)
+        public bool Compare(Stream regStream, BreakpointType bpType, UInt32 bpAddress, TCPGecko gecko)
         {
             if (regStream.Length != 0x120)
                 return false;
@@ -236,7 +236,7 @@ namespace GeckoApp
             UpdateOutput();
         }
 
-        public bool Check(Stream regStream, BreakpointType bpType, UInt32 bpAddress, USBGecko gecko)
+        public bool Check(Stream regStream, BreakpointType bpType, UInt32 bpAddress, TCPGecko gecko)
         {
             if (!Enabled)
                 return true;
@@ -311,7 +311,7 @@ namespace GeckoApp
 
     class Breakpoints
     {
-        private USBGecko gecko;
+        private TCPGecko gecko;
         private BPList bpOutput;
         private MainForm mainForm;
         private RegisterDialog regDialog;
@@ -425,7 +425,7 @@ namespace GeckoApp
             }
         }
 
-        public Breakpoints(USBGecko UGecko, BPList UBPOut, MainForm UMainForm, Disassembly UDissAss,
+        public Breakpoints(TCPGecko UGecko, BPList UBPOut, MainForm UMainForm, Disassembly UDissAss,
             //RichTextBox UDissBox, TextBox UClassicBox, ListBox conditionList, ExceptionHandler UExcHandler)
             TextBox UDissBox, TextBox UClassicBox, ListBox conditionList, ExceptionHandler UExcHandler)
         {
@@ -467,7 +467,7 @@ namespace GeckoApp
 
                 GetRegisters();
             }
-            catch (EUSBGeckoException e)
+            catch (ETCPGeckoException e)
             {
                 exceptionHandling.HandleException(e);
             }
@@ -480,7 +480,7 @@ namespace GeckoApp
                 if (gecko.status() != WiiStatus.Breakpoint)
                     return;
             }
-            catch (EUSBGeckoException ex)
+            catch (ETCPGeckoException ex)
             {
                 exceptionHandling.HandleException(ex);
                 return;
@@ -510,7 +510,7 @@ namespace GeckoApp
                 gecko.GetRegisters(regStream);
                 GetRegisters(regStream);
             }
-            catch (EUSBGeckoException e)
+            catch (ETCPGeckoException e)
             {
                 regStream.Close();
                 exceptionHandling.HandleException(e);
@@ -839,7 +839,7 @@ namespace GeckoApp
                     InvokePBPStop();
                 }
             }
-            catch (EUSBGeckoException e)
+            catch (ETCPGeckoException e)
             {
                 if (PBPStop != null)
                 {
@@ -933,7 +933,7 @@ namespace GeckoApp
                 waitThread.Start();
                 return true;
             }
-            catch (EUSBGeckoException e)
+            catch (ETCPGeckoException e)
             {
                 exceptionHandling.HandleException(e);
                 return false;
@@ -971,7 +971,7 @@ namespace GeckoApp
                     //BPSet = false;
                 }
             }
-            catch (EUSBGeckoException e)
+            catch (ETCPGeckoException e)
             {
                 BPSet = false;
                 exceptionHandling.HandleException(e);
@@ -1134,7 +1134,7 @@ namespace GeckoApp
         {
             if (gecko.status() != WiiStatus.Breakpoint)
                 return;
-            if (ValidMemory.rangeCheck(address) != AddressType.UncachedMem1)
+            if (ValidMemory.rangeCheck(address) != AddressType.Ex)
                 return;
 
 

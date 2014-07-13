@@ -6,7 +6,7 @@ using System.IO;
 using System.Threading;
 using AMS.Profile;
 
-using FTDIUSBGecko;
+using TCPTCPGecko;
 using System.Windows.Forms;
 
 namespace GeckoApp
@@ -181,7 +181,7 @@ namespace GeckoApp
         }
 
         private List<WatchEntry> addressWatchList;
-        private USBGecko gecko;
+        private TCPGecko gecko;
         private DataGridView watchOut;
         private Thread listManager;
         private NumericUpDown watchUpDown;
@@ -383,7 +383,7 @@ namespace GeckoApp
                 //     }
                 // });
             }
-            catch (EUSBGeckoException e)
+            catch (ETCPGeckoException e)
             {
                 listEnabled = false;
                 exceptionHandling.HandleException(e);
@@ -434,7 +434,7 @@ namespace GeckoApp
             }
         }
 
-        public WatchList(USBGecko UGecko,DataGridView UWatchOut,NumericUpDown UWatchUpDown,ExceptionHandler UEXCHandler)
+        public WatchList(TCPGecko UGecko,DataGridView UWatchOut,NumericUpDown UWatchUpDown,ExceptionHandler UEXCHandler)
         {
             exceptionHandling = UEXCHandler;
             PAddressDebug = false;

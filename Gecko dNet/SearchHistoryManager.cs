@@ -4,7 +4,7 @@ using System.Text;
 using Ionic.Zip;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading;
-using FTDIUSBGecko;
+using TCPTCPGecko;
 using System.IO;
 
 namespace GeckoApp
@@ -274,7 +274,7 @@ namespace GeckoApp
             ZipInputStream instream = new ZipInputStream(filepath);
             BinaryFormatter formatter = new BinaryFormatter();
             instream.GetNextEntry();
-            searchDump = new FTDIUSBGecko.Dump((uint)formatter.Deserialize(instream), (uint)formatter.Deserialize(instream));
+            searchDump = new TCPTCPGecko.Dump((uint)formatter.Deserialize(instream), (uint)formatter.Deserialize(instream));
             instream.Read(searchDump.mem, 0, (int)(searchDump.EndAddress - searchDump.StartAddress));
 
             instream.GetNextEntry();

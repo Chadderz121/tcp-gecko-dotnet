@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 
-using FTDIUSBGecko;
+using TCPTCPGecko;
 
 namespace GeckoApp
 {
@@ -21,7 +21,7 @@ namespace GeckoApp
 
     class MemoryViewer
     {
-        private USBGecko gecko;
+        private TCPGecko gecko;
         private DataGridView gView;
         private TextBox pokeAddress;
         private TextBox pokeValue;
@@ -78,7 +78,7 @@ namespace GeckoApp
             set { searching = value; }
         }
 
-        public MemoryViewer(USBGecko UGecko, UInt32 initAddress,DataGridView UGView,
+        public MemoryViewer(TCPGecko UGecko, UInt32 initAddress,DataGridView UGView,
             TextBox UPokeAddress,TextBox UPokeValue,Label UFPValue, ExceptionHandler UExpHandler)
         {
             gecko = UGecko;
@@ -228,7 +228,7 @@ namespace GeckoApp
                 pokeAddress.Text = GlobalFunctions.toHex(selAddress);
                 fpValue.Text = GlobalFunctions.UIntToSingle(pValue).ToString("G6");
             }
-            catch (EUSBGeckoException e)
+            catch (ETCPGeckoException e)
             {
                 exceptionHandling.HandleException(e);
             }
@@ -332,7 +332,7 @@ namespace GeckoApp
                         pokeValue.Text = GlobalFunctions.toHex(locValue);
                         fpValue.Text = GlobalFunctions.UIntToSingle(locValue).ToString("G6");
                     }
-                    catch (EUSBGeckoException exc)
+                    catch (ETCPGeckoException exc)
                     {
                         exceptionHandling.HandleException(exc);
                     }
@@ -378,7 +378,7 @@ namespace GeckoApp
             UInt32 cVal;
             char cChar;
 
-            UInt32 SearchBufferSize = 0xF800 * 8;   // F800 is the packet size in USBGecko.cs
+            UInt32 SearchBufferSize = 0x400 * 256;   // 400 is the packet size in TCPGecko.cs
 
             UInt32 dumpHigh = Math.Min(startAddr + SearchBufferSize, endAddress);     
 
@@ -420,7 +420,7 @@ namespace GeckoApp
                         MessageBox.Show("Could not find search query");
                 }
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }

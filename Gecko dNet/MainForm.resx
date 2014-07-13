@@ -196,7 +196,7 @@
     <value>Normally Gecko dotNET limits you to poke/dump only certain address ranges. In fact: there are more ranges (like the 7Fxxxxxx range in GameCube mode). Selecting this will disable all protections allowing you to access EVERY address. Attention: selecting an invalid address will crash the game, NO WAY BACK!</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
-    <value>Note to WiiRd GUI users: a Pointer Search is NOT planned for Gecko dotNET. Mainly because the search itself in the pointer does not require a USB connection. Thus I do plan to enable pointer searches using an external application. However: for the creation of memory dumps required for pointer searches: use the dump below!</value>
+    <value>Note to WiiRd GUI users: a Pointer Search is NOT planned for Gecko dotNET. Mainly because the search itself in the pointer does not require a TCP connection. Thus I do plan to enable pointer searches using an external application. However: for the creation of memory dumps required for pointer searches: use the dump below!</value>
   </data>
   <metadata name="WatchListOpen.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>110, 12</value>

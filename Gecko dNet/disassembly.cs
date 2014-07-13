@@ -5,14 +5,14 @@ using System.IO;
 using System.Diagnostics;
 using System.Windows.Forms;
 
-using FTDIUSBGecko;
+using TCPTCPGecko;
 
 namespace GeckoApp
 {
     class Disassembly
     {
         private String vdappPath;
-        private USBGecko gecko;
+        private TCPGecko gecko;
         private ListBox mainBox;
         private VScrollBar scrollbar;
         private TextBox adressInput;
@@ -29,7 +29,7 @@ namespace GeckoApp
 
         private String GAs, GLd, GOc;
 
-        public Disassembly(USBGecko UGecko, String UVdappPath, ListBox UMainBox,
+        public Disassembly(TCPGecko UGecko, String UVdappPath, ListBox UMainBox,
             VScrollBar UScroll,TextBox UAInput,TextBox UASAddress,TextBox UASText,ExceptionHandler UEXCHandler)
         {
             gecko = UGecko;
@@ -246,7 +246,7 @@ namespace GeckoApp
             {
                 gecko.Dump(address, eAddress, values);
             }
-            catch (EUSBGeckoException e)
+            catch (ETCPGeckoException e)
             {
                 exceptionHandling.HandleException(e);
                 return result.ToArray();
@@ -486,7 +486,7 @@ namespace GeckoApp
                 System.Threading.Thread.Sleep(100);
                 DissToBox(address);
             }
-            catch (EUSBGeckoException e)
+            catch (ETCPGeckoException e)
             {
                 exceptionHandling.HandleException(e);
             }

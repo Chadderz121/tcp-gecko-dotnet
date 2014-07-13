@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Runtime.InteropServices;
 
-using FTDIUSBGecko;
+using TCPTCPGecko;
 using AMS.Profile;
 
 namespace GeckoApp
@@ -34,7 +34,7 @@ namespace GeckoApp
             public int nTrackPos;
         };
 
-        private USBGecko gecko;
+        private TCPGecko gecko;
         private MemSearch search;
         private MemoryViewer viewer;
         private Breakpoints bpHandler;
@@ -88,7 +88,7 @@ namespace GeckoApp
             SettingsFile.RootName = "gecko";
 
             gamename = "";
-            gecko = new USBGecko();
+            gecko = new TCPGecko();
             gecko.chunkUpdate += transfer;
 
             exceptionHandling = new ExceptionHandler(this);
@@ -184,11 +184,12 @@ namespace GeckoApp
             multiPokeAddr = new List<UInt32>();
 
             FormStop(false);
-            CUSBGecko.Enabled = true;
+            CTCPGecko.Enabled = true;
 
             codesModified = false;
 
-            AbtText.Text = "gecko dotNET Beta 0.63 by Link and dcx2\n\n"
+            AbtText.Text = "tcpGecko dotNET Beta 0.1 by Chadderz\n"
+                          + "based on gecko dotNET Beta 0.63 by Link and dcx2\n\n"
                           + "Special thanks to:\n\n"
                           + "kenobi: for original WiiRd GUI!\n"
                           + "Nuke: for the USB Gecko!\n"
@@ -201,9 +202,6 @@ namespace GeckoApp
                           + "and you!";
 
             notes = new NoteSheets();
-
-            //Set MEM2 upper to 93400000
-            MEM2UpperBoundary.SelectedIndex = 0;
 
             // Restore previous settings
             checkBoxAlwaysOnTop.Checked = GeckoApp.Properties.Settings.Default.AlwaysOnTop;
@@ -258,7 +256,7 @@ namespace GeckoApp
             PGame.Enabled = enable;
             // TODO: Make RGame into a "Cancel Search"?
             RGame.Enabled = enable;
-            CUSBGecko.Enabled = enable;
+            CTCPGecko.Enabled = enable;
             DisconnectButton.Enabled = enable;
             OpenNotePad.Enabled = enable;
             if (!enable && notes != null && notes.Visible)
@@ -272,11 +270,11 @@ namespace GeckoApp
             StatusCap.Text = "An error occured. Please reconnect!";
             progressBar.Value = 0;
             PCent.Text = "0%";
-            CUSBGecko.Enabled = true;
+            CTCPGecko.Enabled = true;
             ResetSearch();
         }
 
-        private void transfer(UInt32 currentchunk, UInt32 allchunks, UInt32 transferred, UInt32 length, bool okay, bool dump)
+        private void transfer(UInt32 address, UInt32 currentchunk, UInt32 allchunks, UInt32 transferred, UInt32 length, bool okay, bool dump)
         {
             if (length <= 1024)
                 return;
@@ -300,9 +298,9 @@ namespace GeckoApp
             {
                 percent = (int)Math.Round(((double)transferred) / ((double)length) * 100);
                 if (dump && percent < 100)
-                    StatusCap.Text = "Dumping data";
+                    StatusCap.Text = "Dumping data (" + address.ToString("x8") + ")";
                 else if (percent < 100)
-                    StatusCap.Text = "Sending data";
+                    StatusCap.Text = "Sending data (" + address.ToString("x8") + ")";
                 else
                     StatusCap.Text = "Transfer completed!";
             }
@@ -336,7 +334,7 @@ namespace GeckoApp
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
-            CUSBGecko_Click(sender, e);
+            CTCPGecko_Click(sender, e);
         }
         #endregion
 
@@ -349,7 +347,7 @@ namespace GeckoApp
             StatusCap.Text = "Connection has been closed!";
             progressBar.Value = 0;
             PCent.Text = "0%";
-            CUSBGecko.Enabled = true;
+            CTCPGecko.Enabled = true;
         }
 
         private bool UnknownStatus()
@@ -365,12 +363,12 @@ namespace GeckoApp
             }
         }
 
-        public void CUSBGecko_Click(object sender, EventArgs e)
+        public void CTCPGecko_Click(object sender, EventArgs e)
         {
             if (Connecting)
             {
                 Connecting = false;
-                CUSBGecko.Text = "Connect to Gecko";
+                CTCPGecko.Text = "Connect to Gecko";
                 return;
             }
 
@@ -398,7 +396,7 @@ namespace GeckoApp
                         throw new Exception();
                     int failAttempt = 0;
                     Connecting = true;
-                    CUSBGecko.Text = "Cancel Connection";
+                    CTCPGecko.Text = "Cancel Connection";
                     while (UnknownStatus())
                     {
                         gecko.sendfail();
@@ -441,7 +439,7 @@ namespace GeckoApp
                     if (attempt % 3 != 0)
                         continue;
                     retry =
-                        MessageBox.Show("Connection to the USB Gecko has failed!\n" +
+                        MessageBox.Show("Connection to the TCP Gecko has failed!\n" +
                          "Do you want to retry?", "Connection issue",
                          MessageBoxButtons.YesNo, MessageBoxIcon.Warning) ==
                          DialogResult.Yes;
@@ -458,14 +456,14 @@ namespace GeckoApp
             {
                 if (success)
                 {
-                    CUSBGecko.Text = "Reconnect to Gecko";
+                    CTCPGecko.Text = "Reconnect to Gecko";
                     StatusCap.Text = "Ready!";
 
                     // 6 bytes for Game ID + 1 for null + 1 for Version
                     // Apparently, some WiiWare/VC stuff only has 4 bytes for Game ID, but still 1 null + 1 Version too
                     const int bytesToRead = 8;
                     MemoryStream ms = new MemoryStream();
-                    gecko.Dump(0x80001800, 0x80001800 + bytesToRead, ms);
+                    gecko.Dump(0xe0000000, 0xe0000000 + bytesToRead, ms);
                     String name = "";
                     Byte[] buffer = new Byte[bytesToRead];
                     ms.Seek(0, SeekOrigin.Begin);
@@ -481,6 +479,14 @@ namespace GeckoApp
                             rname += name[i];
                         else
                             break;
+
+                    ms.Close();
+                    ms = new MemoryStream();
+                    gecko.Dump(0x10035f48, 0x10035f48 + 4, ms);
+                    buffer = new Byte[4];
+                    ms.Seek(0, SeekOrigin.Begin);
+                    ms.Read(buffer, 0, 4);
+                    ValidMemory.setDataUpper(ByteSwap.Swap(BitConverter.ToUInt32(buffer, 0)));
 
                     // first time loading a game, or game changed; reload GCT files
                     bool gamenameChanged = gamename != rname;
@@ -506,13 +512,13 @@ namespace GeckoApp
                 else
                 {
                     DisconnectButton.Enabled = false;
-                    CUSBGecko.Text = "Connect to Gecko";
-                    StatusCap.Text = "No USB Gecko connection availible!";
+                    CTCPGecko.Text = "Connect to Gecko";
+                    StatusCap.Text = "No TCP Gecko connection availible!";
 
                     this.Text = "Gecko dotNET";
                 }
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -601,7 +607,7 @@ namespace GeckoApp
                     }
                 }
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -621,7 +627,7 @@ namespace GeckoApp
                 }
                 gecko.Resume();
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -1283,7 +1289,7 @@ namespace GeckoApp
                     viewer.Update(true);
                 }
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -1655,7 +1661,7 @@ namespace GeckoApp
                 GCTCodeContents.AddCode(nCode, name);
                 MainControl.SelectedTab = GCTPage;
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -1679,7 +1685,7 @@ namespace GeckoApp
                 {
                     gecko.Upload(vAdd, endAdd, fs);
                 }
-                catch (EUSBGeckoException exc)
+                catch (ETCPGeckoException exc)
                 {
                     exceptionHandling.HandleException(exc);
                 }
@@ -1742,7 +1748,7 @@ namespace GeckoApp
             // Enable non-tabbed buttons
             PGame.Enabled = enable;
             //RGame.Enabled = enable;
-            CUSBGecko.Enabled = enable;
+            CTCPGecko.Enabled = enable;
 
             // Enable tabbed buttons and controls
             EnableMainControls(enable);
@@ -1901,7 +1907,7 @@ namespace GeckoApp
                     }
                 }
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -1928,7 +1934,7 @@ namespace GeckoApp
                     }
                 }
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -2131,7 +2137,7 @@ namespace GeckoApp
             {
                 PValue.Text = GlobalFunctions.toHex(gecko.peek(disassembler.disAddress));
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -2167,7 +2173,7 @@ namespace GeckoApp
                 GCTCodeList.Items[nCodeId].Selected = true;
                 MainControl.SelectedTab = GCTPage;
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -2221,7 +2227,7 @@ namespace GeckoApp
                 shot = screenshot;
                 return true;
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 screenshot = new Bitmap(256, 256);
                 shot = screenshot;
@@ -2304,7 +2310,7 @@ namespace GeckoApp
                 {
                     gecko.Resume();
                 }
-                catch (EUSBGeckoException exc)
+                catch (ETCPGeckoException exc)
                 {
                     exceptionHandling.HandleException(exc);
                 }
@@ -2417,7 +2423,7 @@ namespace GeckoApp
 
                 MessageBox.Show("Cheats sent!");
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 memStream.Close();
                 exceptionHandling.HandleException(exc);
@@ -2493,7 +2499,7 @@ namespace GeckoApp
                 gecko.sendCheats(memStream);
                 memStream.Close();
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -2596,7 +2602,7 @@ namespace GeckoApp
                     }
                     watcher.ResumeThread();
                 }
-                catch (EUSBGeckoException exc)
+                catch (ETCPGeckoException exc)
                 {
                     exceptionHandling.HandleException(exc);
                 }
@@ -2760,7 +2766,7 @@ namespace GeckoApp
                 newFile.Close();
                 FormStop(true);
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -2931,7 +2937,7 @@ namespace GeckoApp
             // Note that we're hooking the Selecting event, because this fires before the tab is actually switched
             // If you hook SelectedIndexChanged (the default) then you'll see the other tabs load...
             // ...which causes things like MemoryViewer.Update() to be called if you switch to the Memory Viewer tab
-            // which will crash the USB Gecko, but a reconnect fixes that
+            // which will crash the TCP Gecko, but a reconnect fixes that
             //if (BPCancel.Enabled)
             //{
             //    MainControl.SelectedTab = BreakpointPage;
@@ -3397,7 +3403,7 @@ namespace GeckoApp
                     //    viewer.Update();
                     //}
                 }
-                catch (EUSBGeckoException exc)
+                catch (ETCPGeckoException exc)
                 {
                     exceptionHandling.HandleException(exc);
                 }
@@ -3473,7 +3479,7 @@ namespace GeckoApp
                     buttonStepOutOf.Text = "Step out";
                 }
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -4148,7 +4154,7 @@ namespace GeckoApp
                     buttonStepUntil.Text = "Step until";
                 }
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
                 SteppingUntil = false;
@@ -4395,14 +4401,14 @@ namespace GeckoApp
                     // Return the matching LR from that frame
                     uint PotentialLRSaveWord = gecko.peek(potentialNextFramePointer + 4);
                     // Modify the stack pointer so that it points to the next frame
-                    if (ValidMemory.rangeCheck(potentialNextFramePointer) == AddressType.UncachedMem1)
+                    if (ValidMemory.rangeCheck(potentialNextFramePointer) == AddressType.Rw)
                         nextFramePointer = potentialNextFramePointer;
 
-                    if (ValidMemory.rangeCheck(PotentialLRSaveWord) == AddressType.UncachedMem1)
+                    if (ValidMemory.rangeCheck(PotentialLRSaveWord) == AddressType.Ex)
                         LRSaveWord = PotentialLRSaveWord;
                 }
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -4425,7 +4431,7 @@ namespace GeckoApp
                     bpHandler.DecIndent();  // account for the bl we're skipping over
                 }
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -4444,7 +4450,7 @@ namespace GeckoApp
                     bpHandler.DecIndent();  // account for the bl we're skipping over
                 }
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -4804,7 +4810,7 @@ namespace GeckoApp
                     }
                 }
             }
-            catch (EUSBGeckoException exc)
+            catch (ETCPGeckoException exc)
             {
                 exceptionHandling.HandleException(exc);
             }
@@ -5008,22 +5014,6 @@ namespace GeckoApp
                 HistoryContextMenu.Close();
                 toolStripTextBoxAddressAddOffset.Text = (0).ToString();
             }
-        }
-
-        private void MEM2UpperBoundary_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            switch(MEM2UpperBoundary.SelectedIndex)
-            {
-                case 1: ValidMemory.setMEM2Upper(0x93800000);
-                    return;
-                case 2: ValidMemory.setMEM2Upper(0x93C00000);
-                    return;
-                case 3: ValidMemory.setMEM2Upper(0x94000000);
-                    return;
-                default: ValidMemory.setMEM2Upper(0x93400000);
-                    return;
-            }
-            
         }
     }
 }
