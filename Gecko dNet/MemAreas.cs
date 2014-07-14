@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TCPTCPGecko;
 
 namespace GeckoApp
 {
@@ -42,8 +43,8 @@ namespace GeckoApp
         public static bool addressDebug = false;
 
         public static readonly AddressRange[] ValidAreas = new AddressRange[] {
-             new AddressRange(AddressType.Ex,  0x01000000,0x03000000),
-             new AddressRange(AddressType.Ex,  0x03000000,0x10000000),
+             new AddressRange(AddressType.Ex,  0x01000000,0x01800000),
+             new AddressRange(AddressType.Ex,  0xe3000000,0x10000000),
              new AddressRange(AddressType.Rw,  0x10000000,0x50000000),
              new AddressRange(AddressType.Ro,  0xe0000000,0xe4000000),
              new AddressRange(AddressType.Ro,  0xe8000000,0xea000000),
@@ -98,9 +99,21 @@ namespace GeckoApp
             return validRange(low, high, addressDebug);
         }
 
-        public static void setDataUpper(UInt32 upper)
+        public static void setDataUpper(TCPGecko upper)
         {
-            ValidAreas[2] = new AddressRange(AddressType.Rw, 0x10000000, upper);
+            UInt32 mem = upper.peek_kern(0xffe8619c);
+            UInt32 tbl = upper.peek_kern(mem + 4);
+            UInt32 lst = upper.peek_kern(tbl + 20);
+
+            UInt32 init_start = upper.peek_kern(lst + 0 + 0x00);
+            UInt32 init_len   = upper.peek_kern(lst + 4 + 0x00);
+            UInt32 code_start = upper.peek_kern(lst + 0 + 0x10);
+            UInt32 code_len   = upper.peek_kern(lst + 4 + 0x10);
+            UInt32 data_start = upper.peek_kern(lst + 0 + 0x20);
+            UInt32 data_len   = upper.peek_kern(lst + 4 + 0x20);
+            ValidAreas[0] = new AddressRange(AddressType.Ex, init_start, init_start + init_len);
+            ValidAreas[1] = new AddressRange(AddressType.Ex, code_start, code_start + code_len);
+            ValidAreas[2] = new AddressRange(AddressType.Rw, data_start, data_start + data_len);
         }
     }
 }

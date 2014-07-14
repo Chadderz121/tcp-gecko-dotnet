@@ -486,7 +486,7 @@ namespace GeckoApp
                     buffer = new Byte[4];
                     ms.Seek(0, SeekOrigin.Begin);
                     ms.Read(buffer, 0, 4);
-                    ValidMemory.setDataUpper(ByteSwap.Swap(BitConverter.ToUInt32(buffer, 0)));
+                    ValidMemory.setDataUpper(gecko);
 
                     // first time loading a game, or game changed; reload GCT files
                     bool gamenameChanged = gamename != rname;

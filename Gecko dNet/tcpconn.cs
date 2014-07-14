@@ -24,6 +24,11 @@ namespace TCPTCPGecko
 
         public void Connect()
         {
+            try
+            {
+                Close();
+            }
+            catch (Exception) { }
             client = new TcpClient();
             client.NoDelay = true;
             IAsyncResult ar = client.BeginConnect(Host, Port, null, null);
@@ -43,17 +48,26 @@ namespace TCPTCPGecko
                 wh.Close();
             } 
             stream = client.GetStream();
-            stream.ReadTimeout = 2000;
-            stream.WriteTimeout = 2000;
+            stream.ReadTimeout = 10000;
+            stream.WriteTimeout = 10000;
         }
 
         public void Close()
         {
-            if (client == null)
+            try
             {
-                throw new IOException("Not connected.", new NullReferenceException());
+                if (client == null)
+                {
+                    throw new IOException("Not connected.", new NullReferenceException());
+                }
+                client.Close();
+
             }
-            client.Close();
+            catch (Exception) { }
+            finally
+            {
+                client = null;
+            }
         }
 
         public void Purge()
@@ -67,39 +81,54 @@ namespace TCPTCPGecko
 
         public void Read(Byte[] buffer, UInt32 nobytes, ref UInt32 bytes_read)
         {
-            int offset = 0;
-            if (stream == null)
+            try
             {
-                throw new IOException("Not connected.", new NullReferenceException());
+                int offset = 0;
+                if (stream == null)
+                {
+                    throw new IOException("Not connected.", new NullReferenceException());
+                }
+                bytes_read = 0;
+                while (nobytes > 0)
+                {
+                    int read = stream.Read(buffer, offset, (int)nobytes);
+                    if (read >= 0)
+                    {
+                        bytes_read += (uint)read;
+                        offset += read;
+                        nobytes -= (uint)read;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
             }
-            bytes_read = 0;
-            while (nobytes > 0)
+            catch (ObjectDisposedException e)
             {
-                int read = stream.Read(buffer, offset, (int)nobytes);
-                if (read >= 0)
-                {
-                    bytes_read += (uint)read;
-                    offset += read;
-                    nobytes -= (uint)read;
-                }
-                else
-                {
-                    break;
-                }
+                throw new IOException("Connection closed.", e);
             }
         }
 
         public void Write(Byte[] buffer, Int32 nobytes, ref UInt32 bytes_written)
         {
-            if (stream == null)
+            try
             {
-                throw new IOException("Not connected.", new NullReferenceException());
+                if (stream == null)
+                {
+                    throw new IOException("Not connected.", new NullReferenceException());
+                }
+                stream.Write(buffer, 0, nobytes);
+                if (nobytes >= 0)
+                    bytes_written = (uint)nobytes;
+                else
+                    bytes_written = 0;
+                stream.Flush();
             }
-            stream.Write(buffer, 0, nobytes);
-            if (nobytes >= 0)
-                bytes_written = (uint)nobytes;
-            else
-                bytes_written = 0;
+            catch (ObjectDisposedException e)
+            {
+                throw new IOException("Connection closed.", e);
+            }
         }
     }
 }

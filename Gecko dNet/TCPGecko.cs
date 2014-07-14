@@ -277,6 +277,8 @@ namespace TCPTCPGecko
         private const Byte       cmd_pause = 0x06;
         private const Byte    cmd_unfreeze = 0x07;
         private const Byte  cmd_breakpoint = 0x09;
+        private const Byte   cmd_writekern = 0x0b;
+        private const Byte    cmd_readkern = 0x0c;
         private const Byte cmd_breakpointx = 0x10;
         private const Byte    cmd_sendregs = 0x2F;
         private const Byte     cmd_getregs = 0x30;
@@ -380,6 +382,9 @@ namespace TCPTCPGecko
             try
             {
                 PTCP.Connect();
+                /*Byte[] init = new Byte[1];
+                if (GeckoRead(init, 1) != FTDICommand.CMD_OK || init[0] != 1)
+                    throw new IOException("init byte missing");*/
             }
             catch (IOException)
             {
@@ -415,6 +420,7 @@ namespace TCPTCPGecko
             }
             catch (IOException)
             {
+                Disconnect();
                 return FTDICommand.CMD_FatalError;       // fatal error
             }
             if (bytes_read != nobytes)
@@ -435,6 +441,7 @@ namespace TCPTCPGecko
             }
             catch (IOException)
             {
+                Disconnect();
                 return FTDICommand.CMD_FatalError;       // fatal error
             }
             if (bytes_written != nobytes)
@@ -1099,6 +1106,46 @@ namespace TCPTCPGecko
             //write value
             if (GeckoWrite(BitConverter.GetBytes(PokeVal), 8) != FTDICommand.CMD_OK)
                 throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+        }
+        #endregion
+
+        #region kern commands
+        //Poke a 32 bit value to kernel. note: address and value must be all in endianness of sending platform
+        public void poke_kern(UInt32 address, UInt32 value)
+        {
+            //value = send [address in big endian] [value in big endian]
+            UInt64 PokeVal = (((UInt64)address) << 32) | ((UInt64)value);
+
+            PokeVal = ByteSwap.Swap(PokeVal);
+
+            //Send poke
+            if (RawCommand(cmd_writekern) != FTDICommand.CMD_OK)
+                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+
+            //write value
+            if (GeckoWrite(BitConverter.GetBytes(PokeVal), 8) != FTDICommand.CMD_OK)
+                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+        }
+
+        //Read a 32 bit value from kernel. note: address must be all in endianness of sending platform
+        public UInt32 peek_kern(UInt32 address)
+        {
+            //value = send [address in big endian] [value in big endian]
+            address = ByteSwap.Swap(address);
+
+            //Send read
+            if (RawCommand(cmd_readkern) != FTDICommand.CMD_OK)
+                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+
+            //write value
+            if (GeckoWrite(BitConverter.GetBytes(address), 4) != FTDICommand.CMD_OK)
+                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+
+            Byte[] buffer = new Byte[4];
+            if (GeckoRead(buffer, 4) != FTDICommand.CMD_OK)
+                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+
+            return ByteSwap.Swap(BitConverter.ToUInt32(buffer, 0));
         }
         #endregion
 
