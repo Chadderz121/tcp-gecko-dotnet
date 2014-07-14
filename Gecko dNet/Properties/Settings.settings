@@ -9,10 +9,10 @@
       <Value Profile="(Default)">6.0</Value>
     </Setting>
     <Setting Name="DisAsmAddr" Type="System.String" Scope="User">
-      <Value Profile="(Default)">10000000</Value>
+      <Value Profile="(Default)">1000000</Value>
     </Setting>
     <Setting Name="BPAddr" Type="System.String" Scope="User">
-      <Value Profile="(Default)">10000000</Value>
+      <Value Profile="(Default)">1000000</Value>
     </Setting>
     <Setting Name="MemViewAddr" Type="System.String" Scope="User">
       <Value Profile="(Default)">10000000</Value>
@@ -21,7 +21,7 @@
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="LastSize" Type="System.Drawing.Size" Scope="User">
-      <Value Profile="(Default)">577, 442</Value>
+      <Value Profile="(Default)">640, 480</Value>
     </Setting>
     <Setting Name="LastSplitterSize" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">121</Value>

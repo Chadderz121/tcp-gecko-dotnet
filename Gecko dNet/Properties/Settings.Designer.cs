@@ -49,7 +49,7 @@ namespace GeckoApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10000000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000000")]
         public string DisAsmAddr {
             get {
                 return ((string)(this["DisAsmAddr"]));
@@ -61,7 +61,7 @@ namespace GeckoApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10000000")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000000")]
         public string BPAddr {
             get {
                 return ((string)(this["BPAddr"]));
@@ -97,7 +97,7 @@ namespace GeckoApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("577, 442")]
+        [global::System.Configuration.DefaultSettingValueAttribute("640, 480")]
         public global::System.Drawing.Size LastSize {
             get {
                 return ((global::System.Drawing.Size)(this["LastSize"]));

@@ -30,6 +30,7 @@ namespace GeckoApp
         private UInt32 selAddress;
         private MemoryViewMode PViewMode;
         private bool searching;
+        private Stack<UInt32> history = new Stack<uint>(), redo = new Stack<uint>();
 
         private ExceptionHandler exceptionHandling;
 
@@ -44,7 +45,13 @@ namespace GeckoApp
             }
             set
             {
-                cAddress = value & 0xFFFFFFFC;
+                value = value & 0xFFFFFFFC;
+                if (cAddress != value)
+                {
+                    history.Push(cAddress);
+                    redo.Clear();
+                    cAddress = value & 0xFFFFFFFC;
+                }
                 // TODO: handle changing memViewAValue and updating the memory view
                 // so clients can just change the address
             }
@@ -337,6 +344,24 @@ namespace GeckoApp
                         exceptionHandling.HandleException(exc);
                     }
                 }
+            }
+        }
+
+        public void GoBack()
+        {
+            if (history.Count > 0)
+            {
+                redo.Push(cAddress);
+                cAddress = history.Pop();
+            }
+        }
+
+        public void GoForward()
+        {
+            if (redo.Count > 0)
+            {
+                history.Push(cAddress);
+                cAddress = redo.Pop();
             }
         }
 

@@ -334,7 +334,7 @@ namespace GeckoApp
 
         private void MainForm_Shown(object sender, EventArgs e)
         {
-            CTCPGecko_Click(sender, e);
+            //CTCPGecko_Click(sender, e);
         }
         #endregion
 
@@ -1438,11 +1438,14 @@ namespace GeckoApp
         private void tabPage2_Enter(object sender, EventArgs e)
         {
             UInt32 Address;
-            if (memViewAValue.IsValidGet(out Address))
+            if (gecko.connected)
             {
-                CenteredMemViewSelection(sender, e, Address);
+                if (memViewAValue.IsValidGet(out Address))
+                {
+                    CenteredMemViewSelection(sender, e, Address);
+                }
+                toolStripTextBoxMemViewFontSize_KeyDown(null, new KeyEventArgs(Keys.Enter));
             }
-            toolStripTextBoxMemViewFontSize_KeyDown(null, new KeyEventArgs(Keys.Enter));
         }
 
         private void MemViewARange_SelectedIndexChanged(object sender, EventArgs e)
@@ -1610,6 +1613,18 @@ namespace GeckoApp
             MemViewScrollbar.ValueChanged -= MemViewScrollbar_ValueChanged;
             MemViewScrollbar.Value = 1;
             MemViewScrollbar.ValueChanged += MemViewScrollbar_ValueChanged;
+        }
+
+        private void goBackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewer.GoBack();
+            CenteredMemViewSelection(sender, e, (viewer.address & 0xfffffff0) + 0x70);
+        }
+
+        private void goForwardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            viewer.GoForward();
+            CenteredMemViewSelection(sender, e, (viewer.address & 0xfffffff0) + 0x70);
         }
 
         private void memViewSetBP_Click(object sender, EventArgs e)
@@ -2022,7 +2037,10 @@ namespace GeckoApp
         #region Disassembler tab
         private void DisPage_Enter(object sender, EventArgs e)
         {
-            disassembler.DissToBox();
+            if (gecko.connected)
+            {
+                disassembler.DissToBox();
+            }
         }
 
         private void DisUpDown_ValueChanged(object sender, EventArgs e)
@@ -2967,6 +2985,19 @@ namespace GeckoApp
             }
         }
 
+        private void memViewGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.XButton1)
+            {
+                goBackToolStripMenuItem_Click(sender, e);
+            }
+
+            if (e.Button == MouseButtons.XButton2)
+            {
+                goForwardToolStripMenuItem_Click(sender, e);
+            }
+        }
+
         private void memViewGrid_KeyDown(object sender, KeyEventArgs e)
         {
             UInt32 bAddress = ValidMemory.ValidAreas[MemViewARange.SelectedIndex].low + (uint)vScrollBarMemViewGrid.Value;
@@ -3064,6 +3095,20 @@ namespace GeckoApp
                 {
                     Clipboard.SetText(MemoryViewerContentsAsString());
                 }
+            }
+
+            if (e.KeyCode == Keys.Back || e.KeyCode == Keys.BrowserBack || e.KeyCode == Keys.MediaPreviousTrack)
+            {
+                e.Handled = true;
+
+                goBackToolStripMenuItem_Click(sender, e);
+            }
+
+            if (e.KeyCode == Keys.BrowserForward || e.KeyCode == Keys.MediaNextTrack)
+            {
+                e.Handled = true;
+
+                goForwardToolStripMenuItem_Click(sender, e);
             }
         }
 

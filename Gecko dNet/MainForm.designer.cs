@@ -102,7 +102,6 @@
             this.comboBoxDisplayType = new System.Windows.Forms.ComboBox();
             this.PButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.PAddress = new GeckoApp.external.AddressTextBox();
             this.HistoryContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -143,9 +142,7 @@
             this.PrvPage = new System.Windows.Forms.Button();
             this.ResSrch = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.memEnd = new GeckoApp.external.AddressTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.memStart = new GeckoApp.external.AddressTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.memRange = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -170,12 +167,10 @@
             this.comboBoxPokeOperation = new System.Windows.Forms.ComboBox();
             this.memViewPButton = new System.Windows.Forms.Button();
             this.memViewPValue = new System.Windows.Forms.TextBox();
-            this.memViewPAddress = new GeckoApp.external.AddressTextBox();
             this.MemViewAutoUp = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.MemViewShowMode = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.memViewAValue = new GeckoApp.external.AddressTextBox();
             this.MemViewScrollbar = new System.Windows.Forms.NumericUpDown();
             this.MemViewUpdate = new System.Windows.Forms.Button();
             this.MemViewARange = new System.Windows.Forms.ComboBox();
@@ -232,7 +227,6 @@
             this.leafToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerRegASM = new System.Windows.Forms.SplitContainer();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.BPList = new GeckoApp.BPList();
             this.BPClassic = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.BPDiss = new System.Windows.Forms.TextBox();
@@ -243,7 +237,6 @@
             this.BPType = new System.Windows.Forms.ComboBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.BPExact = new System.Windows.Forms.CheckBox();
-            this.BPAddress = new GeckoApp.external.AddressTextBox();
             this.DisPage = new System.Windows.Forms.TabPage();
             this.groupBoxDisasmCallStack = new System.Windows.Forms.GroupBox();
             this.listBoxCallStack = new System.Windows.Forms.ListBox();
@@ -257,12 +250,9 @@
             this.buttonDisassemblySearch = new System.Windows.Forms.Button();
             this.textBoxDisassemblySearch = new System.Windows.Forms.TextBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.AsText = new GeckoApp.external.HistoryTextBox();
             this.Assemble = new System.Windows.Forms.Button();
-            this.AsAddress = new GeckoApp.external.AddressTextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.DisUpDown = new System.Windows.Forms.NumericUpDown();
-            this.DisRegion = new GeckoApp.external.AddressTextBox();
             this.DisUpdateBtn = new System.Windows.Forms.Button();
             this.DisScroll = new System.Windows.Forms.VScrollBar();
             this.DisAssBox = new System.Windows.Forms.ListBox();
@@ -370,7 +360,6 @@
             this.checkBoxFPS = new System.Windows.Forms.CheckBox();
             this.checkBoxAlwaysOnTop = new System.Windows.Forms.CheckBox();
             this.AbtText = new System.Windows.Forms.Label();
-            this.addressTextBoxBPNext = new GeckoApp.external.AddressTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.OpenNotePad = new System.Windows.Forms.Button();
             this.RGame = new System.Windows.Forms.Button();
@@ -390,6 +379,20 @@
             this.openFileDialogSearch = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialogSearch = new System.Windows.Forms.SaveFileDialog();
             this.saveFileDialogLogSteps = new System.Windows.Forms.SaveFileDialog();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.goBackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PAddress = new GeckoApp.external.AddressTextBox();
+            this.memEnd = new GeckoApp.external.AddressTextBox();
+            this.memStart = new GeckoApp.external.AddressTextBox();
+            this.memViewPAddress = new GeckoApp.external.AddressTextBox();
+            this.memViewAValue = new GeckoApp.external.AddressTextBox();
+            this.BPList = new GeckoApp.BPList();
+            this.BPAddress = new GeckoApp.external.AddressTextBox();
+            this.AsText = new GeckoApp.external.HistoryTextBox();
+            this.AsAddress = new GeckoApp.external.AddressTextBox();
+            this.DisRegion = new GeckoApp.external.AddressTextBox();
+            this.addressTextBoxBPNext = new GeckoApp.external.AddressTextBox();
+            this.goForwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.memViewGrid)).BeginInit();
             this.memViewContextMenu.SuspendLayout();
@@ -540,8 +543,9 @@
             this.memViewGrid.ShowCellToolTips = false;
             this.memViewGrid.ShowEditingIcon = false;
             this.memViewGrid.ShowRowErrors = false;
-            this.memViewGrid.Size = new System.Drawing.Size(348, 278);
+            this.memViewGrid.Size = new System.Drawing.Size(397, 317);
             this.memViewGrid.TabIndex = 0;
+            this.memViewGrid.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.memViewGrid_CellMouseClick);
             this.memViewGrid.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.memViewGrid_CellMouseDown);
             this.memViewGrid.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.memViewGrid_CellMouseMove);
             this.memViewGrid.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.memViewGrid_CellMouseDoubleClick);
@@ -620,6 +624,9 @@
             // memViewContextMenu
             // 
             this.memViewContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.goBackToolStripMenuItem,
+            this.goForwardToolStripMenuItem,
+            this.toolStripSeparator1,
             this.memViewSetBP,
             this.memViewAddToWatch,
             this.memViewAddGCTCode,
@@ -633,7 +640,7 @@
             this.jumpToOffsetToolStripMenuItem,
             this.fontSizeToolStripMenuItem});
             this.memViewContextMenu.Name = "memViewContextMenu";
-            this.memViewContextMenu.Size = new System.Drawing.Size(233, 236);
+            this.memViewContextMenu.Size = new System.Drawing.Size(233, 308);
             // 
             // memViewSetBP
             // 
@@ -754,7 +761,7 @@
             this.MainControl.Name = "MainControl";
             this.MainControl.Padding = new System.Drawing.Point(4, 3);
             this.MainControl.SelectedIndex = 0;
-            this.MainControl.Size = new System.Drawing.Size(573, 322);
+            this.MainControl.Size = new System.Drawing.Size(622, 361);
             this.MainControl.TabIndex = 0;
             this.MainControl.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.MainControl_Selecting);
             // 
@@ -788,7 +795,7 @@
             this.searchPage.Location = new System.Drawing.Point(4, 22);
             this.searchPage.Name = "searchPage";
             this.searchPage.Padding = new System.Windows.Forms.Padding(3);
-            this.searchPage.Size = new System.Drawing.Size(565, 296);
+            this.searchPage.Size = new System.Drawing.Size(614, 335);
             this.searchPage.TabIndex = 0;
             this.searchPage.Text = "Search";
             this.searchPage.UseVisualStyleBackColor = true;
@@ -796,7 +803,7 @@
             // buttonSerialPoke
             // 
             this.buttonSerialPoke.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSerialPoke.Location = new System.Drawing.Point(490, 269);
+            this.buttonSerialPoke.Location = new System.Drawing.Point(539, 308);
             this.buttonSerialPoke.Name = "buttonSerialPoke";
             this.buttonSerialPoke.Size = new System.Drawing.Size(69, 21);
             this.buttonSerialPoke.TabIndex = 23;
@@ -898,7 +905,7 @@
             // UpDownSearchResultPage
             // 
             this.UpDownSearchResultPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.UpDownSearchResultPage.Location = new System.Drawing.Point(422, 242);
+            this.UpDownSearchResultPage.Location = new System.Drawing.Point(471, 281);
             this.UpDownSearchResultPage.Minimum = new decimal(new int[] {
             1,
             0,
@@ -930,7 +937,7 @@
             this.PValue.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.PValue.ContextMenuStrip = this.InputConvert;
             this.PValue.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PValue.Location = new System.Drawing.Point(350, 269);
+            this.PValue.Location = new System.Drawing.Point(399, 308);
             this.PValue.MaxLength = 8;
             this.PValue.Name = "PValue";
             this.PValue.Size = new System.Drawing.Size(62, 20);
@@ -1056,7 +1063,7 @@
             // PButton
             // 
             this.PButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PButton.Location = new System.Drawing.Point(422, 269);
+            this.PButton.Location = new System.Drawing.Point(471, 308);
             this.PButton.Name = "PButton";
             this.PButton.Size = new System.Drawing.Size(62, 21);
             this.PButton.TabIndex = 12;
@@ -1074,22 +1081,6 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "View Mode";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // PAddress
-            // 
-            this.PAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PAddress.AutoHistory = true;
-            this.PAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.PAddress.ContextMenuStrip = this.HistoryContextMenu;
-            this.PAddress.EndingAddress = false;
-            this.PAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PAddress.Location = new System.Drawing.Point(282, 269);
-            this.PAddress.MaxLength = 8;
-            this.PAddress.MultiPokeAddress = true;
-            this.PAddress.Name = "PAddress";
-            this.PAddress.Size = new System.Drawing.Size(62, 20);
-            this.PAddress.TabIndex = 10;
-            this.PAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PAddress_KeyPress);
             // 
             // HistoryContextMenu
             // 
@@ -1222,7 +1213,7 @@
             // 
             this.NxtPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.NxtPage.Enabled = false;
-            this.NxtPage.Location = new System.Drawing.Point(527, 242);
+            this.NxtPage.Location = new System.Drawing.Point(576, 281);
             this.NxtPage.Name = "NxtPage";
             this.NxtPage.Size = new System.Drawing.Size(32, 21);
             this.NxtPage.TabIndex = 9;
@@ -1234,9 +1225,9 @@
             this.ResList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.ResList.AutoEllipsis = true;
-            this.ResList.Location = new System.Drawing.Point(280, 242);
+            this.ResList.Location = new System.Drawing.Point(280, 281);
             this.ResList.Name = "ResList";
-            this.ResList.Size = new System.Drawing.Size(144, 20);
+            this.ResList.Size = new System.Drawing.Size(193, 20);
             this.ResList.TabIndex = 7;
             this.ResList.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -1295,7 +1286,7 @@
             this.SearchResults.ShowCellToolTips = false;
             this.SearchResults.ShowEditingIcon = false;
             this.SearchResults.ShowRowErrors = false;
-            this.SearchResults.Size = new System.Drawing.Size(273, 211);
+            this.SearchResults.Size = new System.Drawing.Size(322, 250);
             this.SearchResults.TabIndex = 6;
             this.SearchResults.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.SearchResults_UserDeletingRow);
             this.SearchResults.Sorted += new System.EventHandler(this.SearchResults_Sorted);
@@ -1434,7 +1425,7 @@
             // 
             this.PrvPage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PrvPage.Enabled = false;
-            this.PrvPage.Location = new System.Drawing.Point(490, 242);
+            this.PrvPage.Location = new System.Drawing.Point(539, 281);
             this.PrvPage.Name = "PrvPage";
             this.PrvPage.Size = new System.Drawing.Size(32, 21);
             this.PrvPage.TabIndex = 8;
@@ -1466,21 +1457,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Memory Range";
             // 
-            // memEnd
-            // 
-            this.memEnd.AutoHistory = true;
-            this.memEnd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.memEnd.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.memEnd.ContextMenuStrip = this.HistoryContextMenu;
-            this.memEnd.EndingAddress = true;
-            this.memEnd.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memEnd.Location = new System.Drawing.Point(199, 19);
-            this.memEnd.MaxLength = 8;
-            this.memEnd.MultiPokeAddress = false;
-            this.memEnd.Name = "memEnd";
-            this.memEnd.Size = new System.Drawing.Size(62, 20);
-            this.memEnd.TabIndex = 4;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -1489,21 +1465,6 @@
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "End:";
-            // 
-            // memStart
-            // 
-            this.memStart.AutoHistory = true;
-            this.memStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.memStart.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.memStart.ContextMenuStrip = this.HistoryContextMenu;
-            this.memStart.EndingAddress = false;
-            this.memStart.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memStart.Location = new System.Drawing.Point(93, 19);
-            this.memStart.MaxLength = 8;
-            this.memStart.MultiPokeAddress = false;
-            this.memStart.Name = "memStart";
-            this.memStart.Size = new System.Drawing.Size(62, 20);
-            this.memStart.TabIndex = 2;
             // 
             // label1
             // 
@@ -1674,7 +1635,7 @@
             this.MemView.Location = new System.Drawing.Point(4, 22);
             this.MemView.Name = "MemView";
             this.MemView.Padding = new System.Windows.Forms.Padding(3);
-            this.MemView.Size = new System.Drawing.Size(565, 296);
+            this.MemView.Size = new System.Drawing.Size(614, 335);
             this.MemView.TabIndex = 1;
             this.MemView.Text = "Memory Viewer";
             this.MemView.UseVisualStyleBackColor = true;
@@ -1685,22 +1646,24 @@
             this.vScrollBarMemViewGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.vScrollBarMemViewGrid.LargeChange = 256;
-            this.vScrollBarMemViewGrid.Location = new System.Drawing.Point(540, 12);
+            this.vScrollBarMemViewGrid.Location = new System.Drawing.Point(589, 12);
             this.vScrollBarMemViewGrid.Maximum = 25165824;
             this.vScrollBarMemViewGrid.Name = "vScrollBarMemViewGrid";
-            this.vScrollBarMemViewGrid.Size = new System.Drawing.Size(17, 278);
+            this.vScrollBarMemViewGrid.Size = new System.Drawing.Size(17, 317);
             this.vScrollBarMemViewGrid.SmallChange = 16;
             this.vScrollBarMemViewGrid.TabIndex = 8;
             this.vScrollBarMemViewGrid.Scroll += new System.Windows.Forms.ScrollEventHandler(this.vScrollBarMemViewGrid_Scroll);
             // 
             // groupBox27
             // 
+            this.groupBox27.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox27.Controls.Add(this.MemViewSearchType);
             this.groupBox27.Controls.Add(this.MemViewSearchPerfom);
             this.groupBox27.Controls.Add(this.MemViewSearchString);
             this.groupBox27.Location = new System.Drawing.Point(3, 190);
             this.groupBox27.Name = "groupBox27";
-            this.groupBox27.Size = new System.Drawing.Size(187, 65);
+            this.groupBox27.Size = new System.Drawing.Size(187, 139);
             this.groupBox27.TabIndex = 7;
             this.groupBox27.TabStop = false;
             this.groupBox27.Text = "Search";
@@ -1733,11 +1696,14 @@
             // 
             // MemViewSearchString
             // 
+            this.MemViewSearchString.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.MemViewSearchString.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MemViewSearchString.Location = new System.Drawing.Point(6, 42);
             this.MemViewSearchString.MaxLength = 256;
+            this.MemViewSearchString.Multiline = true;
             this.MemViewSearchString.Name = "MemViewSearchString";
-            this.MemViewSearchString.Size = new System.Drawing.Size(175, 20);
+            this.MemViewSearchString.Size = new System.Drawing.Size(175, 91);
             this.MemViewSearchString.TabIndex = 5;
             // 
             // groupBox9
@@ -1812,22 +1778,6 @@
             this.memViewPValue.Text = "00000000";
             this.memViewPValue.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lowerValue_MouseClick);
             // 
-            // memViewPAddress
-            // 
-            this.memViewPAddress.AutoHistory = true;
-            this.memViewPAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.memViewPAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.memViewPAddress.ContextMenuStrip = this.HistoryContextMenu;
-            this.memViewPAddress.EndingAddress = false;
-            this.memViewPAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memViewPAddress.Location = new System.Drawing.Point(27, 19);
-            this.memViewPAddress.MaxLength = 8;
-            this.memViewPAddress.MultiPokeAddress = false;
-            this.memViewPAddress.Name = "memViewPAddress";
-            this.memViewPAddress.Size = new System.Drawing.Size(62, 20);
-            this.memViewPAddress.TabIndex = 5;
-            this.memViewPAddress.Text = "80000000";
-            // 
             // MemViewAutoUp
             // 
             this.MemViewAutoUp.AutoSize = true;
@@ -1879,25 +1829,6 @@
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Address";
-            // 
-            // memViewAValue
-            // 
-            this.memViewAValue.AutoHistory = true;
-            this.memViewAValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.memViewAValue.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.memViewAValue.ContextMenuStrip = this.HistoryContextMenu;
-            this.memViewAValue.EndingAddress = false;
-            this.memViewAValue.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memViewAValue.Location = new System.Drawing.Point(48, 19);
-            this.memViewAValue.MaxLength = 8;
-            this.memViewAValue.MultiPokeAddress = false;
-            this.memViewAValue.Name = "memViewAValue";
-            this.memViewAValue.Size = new System.Drawing.Size(62, 20);
-            this.memViewAValue.TabIndex = 6;
-            this.memViewAValue.Text = "80000000";
-            this.memViewAValue.TextChanged += new System.EventHandler(this.memViewAValue_TextChanged);
-            this.memViewAValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.memViewAValue_KeyDown);
-            this.memViewAValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PAddress_KeyPress);
             // 
             // MemViewScrollbar
             // 
@@ -1952,7 +1883,7 @@
             this.BreakpointPage.Controls.Add(this.groupBox10);
             this.BreakpointPage.Location = new System.Drawing.Point(4, 22);
             this.BreakpointPage.Name = "BreakpointPage";
-            this.BreakpointPage.Size = new System.Drawing.Size(565, 296);
+            this.BreakpointPage.Size = new System.Drawing.Size(614, 335);
             this.BreakpointPage.TabIndex = 2;
             this.BreakpointPage.Text = "Breakpoints";
             this.BreakpointPage.UseVisualStyleBackColor = true;
@@ -2104,9 +2035,9 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.groupBox26);
             this.panel3.Controls.Add(this.groupBox25);
-            this.panel3.Location = new System.Drawing.Point(417, 83);
+            this.panel3.Location = new System.Drawing.Point(466, 83);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(145, 212);
+            this.panel3.Size = new System.Drawing.Size(145, 251);
             this.panel3.TabIndex = 14;
             // 
             // groupBox26
@@ -2116,7 +2047,7 @@
             this.groupBox26.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox26.Location = new System.Drawing.Point(0, 103);
             this.groupBox26.Name = "groupBox26";
-            this.groupBox26.Size = new System.Drawing.Size(145, 109);
+            this.groupBox26.Size = new System.Drawing.Size(145, 148);
             this.groupBox26.TabIndex = 8;
             this.groupBox26.TabStop = false;
             this.groupBox26.Text = "    Active conditions";
@@ -2139,7 +2070,7 @@
             this.BPCondList.Location = new System.Drawing.Point(3, 16);
             this.BPCondList.Name = "BPCondList";
             this.BPCondList.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.BPCondList.Size = new System.Drawing.Size(139, 82);
+            this.BPCondList.Size = new System.Drawing.Size(139, 121);
             this.BPCondList.TabIndex = 12;
             this.BPCondList.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BPCondList_MouseDown);
             this.BPCondList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BPCondList_KeyDown);
@@ -2431,8 +2362,8 @@
             // splitContainerRegASM.Panel2
             // 
             this.splitContainerRegASM.Panel2.Controls.Add(this.panel4);
-            this.splitContainerRegASM.Size = new System.Drawing.Size(418, 212);
-            this.splitContainerRegASM.SplitterDistance = 125;
+            this.splitContainerRegASM.Size = new System.Drawing.Size(467, 251);
+            this.splitContainerRegASM.SplitterDistance = 147;
             this.splitContainerRegASM.TabIndex = 12;
             this.splitContainerRegASM.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainerRegASM_SplitterMoved);
             // 
@@ -2443,20 +2374,8 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(418, 125);
+            this.panel6.Size = new System.Drawing.Size(467, 147);
             this.panel6.TabIndex = 12;
-            // 
-            // BPList
-            // 
-            this.BPList.AutoScroll = true;
-            this.BPList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.BPList.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BPList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BPList.Location = new System.Drawing.Point(0, 0);
-            this.BPList.Margin = new System.Windows.Forms.Padding(4);
-            this.BPList.Name = "BPList";
-            this.BPList.Size = new System.Drawing.Size(418, 125);
-            this.BPList.TabIndex = 2;
             // 
             // BPClassic
             // 
@@ -2467,7 +2386,7 @@
             this.BPClassic.Name = "BPClassic";
             this.BPClassic.ReadOnly = true;
             this.BPClassic.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.BPClassic.Size = new System.Drawing.Size(418, 125);
+            this.BPClassic.Size = new System.Drawing.Size(467, 147);
             this.BPClassic.TabIndex = 4;
             this.BPClassic.Visible = false;
             // 
@@ -2478,7 +2397,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(418, 83);
+            this.panel4.Size = new System.Drawing.Size(467, 100);
             this.panel4.TabIndex = 9;
             // 
             // BPDiss
@@ -2490,7 +2409,7 @@
             this.BPDiss.Name = "BPDiss";
             this.BPDiss.ReadOnly = true;
             this.BPDiss.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.BPDiss.Size = new System.Drawing.Size(418, 83);
+            this.BPDiss.Size = new System.Drawing.Size(467, 100);
             this.BPDiss.TabIndex = 3;
             // 
             // richTextBox1
@@ -2576,23 +2495,6 @@
             this.BPExact.Text = "Exact match";
             this.BPExact.UseVisualStyleBackColor = true;
             // 
-            // BPAddress
-            // 
-            this.BPAddress.AutoHistory = true;
-            this.BPAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.BPAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.BPAddress.ContextMenuStrip = this.HistoryContextMenu;
-            this.BPAddress.EndingAddress = false;
-            this.BPAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BPAddress.Location = new System.Drawing.Point(18, 19);
-            this.BPAddress.MaxLength = 8;
-            this.BPAddress.MultiPokeAddress = false;
-            this.BPAddress.Name = "BPAddress";
-            this.BPAddress.Size = new System.Drawing.Size(62, 20);
-            this.BPAddress.TabIndex = 7;
-            this.BPAddress.Text = "80000000";
-            this.BPAddress.TextChanged += new System.EventHandler(this.BPAddress_TextChanged);
-            // 
             // DisPage
             // 
             this.DisPage.Controls.Add(this.groupBoxDisasmCallStack);
@@ -2603,7 +2505,7 @@
             this.DisPage.Controls.Add(this.DisAssBox);
             this.DisPage.Location = new System.Drawing.Point(4, 22);
             this.DisPage.Name = "DisPage";
-            this.DisPage.Size = new System.Drawing.Size(565, 296);
+            this.DisPage.Size = new System.Drawing.Size(614, 335);
             this.DisPage.TabIndex = 3;
             this.DisPage.Text = "Disassembler";
             this.DisPage.UseVisualStyleBackColor = true;
@@ -2616,7 +2518,7 @@
             this.groupBoxDisasmCallStack.Controls.Add(this.listBoxCallStack);
             this.groupBoxDisasmCallStack.Location = new System.Drawing.Point(3, 213);
             this.groupBoxDisasmCallStack.Name = "groupBoxDisasmCallStack";
-            this.groupBoxDisasmCallStack.Size = new System.Drawing.Size(192, 77);
+            this.groupBoxDisasmCallStack.Size = new System.Drawing.Size(192, 116);
             this.groupBoxDisasmCallStack.TabIndex = 8;
             this.groupBoxDisasmCallStack.TabStop = false;
             this.groupBoxDisasmCallStack.Text = "Call Stack";
@@ -2628,7 +2530,7 @@
             this.listBoxCallStack.FormattingEnabled = true;
             this.listBoxCallStack.Location = new System.Drawing.Point(3, 16);
             this.listBoxCallStack.Name = "listBoxCallStack";
-            this.listBoxCallStack.Size = new System.Drawing.Size(186, 56);
+            this.listBoxCallStack.Size = new System.Drawing.Size(186, 95);
             this.listBoxCallStack.TabIndex = 0;
             this.listBoxCallStack.DoubleClick += new System.EventHandler(this.listBoxCallStack_DoubleClick);
             // 
@@ -2726,18 +2628,6 @@
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Selected Address";
             // 
-            // AsText
-            // 
-            this.AsText.AutoHistory = false;
-            this.AsText.ContextMenuStrip = this.HistoryContextMenu;
-            this.AsText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AsText.Location = new System.Drawing.Point(6, 46);
-            this.AsText.MaxLength = 100;
-            this.AsText.Name = "AsText";
-            this.AsText.Size = new System.Drawing.Size(177, 20);
-            this.AsText.TabIndex = 7;
-            this.AsText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AsText_KeyDown);
-            // 
             // Assemble
             // 
             this.Assemble.Location = new System.Drawing.Point(76, 19);
@@ -2748,22 +2638,6 @@
             this.Assemble.Text = "Assemble";
             this.Assemble.UseVisualStyleBackColor = true;
             this.Assemble.Click += new System.EventHandler(this.Assemble_Click);
-            // 
-            // AsAddress
-            // 
-            this.AsAddress.AutoHistory = true;
-            this.AsAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.AsAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.AsAddress.ContextMenuStrip = this.HistoryContextMenu;
-            this.AsAddress.EndingAddress = false;
-            this.AsAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AsAddress.Location = new System.Drawing.Point(7, 20);
-            this.AsAddress.MaxLength = 8;
-            this.AsAddress.MultiPokeAddress = false;
-            this.AsAddress.Name = "AsAddress";
-            this.AsAddress.Size = new System.Drawing.Size(62, 20);
-            this.AsAddress.TabIndex = 5;
-            this.AsAddress.Text = "80000000";
             // 
             // groupBox12
             // 
@@ -2799,24 +2673,6 @@
             0});
             this.DisUpDown.ValueChanged += new System.EventHandler(this.DisUpDown_ValueChanged);
             // 
-            // DisRegion
-            // 
-            this.DisRegion.AutoHistory = true;
-            this.DisRegion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.DisRegion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.DisRegion.ContextMenuStrip = this.HistoryContextMenu;
-            this.DisRegion.EndingAddress = false;
-            this.DisRegion.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DisRegion.Location = new System.Drawing.Point(11, 18);
-            this.DisRegion.MaxLength = 8;
-            this.DisRegion.MultiPokeAddress = false;
-            this.DisRegion.Name = "DisRegion";
-            this.DisRegion.Size = new System.Drawing.Size(62, 20);
-            this.DisRegion.TabIndex = 6;
-            this.DisRegion.Text = "80000000";
-            this.DisRegion.TextChanged += new System.EventHandler(this.DisRegion_TextChanged);
-            this.DisRegion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DisRegion_KeyPress);
-            // 
             // DisUpdateBtn
             // 
             this.DisUpdateBtn.Location = new System.Drawing.Point(95, 16);
@@ -2832,10 +2688,10 @@
             this.DisScroll.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.DisScroll.LargeChange = 0;
-            this.DisScroll.Location = new System.Drawing.Point(527, 6);
+            this.DisScroll.Location = new System.Drawing.Point(576, 6);
             this.DisScroll.Maximum = 2;
             this.DisScroll.Name = "DisScroll";
-            this.DisScroll.Size = new System.Drawing.Size(21, 284);
+            this.DisScroll.Size = new System.Drawing.Size(21, 323);
             this.DisScroll.SmallChange = 0;
             this.DisScroll.TabIndex = 1;
             this.DisScroll.Value = 1;
@@ -2850,7 +2706,7 @@
             this.DisAssBox.ItemHeight = 14;
             this.DisAssBox.Location = new System.Drawing.Point(197, 6);
             this.DisAssBox.Name = "DisAssBox";
-            this.DisAssBox.Size = new System.Drawing.Size(351, 284);
+            this.DisAssBox.Size = new System.Drawing.Size(400, 312);
             this.DisAssBox.TabIndex = 0;
             // 
             // disAssContextMenu
@@ -2961,7 +2817,7 @@
             this.shotPage.Controls.Add(this.ScreenshotCapBox);
             this.shotPage.Location = new System.Drawing.Point(4, 22);
             this.shotPage.Name = "shotPage";
-            this.shotPage.Size = new System.Drawing.Size(565, 296);
+            this.shotPage.Size = new System.Drawing.Size(614, 335);
             this.shotPage.TabIndex = 4;
             this.shotPage.Text = "Screenshots";
             this.shotPage.UseVisualStyleBackColor = true;
@@ -3130,7 +2986,7 @@
             this.ScreenshotCapBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ScreenshotCapBox.Location = new System.Drawing.Point(229, 50);
             this.ScreenshotCapBox.Name = "ScreenshotCapBox";
-            this.ScreenshotCapBox.Size = new System.Drawing.Size(319, 240);
+            this.ScreenshotCapBox.Size = new System.Drawing.Size(368, 279);
             this.ScreenshotCapBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ScreenshotCapBox.TabIndex = 0;
             this.ScreenshotCapBox.TabStop = false;
@@ -3150,7 +3006,7 @@
             this.GCTPage.Controls.Add(this.GCTCodeList);
             this.GCTPage.Location = new System.Drawing.Point(4, 22);
             this.GCTPage.Name = "GCTPage";
-            this.GCTPage.Size = new System.Drawing.Size(565, 296);
+            this.GCTPage.Size = new System.Drawing.Size(614, 335);
             this.GCTPage.TabIndex = 5;
             this.GCTPage.Text = "GCT codes";
             this.GCTPage.UseVisualStyleBackColor = true;
@@ -3170,7 +3026,7 @@
             // GCTStoreImm
             // 
             this.GCTStoreImm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.GCTStoreImm.Location = new System.Drawing.Point(375, 267);
+            this.GCTStoreImm.Location = new System.Drawing.Point(424, 306);
             this.GCTStoreImm.Name = "GCTStoreImm";
             this.GCTStoreImm.Size = new System.Drawing.Size(173, 23);
             this.GCTStoreImm.TabIndex = 13;
@@ -3255,12 +3111,12 @@
             this.GCTCodeValues.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.GCTCodeValues.Enabled = false;
             this.GCTCodeValues.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GCTCodeValues.Location = new System.Drawing.Point(375, 12);
+            this.GCTCodeValues.Location = new System.Drawing.Point(424, 12);
             this.GCTCodeValues.MaxLength = 32000;
             this.GCTCodeValues.Multiline = true;
             this.GCTCodeValues.Name = "GCTCodeValues";
             this.GCTCodeValues.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.GCTCodeValues.Size = new System.Drawing.Size(173, 249);
+            this.GCTCodeValues.Size = new System.Drawing.Size(173, 288);
             this.GCTCodeValues.TabIndex = 5;
             this.GCTCodeValues.KeyDown += new System.Windows.Forms.KeyEventHandler(this.GCTCodeValues_KeyDown);
             // 
@@ -3283,7 +3139,7 @@
             this.GCTCodeList.MultiSelect = false;
             this.GCTCodeList.Name = "GCTCodeList";
             this.GCTCodeList.ShowGroups = false;
-            this.GCTCodeList.Size = new System.Drawing.Size(208, 278);
+            this.GCTCodeList.Size = new System.Drawing.Size(257, 317);
             this.GCTCodeList.TabIndex = 4;
             this.GCTCodeList.UseCompatibleStateImageBehavior = false;
             this.GCTCodeList.View = System.Windows.Forms.View.Details;
@@ -3348,7 +3204,7 @@
             this.WatchTab.Controls.Add(this.WatchList);
             this.WatchTab.Location = new System.Drawing.Point(4, 22);
             this.WatchTab.Name = "WatchTab";
-            this.WatchTab.Size = new System.Drawing.Size(565, 296);
+            this.WatchTab.Size = new System.Drawing.Size(614, 335);
             this.WatchTab.TabIndex = 7;
             this.WatchTab.Text = "Watch List";
             this.WatchTab.UseVisualStyleBackColor = true;
@@ -3356,7 +3212,7 @@
             // WatchListClear
             // 
             this.WatchListClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.WatchListClear.Location = new System.Drawing.Point(106, 250);
+            this.WatchListClear.Location = new System.Drawing.Point(106, 289);
             this.WatchListClear.Name = "WatchListClear";
             this.WatchListClear.Size = new System.Drawing.Size(90, 40);
             this.WatchListClear.TabIndex = 5;
@@ -3368,7 +3224,7 @@
             // 
             this.groupBox18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox18.Controls.Add(this.WatchIntervalSet);
-            this.groupBox18.Location = new System.Drawing.Point(432, 250);
+            this.groupBox18.Location = new System.Drawing.Point(432, 289);
             this.groupBox18.Name = "groupBox18";
             this.groupBox18.Size = new System.Drawing.Size(116, 40);
             this.groupBox18.TabIndex = 4;
@@ -3406,7 +3262,7 @@
             // WatchListOpenButton
             // 
             this.WatchListOpenButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.WatchListOpenButton.Location = new System.Drawing.Point(315, 250);
+            this.WatchListOpenButton.Location = new System.Drawing.Point(315, 289);
             this.WatchListOpenButton.Name = "WatchListOpenButton";
             this.WatchListOpenButton.Size = new System.Drawing.Size(107, 40);
             this.WatchListOpenButton.TabIndex = 3;
@@ -3417,7 +3273,7 @@
             // WatchListSaveButton
             // 
             this.WatchListSaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.WatchListSaveButton.Location = new System.Drawing.Point(202, 250);
+            this.WatchListSaveButton.Location = new System.Drawing.Point(202, 289);
             this.WatchListSaveButton.Name = "WatchListSaveButton";
             this.WatchListSaveButton.Size = new System.Drawing.Size(107, 40);
             this.WatchListSaveButton.TabIndex = 2;
@@ -3428,7 +3284,7 @@
             // WatchAdd
             // 
             this.WatchAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.WatchAdd.Location = new System.Drawing.Point(10, 250);
+            this.WatchAdd.Location = new System.Drawing.Point(10, 289);
             this.WatchAdd.Name = "WatchAdd";
             this.WatchAdd.Size = new System.Drawing.Size(90, 40);
             this.WatchAdd.TabIndex = 1;
@@ -3488,7 +3344,7 @@
             this.WatchList.ShowCellToolTips = false;
             this.WatchList.ShowEditingIcon = false;
             this.WatchList.ShowRowErrors = false;
-            this.WatchList.Size = new System.Drawing.Size(539, 236);
+            this.WatchList.Size = new System.Drawing.Size(588, 275);
             this.WatchList.TabIndex = 0;
             this.WatchList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WatchList_CellContentDoubleClick);
             // 
@@ -3579,7 +3435,7 @@
             this.FSTTab.Controls.Add(this.FSTTreeView);
             this.FSTTab.Location = new System.Drawing.Point(4, 22);
             this.FSTTab.Name = "FSTTab";
-            this.FSTTab.Size = new System.Drawing.Size(565, 296);
+            this.FSTTab.Size = new System.Drawing.Size(614, 335);
             this.FSTTab.TabIndex = 8;
             this.FSTTab.Text = "FST";
             this.FSTTab.UseVisualStyleBackColor = true;
@@ -3722,7 +3578,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.FSTTreeView.Location = new System.Drawing.Point(160, 9);
             this.FSTTreeView.Name = "FSTTreeView";
-            this.FSTTreeView.Size = new System.Drawing.Size(387, 281);
+            this.FSTTreeView.Size = new System.Drawing.Size(436, 320);
             this.FSTTreeView.TabIndex = 0;
             // 
             // ToolPage
@@ -3732,7 +3588,7 @@
             this.ToolPage.Controls.Add(this.label11);
             this.ToolPage.Location = new System.Drawing.Point(4, 22);
             this.ToolPage.Name = "ToolPage";
-            this.ToolPage.Size = new System.Drawing.Size(565, 296);
+            this.ToolPage.Size = new System.Drawing.Size(614, 335);
             this.ToolPage.TabIndex = 9;
             this.ToolPage.Text = "Tools";
             this.ToolPage.UseVisualStyleBackColor = true;
@@ -3918,7 +3774,7 @@
             this.AbtPage.Controls.Add(this.addressTextBoxBPNext);
             this.AbtPage.Location = new System.Drawing.Point(4, 22);
             this.AbtPage.Name = "AbtPage";
-            this.AbtPage.Size = new System.Drawing.Size(565, 296);
+            this.AbtPage.Size = new System.Drawing.Size(614, 335);
             this.AbtPage.TabIndex = 6;
             this.AbtPage.Text = "About";
             this.AbtPage.UseVisualStyleBackColor = true;
@@ -3927,7 +3783,7 @@
             // 
             this.checkBoxRegexSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxRegexSearch.AutoSize = true;
-            this.checkBoxRegexSearch.Location = new System.Drawing.Point(359, 277);
+            this.checkBoxRegexSearch.Location = new System.Drawing.Point(359, 316);
             this.checkBoxRegexSearch.Name = "checkBoxRegexSearch";
             this.checkBoxRegexSearch.Size = new System.Drawing.Size(94, 17);
             this.checkBoxRegexSearch.TabIndex = 6;
@@ -3938,7 +3794,7 @@
             // 
             this.checkBoxBPNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxBPNext.AutoSize = true;
-            this.checkBoxBPNext.Location = new System.Drawing.Point(222, 277);
+            this.checkBoxBPNext.Location = new System.Drawing.Point(222, 316);
             this.checkBoxBPNext.Name = "checkBoxBPNext";
             this.checkBoxBPNext.Size = new System.Drawing.Size(62, 17);
             this.checkBoxBPNext.TabIndex = 4;
@@ -3950,7 +3806,7 @@
             // 
             this.numericUpDownFPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.numericUpDownFPS.DecimalPlaces = 1;
-            this.numericUpDownFPS.Location = new System.Drawing.Point(157, 273);
+            this.numericUpDownFPS.Location = new System.Drawing.Point(157, 312);
             this.numericUpDownFPS.Maximum = new decimal(new int[] {
             60,
             0,
@@ -3975,7 +3831,7 @@
             // 
             this.checkBoxFPS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxFPS.AutoSize = true;
-            this.checkBoxFPS.Location = new System.Drawing.Point(98, 277);
+            this.checkBoxFPS.Location = new System.Drawing.Point(98, 316);
             this.checkBoxFPS.Name = "checkBoxFPS";
             this.checkBoxFPS.Size = new System.Drawing.Size(49, 17);
             this.checkBoxFPS.TabIndex = 3;
@@ -3987,7 +3843,7 @@
             // 
             this.checkBoxAlwaysOnTop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBoxAlwaysOnTop.AutoSize = true;
-            this.checkBoxAlwaysOnTop.Location = new System.Drawing.Point(3, 277);
+            this.checkBoxAlwaysOnTop.Location = new System.Drawing.Point(3, 316);
             this.checkBoxAlwaysOnTop.Name = "checkBoxAlwaysOnTop";
             this.checkBoxAlwaysOnTop.Size = new System.Drawing.Size(92, 17);
             this.checkBoxAlwaysOnTop.TabIndex = 1;
@@ -4004,23 +3860,6 @@
             this.AbtText.TabIndex = 0;
             this.AbtText.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // addressTextBoxBPNext
-            // 
-            this.addressTextBoxBPNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addressTextBoxBPNext.AutoHistory = true;
-            this.addressTextBoxBPNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.addressTextBoxBPNext.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.addressTextBoxBPNext.ContextMenuStrip = this.HistoryContextMenu;
-            this.addressTextBoxBPNext.EndingAddress = false;
-            this.addressTextBoxBPNext.Font = new System.Drawing.Font("Courier New", 8.25F);
-            this.addressTextBoxBPNext.Location = new System.Drawing.Point(291, 272);
-            this.addressTextBoxBPNext.MaxLength = 8;
-            this.addressTextBoxBPNext.MultiPokeAddress = false;
-            this.addressTextBoxBPNext.Name = "addressTextBoxBPNext";
-            this.addressTextBoxBPNext.Size = new System.Drawing.Size(62, 20);
-            this.addressTextBoxBPNext.TabIndex = 5;
-            this.addressTextBoxBPNext.Text = "800018A8";
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -4029,7 +3868,7 @@
             this.panel1.Controls.Add(this.OpenNotePad);
             this.panel1.Controls.Add(this.RGame);
             this.panel1.Controls.Add(this.PGame);
-            this.panel1.Location = new System.Drawing.Point(1, 320);
+            this.panel1.Location = new System.Drawing.Point(1, 359);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(291, 31);
             this.panel1.TabIndex = 1;
@@ -4072,7 +3911,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.DisconnectButton);
             this.panel2.Controls.Add(this.CTCPGecko);
-            this.panel2.Location = new System.Drawing.Point(285, 320);
+            this.panel2.Location = new System.Drawing.Point(334, 359);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(289, 31);
             this.panel2.TabIndex = 2;
@@ -4105,9 +3944,9 @@
             this.groupBox5.Controls.Add(this.PCent);
             this.groupBox5.Controls.Add(this.StatusCap);
             this.groupBox5.Controls.Add(this.progressBar);
-            this.groupBox5.Location = new System.Drawing.Point(1, 353);
+            this.groupBox5.Location = new System.Drawing.Point(1, 392);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(573, 55);
+            this.groupBox5.Size = new System.Drawing.Size(622, 55);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Status";
@@ -4115,7 +3954,7 @@
             // PCent
             // 
             this.PCent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PCent.Location = new System.Drawing.Point(502, 16);
+            this.PCent.Location = new System.Drawing.Point(551, 16);
             this.PCent.Name = "PCent";
             this.PCent.Size = new System.Drawing.Size(62, 13);
             this.PCent.TabIndex = 2;
@@ -4137,7 +3976,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar.Location = new System.Drawing.Point(9, 32);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(555, 19);
+            this.progressBar.Size = new System.Drawing.Size(604, 19);
             this.progressBar.TabIndex = 0;
             // 
             // WatchListOpen
@@ -4187,11 +4026,203 @@
             this.saveFileDialogLogSteps.Filter = "Logs|*.log|All Files|*.*";
             this.saveFileDialogLogSteps.Title = "Save Step Log";
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(229, 6);
+            // 
+            // goBackToolStripMenuItem
+            // 
+            this.goBackToolStripMenuItem.Name = "goBackToolStripMenuItem";
+            this.goBackToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.goBackToolStripMenuItem.Text = "Go Bac&k";
+            this.goBackToolStripMenuItem.Click += new System.EventHandler(this.goBackToolStripMenuItem_Click);
+            // 
+            // PAddress
+            // 
+            this.PAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PAddress.AutoHistory = true;
+            this.PAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.PAddress.ContextMenuStrip = this.HistoryContextMenu;
+            this.PAddress.EndingAddress = false;
+            this.PAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PAddress.Location = new System.Drawing.Point(331, 308);
+            this.PAddress.MaxLength = 8;
+            this.PAddress.MultiPokeAddress = true;
+            this.PAddress.Name = "PAddress";
+            this.PAddress.Size = new System.Drawing.Size(62, 20);
+            this.PAddress.TabIndex = 10;
+            this.PAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PAddress_KeyPress);
+            // 
+            // memEnd
+            // 
+            this.memEnd.AutoHistory = true;
+            this.memEnd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.memEnd.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.memEnd.ContextMenuStrip = this.HistoryContextMenu;
+            this.memEnd.EndingAddress = true;
+            this.memEnd.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memEnd.Location = new System.Drawing.Point(199, 19);
+            this.memEnd.MaxLength = 8;
+            this.memEnd.MultiPokeAddress = false;
+            this.memEnd.Name = "memEnd";
+            this.memEnd.Size = new System.Drawing.Size(62, 20);
+            this.memEnd.TabIndex = 4;
+            // 
+            // memStart
+            // 
+            this.memStart.AutoHistory = true;
+            this.memStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.memStart.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.memStart.ContextMenuStrip = this.HistoryContextMenu;
+            this.memStart.EndingAddress = false;
+            this.memStart.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memStart.Location = new System.Drawing.Point(93, 19);
+            this.memStart.MaxLength = 8;
+            this.memStart.MultiPokeAddress = false;
+            this.memStart.Name = "memStart";
+            this.memStart.Size = new System.Drawing.Size(62, 20);
+            this.memStart.TabIndex = 2;
+            // 
+            // memViewPAddress
+            // 
+            this.memViewPAddress.AutoHistory = true;
+            this.memViewPAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.memViewPAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.memViewPAddress.ContextMenuStrip = this.HistoryContextMenu;
+            this.memViewPAddress.EndingAddress = false;
+            this.memViewPAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memViewPAddress.Location = new System.Drawing.Point(27, 19);
+            this.memViewPAddress.MaxLength = 8;
+            this.memViewPAddress.MultiPokeAddress = false;
+            this.memViewPAddress.Name = "memViewPAddress";
+            this.memViewPAddress.Size = new System.Drawing.Size(62, 20);
+            this.memViewPAddress.TabIndex = 5;
+            this.memViewPAddress.Text = "80000000";
+            // 
+            // memViewAValue
+            // 
+            this.memViewAValue.AutoHistory = true;
+            this.memViewAValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.memViewAValue.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.memViewAValue.ContextMenuStrip = this.HistoryContextMenu;
+            this.memViewAValue.EndingAddress = false;
+            this.memViewAValue.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memViewAValue.Location = new System.Drawing.Point(48, 19);
+            this.memViewAValue.MaxLength = 8;
+            this.memViewAValue.MultiPokeAddress = false;
+            this.memViewAValue.Name = "memViewAValue";
+            this.memViewAValue.Size = new System.Drawing.Size(62, 20);
+            this.memViewAValue.TabIndex = 6;
+            this.memViewAValue.Text = "80000000";
+            this.memViewAValue.TextChanged += new System.EventHandler(this.memViewAValue_TextChanged);
+            this.memViewAValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.memViewAValue_KeyDown);
+            this.memViewAValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PAddress_KeyPress);
+            // 
+            // BPList
+            // 
+            this.BPList.AutoScroll = true;
+            this.BPList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.BPList.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BPList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BPList.Location = new System.Drawing.Point(0, 0);
+            this.BPList.Margin = new System.Windows.Forms.Padding(4);
+            this.BPList.Name = "BPList";
+            this.BPList.Size = new System.Drawing.Size(467, 147);
+            this.BPList.TabIndex = 2;
+            // 
+            // BPAddress
+            // 
+            this.BPAddress.AutoHistory = true;
+            this.BPAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.BPAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.BPAddress.ContextMenuStrip = this.HistoryContextMenu;
+            this.BPAddress.EndingAddress = false;
+            this.BPAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BPAddress.Location = new System.Drawing.Point(18, 19);
+            this.BPAddress.MaxLength = 8;
+            this.BPAddress.MultiPokeAddress = false;
+            this.BPAddress.Name = "BPAddress";
+            this.BPAddress.Size = new System.Drawing.Size(62, 20);
+            this.BPAddress.TabIndex = 7;
+            this.BPAddress.Text = "80000000";
+            this.BPAddress.TextChanged += new System.EventHandler(this.BPAddress_TextChanged);
+            // 
+            // AsText
+            // 
+            this.AsText.AutoHistory = false;
+            this.AsText.ContextMenuStrip = this.HistoryContextMenu;
+            this.AsText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AsText.Location = new System.Drawing.Point(6, 46);
+            this.AsText.MaxLength = 100;
+            this.AsText.Name = "AsText";
+            this.AsText.Size = new System.Drawing.Size(177, 20);
+            this.AsText.TabIndex = 7;
+            this.AsText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AsText_KeyDown);
+            // 
+            // AsAddress
+            // 
+            this.AsAddress.AutoHistory = true;
+            this.AsAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.AsAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.AsAddress.ContextMenuStrip = this.HistoryContextMenu;
+            this.AsAddress.EndingAddress = false;
+            this.AsAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AsAddress.Location = new System.Drawing.Point(7, 20);
+            this.AsAddress.MaxLength = 8;
+            this.AsAddress.MultiPokeAddress = false;
+            this.AsAddress.Name = "AsAddress";
+            this.AsAddress.Size = new System.Drawing.Size(62, 20);
+            this.AsAddress.TabIndex = 5;
+            this.AsAddress.Text = "80000000";
+            // 
+            // DisRegion
+            // 
+            this.DisRegion.AutoHistory = true;
+            this.DisRegion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.DisRegion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.DisRegion.ContextMenuStrip = this.HistoryContextMenu;
+            this.DisRegion.EndingAddress = false;
+            this.DisRegion.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisRegion.Location = new System.Drawing.Point(11, 18);
+            this.DisRegion.MaxLength = 8;
+            this.DisRegion.MultiPokeAddress = false;
+            this.DisRegion.Name = "DisRegion";
+            this.DisRegion.Size = new System.Drawing.Size(62, 20);
+            this.DisRegion.TabIndex = 6;
+            this.DisRegion.Text = "80000000";
+            this.DisRegion.TextChanged += new System.EventHandler(this.DisRegion_TextChanged);
+            this.DisRegion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DisRegion_KeyPress);
+            // 
+            // addressTextBoxBPNext
+            // 
+            this.addressTextBoxBPNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addressTextBoxBPNext.AutoHistory = true;
+            this.addressTextBoxBPNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.addressTextBoxBPNext.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.addressTextBoxBPNext.ContextMenuStrip = this.HistoryContextMenu;
+            this.addressTextBoxBPNext.EndingAddress = false;
+            this.addressTextBoxBPNext.Font = new System.Drawing.Font("Courier New", 8.25F);
+            this.addressTextBoxBPNext.Location = new System.Drawing.Point(291, 311);
+            this.addressTextBoxBPNext.MaxLength = 8;
+            this.addressTextBoxBPNext.MultiPokeAddress = false;
+            this.addressTextBoxBPNext.Name = "addressTextBoxBPNext";
+            this.addressTextBoxBPNext.Size = new System.Drawing.Size(62, 20);
+            this.addressTextBoxBPNext.TabIndex = 5;
+            this.addressTextBoxBPNext.Text = "800018A8";
+            // 
+            // goForwardToolStripMenuItem
+            // 
+            this.goForwardToolStripMenuItem.Name = "goForwardToolStripMenuItem";
+            this.goForwardToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.goForwardToolStripMenuItem.Text = "Go &Forward";
+            this.goForwardToolStripMenuItem.Click += new System.EventHandler(this.goForwardToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(583, 414);
+            this.ClientSize = new System.Drawing.Size(632, 453);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.MainControl);
@@ -4648,6 +4679,9 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem19;
         private System.Windows.Forms.ToolStripMenuItem addOffsetToolStripMenuItem;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBoxAddressAddOffset;
+        private System.Windows.Forms.ToolStripMenuItem goBackToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem goForwardToolStripMenuItem;
     }
 }
 
