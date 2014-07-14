@@ -1556,6 +1556,7 @@ namespace GeckoApp
                         start = DateTime.Now;
                         dumpcount = 0;
                     }
+                    System.Threading.Thread.Sleep(10);
                     Application.DoEvents();
                 }
                 MemViewAutoUp.Text = "Auto update";
