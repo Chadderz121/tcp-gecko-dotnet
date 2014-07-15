@@ -93,7 +93,7 @@
     <Compile Include="external\Profile.cs" />
     <Compile Include="external\Xml.cs" />
     <Compile Include="external\XmlHelper.cs" />
-    <Compile Include="fst.cs" />
+    <Compile Include="fsa.cs" />
     <Compile Include="GCTWizard.cs">
       <SubType>Form</SubType>
     </Compile>

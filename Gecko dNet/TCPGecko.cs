@@ -290,6 +290,7 @@ namespace TCPTCPGecko
         private const Byte        cmd_step = 0x44;
         private const Byte      cmd_status = 0x50;
         private const Byte   cmd_cheatexec = 0x60;
+        private const Byte         cmd_rpc = 0x70;
         private const Byte cmd_nbreakpoint = 0x89;
         private const Byte     cmd_version = 0x99;
 
@@ -902,7 +903,7 @@ namespace TCPTCPGecko
                     if (retry >= 3)
                     {
                         //Give up, too many retries
-                        GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
+                        Disconnect();
                         throw new ETCPGeckoException(ETCPErrorCode.TooManyRetries);
                     }
                     //Reset stream
@@ -913,7 +914,7 @@ namespace TCPTCPGecko
                 else if (returnvalue == FTDICommand.CMD_FatalError)
                 {
                     //Major fail, give it up
-                    GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
+                    Disconnect();
                     throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
                 }
                 //reset retry counter
@@ -940,7 +941,7 @@ namespace TCPTCPGecko
                     if (retry >= 3)
                     {
                         //Give up, too many retries
-                        GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
+                        Disconnect();
                         throw new ETCPGeckoException(ETCPErrorCode.TooManyRetries);
                     }
                     //Reset stream
@@ -951,7 +952,7 @@ namespace TCPTCPGecko
                 else if (returnvalue == FTDICommand.CMD_FatalError)
                 {
                     //Major fail, give it up
-                    GeckoWrite(BitConverter.GetBytes(GCFAIL), 1);
+                    Disconnect();
                     throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
                 }
                 //reset retry counter
@@ -961,6 +962,13 @@ namespace TCPTCPGecko
                 //ackowledge package -- nope, too slow, TCP is reliable!
                 //GeckoWrite(BitConverter.GetBytes(GCACK), 1);
             }
+
+            Byte[] response = new Byte[1];
+            if (GeckoRead(response, 1) != FTDICommand.CMD_OK)
+                throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+            Byte reply = response[0];
+            if (reply != GCACK)
+                throw new ETCPGeckoException(ETCPErrorCode.FTDIInvalidReply);
             SendUpdate(endupload, allchunks, allchunks, memlength, memlength, true, false);
         }
 
@@ -1850,6 +1858,50 @@ namespace TCPTCPGecko
 
             return b;
         }
+        #endregion
+
+        #region RPC
+
+        /* values in host endianess. */
+        public UInt32 rpc(UInt32 address, params UInt32[] args)
+        {
+            return (UInt32)(rpc64(address, args) >> 32);
+        }
+
+        /* values in host endianess. */
+        public UInt64 rpc64(UInt32 address, params UInt32[] args)
+        {
+            Byte[] buffer = new Byte[4 + 8 * 4];
+
+            //value = send [address in big endian] [value in big endian]
+            address = ByteSwap.Swap(address);
+            
+            BitConverter.GetBytes(address).CopyTo(buffer, 0);
+
+            for (int i = 0; i < 8; i++)
+			{
+                if (i < args.Length) {
+                    BitConverter.GetBytes(ByteSwap.Swap(args[i])).CopyTo(buffer, 4 + i * 4);
+                } else {
+                    BitConverter.GetBytes(0xfecad0ba).CopyTo(buffer, 4 + i * 4);
+                }
+			}
+
+            //Send read
+            if (RawCommand(cmd_rpc) != FTDICommand.CMD_OK)
+                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+            
+
+            //write value
+            if (GeckoWrite(buffer, buffer.Length) != FTDICommand.CMD_OK)
+                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+
+            if (GeckoRead(buffer, 8) != FTDICommand.CMD_OK)
+                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+
+            return ByteSwap.Swap(BitConverter.ToUInt64(buffer, 0));
+        }
+
         #endregion
     }
 }

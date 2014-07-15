@@ -40,7 +40,7 @@ namespace GeckoApp
         private Breakpoints bpHandler;
         private Disassembly disassembler;
         private WatchList watcher;
-        private FST fst;
+        private FSA fsa;
 
         private ExceptionHandler exceptionHandling;
 
@@ -87,6 +87,10 @@ namespace GeckoApp
             SettingsFile = new Xml("gecko.xml");
             SettingsFile.RootName = "gecko";
 
+            MainControl.TabPages.Remove(GCTPage);
+            MainControl.TabPages.Remove(BreakpointPage);
+            MainControl.TabPages.Remove(shotPage);
+
             gamename = "";
             gecko = new TCPGecko();
             gecko.chunkUpdate += transfer;
@@ -125,8 +129,7 @@ namespace GeckoApp
             addWatchDialog = null;
             watchValueInput = null;
 
-            fst = new FST(gecko, FSTTreeView, FSTCodeData, FSTSetAsSource, FSTSetAsTarget,
-                FSTGenSwap, FSTFileSource, FSTFileTarget, FSTSwapCode, FSTSwapNow, exceptionHandling);
+            fsa = new FSA(gecko, FSATreeView, FSACodeData, exceptionHandling);
 
             GCTCodeContents = new CodeController(GCTCodeList, GCTCodeValues);
             GCTCodeContents.codesModified += GCTModified;
@@ -2695,10 +2698,10 @@ namespace GeckoApp
         }
         #endregion
 
-        #region FST tab
-        private void FSTRead_Click(object sender, EventArgs e)
+        #region FSA tab
+        private void FSARead_Click(object sender, EventArgs e)
         {
-            fst.DumpTree();
+            fsa.DumpTree();
         }
         #endregion
 

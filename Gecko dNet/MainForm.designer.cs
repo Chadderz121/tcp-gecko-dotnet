@@ -58,6 +58,9 @@
             this.c3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.c4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memViewContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.goBackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.goForwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.memViewSetBP = new System.Windows.Forms.ToolStripMenuItem();
             this.memViewAddToWatch = new System.Windows.Forms.ToolStripMenuItem();
             this.memViewAddGCTCode = new System.Windows.Forms.ToolStripMenuItem();
@@ -102,6 +105,7 @@
             this.comboBoxDisplayType = new System.Windows.Forms.ComboBox();
             this.PButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.PAddress = new GeckoApp.external.AddressTextBox();
             this.HistoryContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -142,7 +146,9 @@
             this.PrvPage = new System.Windows.Forms.Button();
             this.ResSrch = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.memEnd = new GeckoApp.external.AddressTextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.memStart = new GeckoApp.external.AddressTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.memRange = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -167,10 +173,12 @@
             this.comboBoxPokeOperation = new System.Windows.Forms.ComboBox();
             this.memViewPButton = new System.Windows.Forms.Button();
             this.memViewPValue = new System.Windows.Forms.TextBox();
+            this.memViewPAddress = new GeckoApp.external.AddressTextBox();
             this.MemViewAutoUp = new System.Windows.Forms.CheckBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.MemViewShowMode = new System.Windows.Forms.ComboBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.memViewAValue = new GeckoApp.external.AddressTextBox();
             this.MemViewScrollbar = new System.Windows.Forms.NumericUpDown();
             this.MemViewUpdate = new System.Windows.Forms.Button();
             this.MemViewARange = new System.Windows.Forms.ComboBox();
@@ -227,6 +235,7 @@
             this.leafToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainerRegASM = new System.Windows.Forms.SplitContainer();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.BPList = new GeckoApp.BPList();
             this.BPClassic = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.BPDiss = new System.Windows.Forms.TextBox();
@@ -237,6 +246,7 @@
             this.BPType = new System.Windows.Forms.ComboBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.BPExact = new System.Windows.Forms.CheckBox();
+            this.BPAddress = new GeckoApp.external.AddressTextBox();
             this.DisPage = new System.Windows.Forms.TabPage();
             this.groupBoxDisasmCallStack = new System.Windows.Forms.GroupBox();
             this.listBoxCallStack = new System.Windows.Forms.ListBox();
@@ -250,9 +260,12 @@
             this.buttonDisassemblySearch = new System.Windows.Forms.Button();
             this.textBoxDisassemblySearch = new System.Windows.Forms.TextBox();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.AsText = new GeckoApp.external.HistoryTextBox();
             this.Assemble = new System.Windows.Forms.Button();
+            this.AsAddress = new GeckoApp.external.AddressTextBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.DisUpDown = new System.Windows.Forms.NumericUpDown();
+            this.DisRegion = new GeckoApp.external.AddressTextBox();
             this.DisUpdateBtn = new System.Windows.Forms.Button();
             this.DisScroll = new System.Windows.Forms.VScrollBar();
             this.DisAssBox = new System.Windows.Forms.ListBox();
@@ -321,21 +334,11 @@
             this.WatchDeleteCM = new System.Windows.Forms.ToolStripMenuItem();
             this.WatchPokeCM = new System.Windows.Forms.ToolStripMenuItem();
             this.WatchEditCM = new System.Windows.Forms.ToolStripMenuItem();
-            this.FSTTab = new System.Windows.Forms.TabPage();
-            this.FSTSwapNow = new System.Windows.Forms.Button();
-            this.groupBox22 = new System.Windows.Forms.GroupBox();
-            this.FSTGenSwap = new System.Windows.Forms.Button();
-            this.FSTSwapCode = new System.Windows.Forms.TextBox();
-            this.groupBox21 = new System.Windows.Forms.GroupBox();
-            this.FSTSetAsTarget = new System.Windows.Forms.Button();
-            this.FSTFileTarget = new System.Windows.Forms.Label();
-            this.groupBox20 = new System.Windows.Forms.GroupBox();
-            this.FSTSetAsSource = new System.Windows.Forms.Button();
-            this.FSTFileSource = new System.Windows.Forms.Label();
+            this.FSATab = new System.Windows.Forms.TabPage();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
-            this.FSTCodeData = new System.Windows.Forms.TextBox();
-            this.FSTRead = new System.Windows.Forms.Button();
-            this.FSTTreeView = new System.Windows.Forms.TreeView();
+            this.FSACodeData = new System.Windows.Forms.TextBox();
+            this.FSARead = new System.Windows.Forms.Button();
+            this.FSATreeView = new System.Windows.Forms.TreeView();
             this.ToolPage = new System.Windows.Forms.TabPage();
             this.groupBox24 = new System.Windows.Forms.GroupBox();
             this.ToolsDump = new System.Windows.Forms.Button();
@@ -360,6 +363,7 @@
             this.checkBoxFPS = new System.Windows.Forms.CheckBox();
             this.checkBoxAlwaysOnTop = new System.Windows.Forms.CheckBox();
             this.AbtText = new System.Windows.Forms.Label();
+            this.addressTextBoxBPNext = new GeckoApp.external.AddressTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.OpenNotePad = new System.Windows.Forms.Button();
             this.RGame = new System.Windows.Forms.Button();
@@ -379,20 +383,6 @@
             this.openFileDialogSearch = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialogSearch = new System.Windows.Forms.SaveFileDialog();
             this.saveFileDialogLogSteps = new System.Windows.Forms.SaveFileDialog();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.goBackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.PAddress = new GeckoApp.external.AddressTextBox();
-            this.memEnd = new GeckoApp.external.AddressTextBox();
-            this.memStart = new GeckoApp.external.AddressTextBox();
-            this.memViewPAddress = new GeckoApp.external.AddressTextBox();
-            this.memViewAValue = new GeckoApp.external.AddressTextBox();
-            this.BPList = new GeckoApp.BPList();
-            this.BPAddress = new GeckoApp.external.AddressTextBox();
-            this.AsText = new GeckoApp.external.HistoryTextBox();
-            this.AsAddress = new GeckoApp.external.AddressTextBox();
-            this.DisRegion = new GeckoApp.external.AddressTextBox();
-            this.addressTextBoxBPNext = new GeckoApp.external.AddressTextBox();
-            this.goForwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.memViewGrid)).BeginInit();
             this.memViewContextMenu.SuspendLayout();
@@ -454,10 +444,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WatchIntervalSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.WatchList)).BeginInit();
             this.WatchCM.SuspendLayout();
-            this.FSTTab.SuspendLayout();
-            this.groupBox22.SuspendLayout();
-            this.groupBox21.SuspendLayout();
-            this.groupBox20.SuspendLayout();
+            this.FSATab.SuspendLayout();
             this.groupBox19.SuspendLayout();
             this.ToolPage.SuspendLayout();
             this.groupBox24.SuspendLayout();
@@ -640,7 +627,26 @@
             this.jumpToOffsetToolStripMenuItem,
             this.fontSizeToolStripMenuItem});
             this.memViewContextMenu.Name = "memViewContextMenu";
-            this.memViewContextMenu.Size = new System.Drawing.Size(233, 308);
+            this.memViewContextMenu.Size = new System.Drawing.Size(233, 286);
+            // 
+            // goBackToolStripMenuItem
+            // 
+            this.goBackToolStripMenuItem.Name = "goBackToolStripMenuItem";
+            this.goBackToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.goBackToolStripMenuItem.Text = "Go Bac&k";
+            this.goBackToolStripMenuItem.Click += new System.EventHandler(this.goBackToolStripMenuItem_Click);
+            // 
+            // goForwardToolStripMenuItem
+            // 
+            this.goForwardToolStripMenuItem.Name = "goForwardToolStripMenuItem";
+            this.goForwardToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.goForwardToolStripMenuItem.Text = "Go &Forward";
+            this.goForwardToolStripMenuItem.Click += new System.EventHandler(this.goForwardToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(229, 6);
             // 
             // memViewSetBP
             // 
@@ -753,7 +759,7 @@
             this.MainControl.Controls.Add(this.shotPage);
             this.MainControl.Controls.Add(this.GCTPage);
             this.MainControl.Controls.Add(this.WatchTab);
-            this.MainControl.Controls.Add(this.FSTTab);
+            this.MainControl.Controls.Add(this.FSATab);
             this.MainControl.Controls.Add(this.ToolPage);
             this.MainControl.Controls.Add(this.AbtPage);
             this.MainControl.Location = new System.Drawing.Point(1, 1);
@@ -1081,6 +1087,22 @@
             this.label5.TabIndex = 6;
             this.label5.Text = "View Mode";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PAddress
+            // 
+            this.PAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PAddress.AutoHistory = true;
+            this.PAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.PAddress.ContextMenuStrip = this.HistoryContextMenu;
+            this.PAddress.EndingAddress = false;
+            this.PAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PAddress.Location = new System.Drawing.Point(331, 308);
+            this.PAddress.MaxLength = 8;
+            this.PAddress.MultiPokeAddress = true;
+            this.PAddress.Name = "PAddress";
+            this.PAddress.Size = new System.Drawing.Size(62, 20);
+            this.PAddress.TabIndex = 10;
+            this.PAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PAddress_KeyPress);
             // 
             // HistoryContextMenu
             // 
@@ -1457,6 +1479,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Memory Range";
             // 
+            // memEnd
+            // 
+            this.memEnd.AutoHistory = true;
+            this.memEnd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.memEnd.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.memEnd.ContextMenuStrip = this.HistoryContextMenu;
+            this.memEnd.EndingAddress = true;
+            this.memEnd.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memEnd.Location = new System.Drawing.Point(199, 19);
+            this.memEnd.MaxLength = 8;
+            this.memEnd.MultiPokeAddress = false;
+            this.memEnd.Name = "memEnd";
+            this.memEnd.Size = new System.Drawing.Size(62, 20);
+            this.memEnd.TabIndex = 4;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -1465,6 +1502,21 @@
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "End:";
+            // 
+            // memStart
+            // 
+            this.memStart.AutoHistory = true;
+            this.memStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.memStart.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.memStart.ContextMenuStrip = this.HistoryContextMenu;
+            this.memStart.EndingAddress = false;
+            this.memStart.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memStart.Location = new System.Drawing.Point(93, 19);
+            this.memStart.MaxLength = 8;
+            this.memStart.MultiPokeAddress = false;
+            this.memStart.Name = "memStart";
+            this.memStart.Size = new System.Drawing.Size(62, 20);
+            this.memStart.TabIndex = 2;
             // 
             // label1
             // 
@@ -1778,6 +1830,22 @@
             this.memViewPValue.Text = "00000000";
             this.memViewPValue.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lowerValue_MouseClick);
             // 
+            // memViewPAddress
+            // 
+            this.memViewPAddress.AutoHistory = true;
+            this.memViewPAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.memViewPAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.memViewPAddress.ContextMenuStrip = this.HistoryContextMenu;
+            this.memViewPAddress.EndingAddress = false;
+            this.memViewPAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memViewPAddress.Location = new System.Drawing.Point(27, 19);
+            this.memViewPAddress.MaxLength = 8;
+            this.memViewPAddress.MultiPokeAddress = false;
+            this.memViewPAddress.Name = "memViewPAddress";
+            this.memViewPAddress.Size = new System.Drawing.Size(62, 20);
+            this.memViewPAddress.TabIndex = 5;
+            this.memViewPAddress.Text = "80000000";
+            // 
             // MemViewAutoUp
             // 
             this.MemViewAutoUp.AutoSize = true;
@@ -1829,6 +1897,25 @@
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Address";
+            // 
+            // memViewAValue
+            // 
+            this.memViewAValue.AutoHistory = true;
+            this.memViewAValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.memViewAValue.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.memViewAValue.ContextMenuStrip = this.HistoryContextMenu;
+            this.memViewAValue.EndingAddress = false;
+            this.memViewAValue.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.memViewAValue.Location = new System.Drawing.Point(48, 19);
+            this.memViewAValue.MaxLength = 8;
+            this.memViewAValue.MultiPokeAddress = false;
+            this.memViewAValue.Name = "memViewAValue";
+            this.memViewAValue.Size = new System.Drawing.Size(62, 20);
+            this.memViewAValue.TabIndex = 6;
+            this.memViewAValue.Text = "80000000";
+            this.memViewAValue.TextChanged += new System.EventHandler(this.memViewAValue_TextChanged);
+            this.memViewAValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.memViewAValue_KeyDown);
+            this.memViewAValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PAddress_KeyPress);
             // 
             // MemViewScrollbar
             // 
@@ -2377,6 +2464,18 @@
             this.panel6.Size = new System.Drawing.Size(467, 147);
             this.panel6.TabIndex = 12;
             // 
+            // BPList
+            // 
+            this.BPList.AutoScroll = true;
+            this.BPList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.BPList.Cursor = System.Windows.Forms.Cursors.Default;
+            this.BPList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BPList.Location = new System.Drawing.Point(0, 0);
+            this.BPList.Margin = new System.Windows.Forms.Padding(4);
+            this.BPList.Name = "BPList";
+            this.BPList.Size = new System.Drawing.Size(467, 147);
+            this.BPList.TabIndex = 2;
+            // 
             // BPClassic
             // 
             this.BPClassic.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2494,6 +2593,23 @@
             this.BPExact.TabIndex = 8;
             this.BPExact.Text = "Exact match";
             this.BPExact.UseVisualStyleBackColor = true;
+            // 
+            // BPAddress
+            // 
+            this.BPAddress.AutoHistory = true;
+            this.BPAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.BPAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.BPAddress.ContextMenuStrip = this.HistoryContextMenu;
+            this.BPAddress.EndingAddress = false;
+            this.BPAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BPAddress.Location = new System.Drawing.Point(18, 19);
+            this.BPAddress.MaxLength = 8;
+            this.BPAddress.MultiPokeAddress = false;
+            this.BPAddress.Name = "BPAddress";
+            this.BPAddress.Size = new System.Drawing.Size(62, 20);
+            this.BPAddress.TabIndex = 7;
+            this.BPAddress.Text = "80000000";
+            this.BPAddress.TextChanged += new System.EventHandler(this.BPAddress_TextChanged);
             // 
             // DisPage
             // 
@@ -2628,6 +2744,18 @@
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Selected Address";
             // 
+            // AsText
+            // 
+            this.AsText.AutoHistory = false;
+            this.AsText.ContextMenuStrip = this.HistoryContextMenu;
+            this.AsText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AsText.Location = new System.Drawing.Point(6, 46);
+            this.AsText.MaxLength = 100;
+            this.AsText.Name = "AsText";
+            this.AsText.Size = new System.Drawing.Size(177, 20);
+            this.AsText.TabIndex = 7;
+            this.AsText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AsText_KeyDown);
+            // 
             // Assemble
             // 
             this.Assemble.Location = new System.Drawing.Point(76, 19);
@@ -2638,6 +2766,22 @@
             this.Assemble.Text = "Assemble";
             this.Assemble.UseVisualStyleBackColor = true;
             this.Assemble.Click += new System.EventHandler(this.Assemble_Click);
+            // 
+            // AsAddress
+            // 
+            this.AsAddress.AutoHistory = true;
+            this.AsAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.AsAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.AsAddress.ContextMenuStrip = this.HistoryContextMenu;
+            this.AsAddress.EndingAddress = false;
+            this.AsAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AsAddress.Location = new System.Drawing.Point(7, 20);
+            this.AsAddress.MaxLength = 8;
+            this.AsAddress.MultiPokeAddress = false;
+            this.AsAddress.Name = "AsAddress";
+            this.AsAddress.Size = new System.Drawing.Size(62, 20);
+            this.AsAddress.TabIndex = 5;
+            this.AsAddress.Text = "80000000";
             // 
             // groupBox12
             // 
@@ -2672,6 +2816,24 @@
             0,
             0});
             this.DisUpDown.ValueChanged += new System.EventHandler(this.DisUpDown_ValueChanged);
+            // 
+            // DisRegion
+            // 
+            this.DisRegion.AutoHistory = true;
+            this.DisRegion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.DisRegion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.DisRegion.ContextMenuStrip = this.HistoryContextMenu;
+            this.DisRegion.EndingAddress = false;
+            this.DisRegion.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DisRegion.Location = new System.Drawing.Point(11, 18);
+            this.DisRegion.MaxLength = 8;
+            this.DisRegion.MultiPokeAddress = false;
+            this.DisRegion.Name = "DisRegion";
+            this.DisRegion.Size = new System.Drawing.Size(62, 20);
+            this.DisRegion.TabIndex = 6;
+            this.DisRegion.Text = "80000000";
+            this.DisRegion.TextChanged += new System.EventHandler(this.DisRegion_TextChanged);
+            this.DisRegion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DisRegion_KeyPress);
             // 
             // DisUpdateBtn
             // 
@@ -3424,162 +3586,62 @@
             this.WatchEditCM.Text = "Edit (first selected)";
             this.WatchEditCM.Click += new System.EventHandler(this.WatchEditCM_Click);
             // 
-            // FSTTab
+            // FSATab
             // 
-            this.FSTTab.Controls.Add(this.FSTSwapNow);
-            this.FSTTab.Controls.Add(this.groupBox22);
-            this.FSTTab.Controls.Add(this.groupBox21);
-            this.FSTTab.Controls.Add(this.groupBox20);
-            this.FSTTab.Controls.Add(this.groupBox19);
-            this.FSTTab.Controls.Add(this.FSTRead);
-            this.FSTTab.Controls.Add(this.FSTTreeView);
-            this.FSTTab.Location = new System.Drawing.Point(4, 22);
-            this.FSTTab.Name = "FSTTab";
-            this.FSTTab.Size = new System.Drawing.Size(614, 335);
-            this.FSTTab.TabIndex = 8;
-            this.FSTTab.Text = "FST";
-            this.FSTTab.UseVisualStyleBackColor = true;
-            // 
-            // FSTSwapNow
-            // 
-            this.FSTSwapNow.Enabled = false;
-            this.FSTSwapNow.Location = new System.Drawing.Point(8, 270);
-            this.FSTSwapNow.Name = "FSTSwapNow";
-            this.FSTSwapNow.Size = new System.Drawing.Size(146, 20);
-            this.FSTSwapNow.TabIndex = 6;
-            this.FSTSwapNow.Text = "Swap now";
-            this.FSTSwapNow.UseVisualStyleBackColor = true;
-            // 
-            // groupBox22
-            // 
-            this.groupBox22.Controls.Add(this.FSTGenSwap);
-            this.groupBox22.Controls.Add(this.FSTSwapCode);
-            this.groupBox22.Location = new System.Drawing.Point(8, 192);
-            this.groupBox22.Name = "groupBox22";
-            this.groupBox22.Size = new System.Drawing.Size(146, 72);
-            this.groupBox22.TabIndex = 5;
-            this.groupBox22.TabStop = false;
-            this.groupBox22.Text = "Fileswap code data";
-            // 
-            // FSTGenSwap
-            // 
-            this.FSTGenSwap.Enabled = false;
-            this.FSTGenSwap.Location = new System.Drawing.Point(10, 14);
-            this.FSTGenSwap.Name = "FSTGenSwap";
-            this.FSTGenSwap.Size = new System.Drawing.Size(127, 20);
-            this.FSTGenSwap.TabIndex = 3;
-            this.FSTGenSwap.Text = "Generate swap code";
-            this.FSTGenSwap.UseVisualStyleBackColor = true;
-            // 
-            // FSTSwapCode
-            // 
-            this.FSTSwapCode.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FSTSwapCode.Location = new System.Drawing.Point(10, 35);
-            this.FSTSwapCode.Multiline = true;
-            this.FSTSwapCode.Name = "FSTSwapCode";
-            this.FSTSwapCode.ReadOnly = true;
-            this.FSTSwapCode.Size = new System.Drawing.Size(127, 34);
-            this.FSTSwapCode.TabIndex = 0;
-            // 
-            // groupBox21
-            // 
-            this.groupBox21.Controls.Add(this.FSTSetAsTarget);
-            this.groupBox21.Controls.Add(this.FSTFileTarget);
-            this.groupBox21.Location = new System.Drawing.Point(8, 136);
-            this.groupBox21.Name = "groupBox21";
-            this.groupBox21.Size = new System.Drawing.Size(146, 52);
-            this.groupBox21.TabIndex = 4;
-            this.groupBox21.TabStop = false;
-            this.groupBox21.Text = "File target";
-            // 
-            // FSTSetAsTarget
-            // 
-            this.FSTSetAsTarget.Enabled = false;
-            this.FSTSetAsTarget.Location = new System.Drawing.Point(7, 30);
-            this.FSTSetAsTarget.Name = "FSTSetAsTarget";
-            this.FSTSetAsTarget.Size = new System.Drawing.Size(127, 20);
-            this.FSTSetAsTarget.TabIndex = 2;
-            this.FSTSetAsTarget.Text = "Set selected as target";
-            this.FSTSetAsTarget.UseVisualStyleBackColor = true;
-            // 
-            // FSTFileTarget
-            // 
-            this.FSTFileTarget.Location = new System.Drawing.Point(4, 13);
-            this.FSTFileTarget.Name = "FSTFileTarget";
-            this.FSTFileTarget.Size = new System.Drawing.Size(130, 16);
-            this.FSTFileTarget.TabIndex = 0;
-            this.FSTFileTarget.Text = "abc";
-            this.FSTFileTarget.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // groupBox20
-            // 
-            this.groupBox20.Controls.Add(this.FSTSetAsSource);
-            this.groupBox20.Controls.Add(this.FSTFileSource);
-            this.groupBox20.Location = new System.Drawing.Point(8, 83);
-            this.groupBox20.Name = "groupBox20";
-            this.groupBox20.Size = new System.Drawing.Size(146, 52);
-            this.groupBox20.TabIndex = 3;
-            this.groupBox20.TabStop = false;
-            this.groupBox20.Text = "File source";
-            // 
-            // FSTSetAsSource
-            // 
-            this.FSTSetAsSource.Enabled = false;
-            this.FSTSetAsSource.Location = new System.Drawing.Point(7, 30);
-            this.FSTSetAsSource.Name = "FSTSetAsSource";
-            this.FSTSetAsSource.Size = new System.Drawing.Size(127, 20);
-            this.FSTSetAsSource.TabIndex = 2;
-            this.FSTSetAsSource.Text = "Set selected as source";
-            this.FSTSetAsSource.UseVisualStyleBackColor = true;
-            // 
-            // FSTFileSource
-            // 
-            this.FSTFileSource.Location = new System.Drawing.Point(4, 13);
-            this.FSTFileSource.Name = "FSTFileSource";
-            this.FSTFileSource.Size = new System.Drawing.Size(130, 16);
-            this.FSTFileSource.TabIndex = 0;
-            this.FSTFileSource.Text = "abc";
-            this.FSTFileSource.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.FSATab.Controls.Add(this.groupBox19);
+            this.FSATab.Controls.Add(this.FSARead);
+            this.FSATab.Controls.Add(this.FSATreeView);
+            this.FSATab.Location = new System.Drawing.Point(4, 22);
+            this.FSATab.Name = "FSATab";
+            this.FSATab.Size = new System.Drawing.Size(614, 335);
+            this.FSATab.TabIndex = 8;
+            this.FSATab.Text = "FSA";
+            this.FSATab.UseVisualStyleBackColor = true;
             // 
             // groupBox19
             // 
-            this.groupBox19.Controls.Add(this.FSTCodeData);
+            this.groupBox19.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox19.Controls.Add(this.FSACodeData);
             this.groupBox19.Location = new System.Drawing.Point(8, 32);
             this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(146, 51);
+            this.groupBox19.Size = new System.Drawing.Size(146, 297);
             this.groupBox19.TabIndex = 2;
             this.groupBox19.TabStop = false;
-            this.groupBox19.Text = "Memory data";
+            this.groupBox19.Text = "Properties";
             // 
-            // FSTCodeData
+            // FSACodeData
             // 
-            this.FSTCodeData.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FSTCodeData.Location = new System.Drawing.Point(10, 14);
-            this.FSTCodeData.Multiline = true;
-            this.FSTCodeData.Name = "FSTCodeData";
-            this.FSTCodeData.ReadOnly = true;
-            this.FSTCodeData.Size = new System.Drawing.Size(127, 34);
-            this.FSTCodeData.TabIndex = 0;
-            // 
-            // FSTRead
-            // 
-            this.FSTRead.Location = new System.Drawing.Point(8, 9);
-            this.FSTRead.Name = "FSTRead";
-            this.FSTRead.Size = new System.Drawing.Size(146, 20);
-            this.FSTRead.TabIndex = 1;
-            this.FSTRead.Text = "Read FST";
-            this.FSTRead.UseVisualStyleBackColor = true;
-            this.FSTRead.Click += new System.EventHandler(this.FSTRead_Click);
-            // 
-            // FSTTreeView
-            // 
-            this.FSTTreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.FSACodeData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.FSTTreeView.Location = new System.Drawing.Point(160, 9);
-            this.FSTTreeView.Name = "FSTTreeView";
-            this.FSTTreeView.Size = new System.Drawing.Size(436, 320);
-            this.FSTTreeView.TabIndex = 0;
+            this.FSACodeData.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FSACodeData.Location = new System.Drawing.Point(10, 14);
+            this.FSACodeData.Multiline = true;
+            this.FSACodeData.Name = "FSACodeData";
+            this.FSACodeData.ReadOnly = true;
+            this.FSACodeData.Size = new System.Drawing.Size(127, 277);
+            this.FSACodeData.TabIndex = 0;
+            // 
+            // FSARead
+            // 
+            this.FSARead.Location = new System.Drawing.Point(8, 9);
+            this.FSARead.Name = "FSARead";
+            this.FSARead.Size = new System.Drawing.Size(146, 20);
+            this.FSARead.TabIndex = 1;
+            this.FSARead.Text = "Read FSA";
+            this.FSARead.UseVisualStyleBackColor = true;
+            this.FSARead.Click += new System.EventHandler(this.FSARead_Click);
+            // 
+            // FSATreeView
+            // 
+            this.FSATreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.FSATreeView.Location = new System.Drawing.Point(160, 9);
+            this.FSATreeView.Name = "FSATreeView";
+            this.FSATreeView.Size = new System.Drawing.Size(436, 320);
+            this.FSATreeView.TabIndex = 0;
             // 
             // ToolPage
             // 
@@ -3860,6 +3922,23 @@
             this.AbtText.TabIndex = 0;
             this.AbtText.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // addressTextBoxBPNext
+            // 
+            this.addressTextBoxBPNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.addressTextBoxBPNext.AutoHistory = true;
+            this.addressTextBoxBPNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
+            this.addressTextBoxBPNext.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.addressTextBoxBPNext.ContextMenuStrip = this.HistoryContextMenu;
+            this.addressTextBoxBPNext.EndingAddress = false;
+            this.addressTextBoxBPNext.Font = new System.Drawing.Font("Courier New", 8.25F);
+            this.addressTextBoxBPNext.Location = new System.Drawing.Point(291, 311);
+            this.addressTextBoxBPNext.MaxLength = 8;
+            this.addressTextBoxBPNext.MultiPokeAddress = false;
+            this.addressTextBoxBPNext.Name = "addressTextBoxBPNext";
+            this.addressTextBoxBPNext.Size = new System.Drawing.Size(62, 20);
+            this.addressTextBoxBPNext.TabIndex = 5;
+            this.addressTextBoxBPNext.Text = "800018A8";
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -4026,198 +4105,6 @@
             this.saveFileDialogLogSteps.Filter = "Logs|*.log|All Files|*.*";
             this.saveFileDialogLogSteps.Title = "Save Step Log";
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(229, 6);
-            // 
-            // goBackToolStripMenuItem
-            // 
-            this.goBackToolStripMenuItem.Name = "goBackToolStripMenuItem";
-            this.goBackToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.goBackToolStripMenuItem.Text = "Go Bac&k";
-            this.goBackToolStripMenuItem.Click += new System.EventHandler(this.goBackToolStripMenuItem_Click);
-            // 
-            // PAddress
-            // 
-            this.PAddress.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PAddress.AutoHistory = true;
-            this.PAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.PAddress.ContextMenuStrip = this.HistoryContextMenu;
-            this.PAddress.EndingAddress = false;
-            this.PAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PAddress.Location = new System.Drawing.Point(331, 308);
-            this.PAddress.MaxLength = 8;
-            this.PAddress.MultiPokeAddress = true;
-            this.PAddress.Name = "PAddress";
-            this.PAddress.Size = new System.Drawing.Size(62, 20);
-            this.PAddress.TabIndex = 10;
-            this.PAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PAddress_KeyPress);
-            // 
-            // memEnd
-            // 
-            this.memEnd.AutoHistory = true;
-            this.memEnd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.memEnd.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.memEnd.ContextMenuStrip = this.HistoryContextMenu;
-            this.memEnd.EndingAddress = true;
-            this.memEnd.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memEnd.Location = new System.Drawing.Point(199, 19);
-            this.memEnd.MaxLength = 8;
-            this.memEnd.MultiPokeAddress = false;
-            this.memEnd.Name = "memEnd";
-            this.memEnd.Size = new System.Drawing.Size(62, 20);
-            this.memEnd.TabIndex = 4;
-            // 
-            // memStart
-            // 
-            this.memStart.AutoHistory = true;
-            this.memStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.memStart.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.memStart.ContextMenuStrip = this.HistoryContextMenu;
-            this.memStart.EndingAddress = false;
-            this.memStart.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memStart.Location = new System.Drawing.Point(93, 19);
-            this.memStart.MaxLength = 8;
-            this.memStart.MultiPokeAddress = false;
-            this.memStart.Name = "memStart";
-            this.memStart.Size = new System.Drawing.Size(62, 20);
-            this.memStart.TabIndex = 2;
-            // 
-            // memViewPAddress
-            // 
-            this.memViewPAddress.AutoHistory = true;
-            this.memViewPAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.memViewPAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.memViewPAddress.ContextMenuStrip = this.HistoryContextMenu;
-            this.memViewPAddress.EndingAddress = false;
-            this.memViewPAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memViewPAddress.Location = new System.Drawing.Point(27, 19);
-            this.memViewPAddress.MaxLength = 8;
-            this.memViewPAddress.MultiPokeAddress = false;
-            this.memViewPAddress.Name = "memViewPAddress";
-            this.memViewPAddress.Size = new System.Drawing.Size(62, 20);
-            this.memViewPAddress.TabIndex = 5;
-            this.memViewPAddress.Text = "80000000";
-            // 
-            // memViewAValue
-            // 
-            this.memViewAValue.AutoHistory = true;
-            this.memViewAValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.memViewAValue.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.memViewAValue.ContextMenuStrip = this.HistoryContextMenu;
-            this.memViewAValue.EndingAddress = false;
-            this.memViewAValue.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.memViewAValue.Location = new System.Drawing.Point(48, 19);
-            this.memViewAValue.MaxLength = 8;
-            this.memViewAValue.MultiPokeAddress = false;
-            this.memViewAValue.Name = "memViewAValue";
-            this.memViewAValue.Size = new System.Drawing.Size(62, 20);
-            this.memViewAValue.TabIndex = 6;
-            this.memViewAValue.Text = "80000000";
-            this.memViewAValue.TextChanged += new System.EventHandler(this.memViewAValue_TextChanged);
-            this.memViewAValue.KeyDown += new System.Windows.Forms.KeyEventHandler(this.memViewAValue_KeyDown);
-            this.memViewAValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PAddress_KeyPress);
-            // 
-            // BPList
-            // 
-            this.BPList.AutoScroll = true;
-            this.BPList.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.BPList.Cursor = System.Windows.Forms.Cursors.Default;
-            this.BPList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BPList.Location = new System.Drawing.Point(0, 0);
-            this.BPList.Margin = new System.Windows.Forms.Padding(4);
-            this.BPList.Name = "BPList";
-            this.BPList.Size = new System.Drawing.Size(467, 147);
-            this.BPList.TabIndex = 2;
-            // 
-            // BPAddress
-            // 
-            this.BPAddress.AutoHistory = true;
-            this.BPAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.BPAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.BPAddress.ContextMenuStrip = this.HistoryContextMenu;
-            this.BPAddress.EndingAddress = false;
-            this.BPAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BPAddress.Location = new System.Drawing.Point(18, 19);
-            this.BPAddress.MaxLength = 8;
-            this.BPAddress.MultiPokeAddress = false;
-            this.BPAddress.Name = "BPAddress";
-            this.BPAddress.Size = new System.Drawing.Size(62, 20);
-            this.BPAddress.TabIndex = 7;
-            this.BPAddress.Text = "80000000";
-            this.BPAddress.TextChanged += new System.EventHandler(this.BPAddress_TextChanged);
-            // 
-            // AsText
-            // 
-            this.AsText.AutoHistory = false;
-            this.AsText.ContextMenuStrip = this.HistoryContextMenu;
-            this.AsText.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AsText.Location = new System.Drawing.Point(6, 46);
-            this.AsText.MaxLength = 100;
-            this.AsText.Name = "AsText";
-            this.AsText.Size = new System.Drawing.Size(177, 20);
-            this.AsText.TabIndex = 7;
-            this.AsText.KeyDown += new System.Windows.Forms.KeyEventHandler(this.AsText_KeyDown);
-            // 
-            // AsAddress
-            // 
-            this.AsAddress.AutoHistory = true;
-            this.AsAddress.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.AsAddress.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.AsAddress.ContextMenuStrip = this.HistoryContextMenu;
-            this.AsAddress.EndingAddress = false;
-            this.AsAddress.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AsAddress.Location = new System.Drawing.Point(7, 20);
-            this.AsAddress.MaxLength = 8;
-            this.AsAddress.MultiPokeAddress = false;
-            this.AsAddress.Name = "AsAddress";
-            this.AsAddress.Size = new System.Drawing.Size(62, 20);
-            this.AsAddress.TabIndex = 5;
-            this.AsAddress.Text = "80000000";
-            // 
-            // DisRegion
-            // 
-            this.DisRegion.AutoHistory = true;
-            this.DisRegion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.DisRegion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.DisRegion.ContextMenuStrip = this.HistoryContextMenu;
-            this.DisRegion.EndingAddress = false;
-            this.DisRegion.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DisRegion.Location = new System.Drawing.Point(11, 18);
-            this.DisRegion.MaxLength = 8;
-            this.DisRegion.MultiPokeAddress = false;
-            this.DisRegion.Name = "DisRegion";
-            this.DisRegion.Size = new System.Drawing.Size(62, 20);
-            this.DisRegion.TabIndex = 6;
-            this.DisRegion.Text = "80000000";
-            this.DisRegion.TextChanged += new System.EventHandler(this.DisRegion_TextChanged);
-            this.DisRegion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DisRegion_KeyPress);
-            // 
-            // addressTextBoxBPNext
-            // 
-            this.addressTextBoxBPNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.addressTextBoxBPNext.AutoHistory = true;
-            this.addressTextBoxBPNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(200)))));
-            this.addressTextBoxBPNext.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.addressTextBoxBPNext.ContextMenuStrip = this.HistoryContextMenu;
-            this.addressTextBoxBPNext.EndingAddress = false;
-            this.addressTextBoxBPNext.Font = new System.Drawing.Font("Courier New", 8.25F);
-            this.addressTextBoxBPNext.Location = new System.Drawing.Point(291, 311);
-            this.addressTextBoxBPNext.MaxLength = 8;
-            this.addressTextBoxBPNext.MultiPokeAddress = false;
-            this.addressTextBoxBPNext.Name = "addressTextBoxBPNext";
-            this.addressTextBoxBPNext.Size = new System.Drawing.Size(62, 20);
-            this.addressTextBoxBPNext.TabIndex = 5;
-            this.addressTextBoxBPNext.Text = "800018A8";
-            // 
-            // goForwardToolStripMenuItem
-            // 
-            this.goForwardToolStripMenuItem.Name = "goForwardToolStripMenuItem";
-            this.goForwardToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.goForwardToolStripMenuItem.Text = "Go &Forward";
-            this.goForwardToolStripMenuItem.Click += new System.EventHandler(this.goForwardToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4315,11 +4202,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.WatchIntervalSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.WatchList)).EndInit();
             this.WatchCM.ResumeLayout(false);
-            this.FSTTab.ResumeLayout(false);
-            this.groupBox22.ResumeLayout(false);
-            this.groupBox22.PerformLayout();
-            this.groupBox21.ResumeLayout(false);
-            this.groupBox20.ResumeLayout(false);
+            this.FSATab.ResumeLayout(false);
             this.groupBox19.ResumeLayout(false);
             this.groupBox19.PerformLayout();
             this.ToolPage.ResumeLayout(false);
@@ -4461,20 +4344,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn WatchCValue;
         private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.NumericUpDown WatchIntervalSet;
-        private System.Windows.Forms.TabPage FSTTab;
-        private System.Windows.Forms.Button FSTRead;
-        private System.Windows.Forms.TreeView FSTTreeView;
+        private System.Windows.Forms.TabPage FSATab;
+        private System.Windows.Forms.Button FSARead;
+        private System.Windows.Forms.TreeView FSATreeView;
         private System.Windows.Forms.GroupBox groupBox19;
-        private System.Windows.Forms.TextBox FSTCodeData;
-        private System.Windows.Forms.GroupBox groupBox21;
-        private System.Windows.Forms.Button FSTSetAsTarget;
-        private System.Windows.Forms.Label FSTFileTarget;
-        private System.Windows.Forms.GroupBox groupBox20;
-        private System.Windows.Forms.Button FSTSetAsSource;
-        private System.Windows.Forms.Label FSTFileSource;
-        private System.Windows.Forms.GroupBox groupBox22;
-        private System.Windows.Forms.Button FSTGenSwap;
-        private System.Windows.Forms.TextBox FSTSwapCode;
+        private System.Windows.Forms.TextBox FSACodeData;
         private System.Windows.Forms.OpenFileDialog WatchListOpen;
         private System.Windows.Forms.SaveFileDialog WatchListSave;
         private System.Windows.Forms.Button WatchListClear;
@@ -4535,7 +4409,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem InputCvUndo;
         private System.Windows.Forms.ToolStripMenuItem InputCvSelectAll;
-        private System.Windows.Forms.Button FSTSwapNow;
         private System.Windows.Forms.ContextMenuStrip disAssContextMenu;
         private System.Windows.Forms.ToolStripMenuItem DisAssSetBP;
         private System.Windows.Forms.ToolStripMenuItem DisAssPoke;
