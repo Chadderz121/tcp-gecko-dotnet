@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcpGecko dNet", "Gecko dNet\tcpGecko dNet.csproj", "{93C697C4-1798-4822-BA5D-B0313435E6C0}"
 EndProject
 Global
