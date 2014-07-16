@@ -383,6 +383,8 @@
             this.openFileDialogSearch = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialogSearch = new System.Windows.Forms.SaveFileDialog();
             this.saveFileDialogLogSteps = new System.Windows.Forms.SaveFileDialog();
+            this.fsaContextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.extractFsaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             ((System.ComponentModel.ISupportInitialize)(this.memViewGrid)).BeginInit();
             this.memViewContextMenu.SuspendLayout();
@@ -454,6 +456,7 @@
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.fsaContextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripMenuItem1
@@ -3638,6 +3641,7 @@
             this.FSATreeView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.FSATreeView.ContextMenuStrip = this.fsaContextMenuStrip;
             this.FSATreeView.Location = new System.Drawing.Point(160, 9);
             this.FSATreeView.Name = "FSATreeView";
             this.FSATreeView.Size = new System.Drawing.Size(436, 320);
@@ -4105,6 +4109,19 @@
             this.saveFileDialogLogSteps.Filter = "Logs|*.log|All Files|*.*";
             this.saveFileDialogLogSteps.Title = "Save Step Log";
             // 
+            // fsaContextMenuStrip
+            // 
+            this.fsaContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.extractFsaToolStripMenuItem});
+            this.fsaContextMenuStrip.Name = "fsaContextMenuStrip";
+            this.fsaContextMenuStrip.Size = new System.Drawing.Size(153, 48);
+            // 
+            // extractFsaToolStripMenuItem
+            // 
+            this.extractFsaToolStripMenuItem.Name = "extractFsaToolStripMenuItem";
+            this.extractFsaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.extractFsaToolStripMenuItem.Text = "&Extract";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4217,6 +4234,7 @@
             this.panel2.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            this.fsaContextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -4555,6 +4573,8 @@
         private System.Windows.Forms.ToolStripMenuItem goBackToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem goForwardToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip fsaContextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem extractFsaToolStripMenuItem;
     }
 }
 

@@ -192,6 +192,9 @@
   <metadata name="WatchCM.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>567, 49</value>
   </metadata>
+  <metadata name="fsaContextMenuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>179, 86</value>
+  </metadata>
   <data name="label12.Text" xml:space="preserve">
     <value>Normally Gecko dotNET limits you to poke/dump only certain address ranges. In fact: there are more ranges (like the 7Fxxxxxx range in GameCube mode). Selecting this will disable all protections allowing you to access EVERY address. Attention: selecting an invalid address will crash the game, NO WAY BACK!</value>
   </data>

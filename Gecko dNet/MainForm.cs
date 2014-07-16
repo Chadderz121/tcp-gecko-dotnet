@@ -50,6 +50,7 @@ namespace GeckoApp
         private List<UInt32> multiPokeAddr;
 
         private String gamename;
+        private String gametitle;
         private bool GameNameStored;
         private Xml SettingsFile;
 
@@ -129,7 +130,7 @@ namespace GeckoApp
             addWatchDialog = null;
             watchValueInput = null;
 
-            fsa = new FSA(gecko, FSATreeView, FSACodeData, exceptionHandling);
+            fsa = new FSA(gecko, FSATreeView, extractFsaToolStripMenuItem, FSACodeData, exceptionHandling);
 
             GCTCodeContents = new CodeController(GCTCodeList, GCTCodeValues);
             GCTCodeContents.codesModified += GCTModified;
@@ -462,46 +463,39 @@ namespace GeckoApp
                     CTCPGecko.Text = "Reconnect to Gecko";
                     StatusCap.Text = "Ready!";
 
-                    // 6 bytes for Game ID + 1 for null + 1 for Version
-                    // Apparently, some WiiWare/VC stuff only has 4 bytes for Game ID, but still 1 null + 1 Version too
-                    const int bytesToRead = 8;
-                    MemoryStream ms = new MemoryStream();
-                    gecko.Dump(0xe0000000, 0xe0000000 + bytesToRead, ms);
-                    String name = "";
-                    Byte[] buffer = new Byte[bytesToRead];
-                    ms.Seek(0, SeekOrigin.Begin);
-                    ms.Read(buffer, 0, bytesToRead);
-                    name = Encoding.ASCII.GetString(buffer);
-                    String rname = "";
-                    // Don't read version digit into name
-                    int i;  // Declare out of for loop scope so we can test the index later
-                    // Go to bytesToRead - 2
-                    // Should end at 4 for VC games and 6 for Wii games
-                    for (i = 0; i < bytesToRead - 2; i++)
-                        if (name[i] != (char)0)
-                            rname += name[i];
-                        else
-                            break;
+                    // 8 bytes for Title ID
+                    UInt32 title_type = gecko.peek(0x1000ecb0);
+                    UInt32 title_id = gecko.peek(0x1000ecb4);
+                    String rname = title_type.ToString("X8") + "-" + title_id.ToString("X8");
 
-                    ms.Close();
-                    ms = new MemoryStream();
-                    gecko.Dump(0x10035f48, 0x10035f48 + 4, ms);
-                    buffer = new Byte[4];
-                    ms.Seek(0, SeekOrigin.Begin);
-                    ms.Read(buffer, 0, 4);
+
                     ValidMemory.setDataUpper(gecko);
 
                     // first time loading a game, or game changed; reload GCT files
                     bool gamenameChanged = gamename != rname;
                     gamename = rname;
-
-                    int gameVer = ((int)(name[i + 1])) + 1;
-
-                    this.Text = "Gecko dotNET (" + gamename;
-                    if (gameVer != 1)
+                    try
                     {
-                        this.Text += " version " + (gameVer).ToString();
+                        using (StreamReader reader = new StreamReader("gamelist.txt"))
+                        {
+                            while (!reader.EndOfStream)
+                            {
+                                string line = reader.ReadLine();
+
+                                if (line.StartsWith(rname))
+                                {
+                                    gametitle = line.Substring(rname.Length + 1);
+                                    break;
+                                }
+                            }
+                        }
                     }
+                    catch
+                    {
+                        gametitle = rname;
+                    }
+
+                    this.Text = "Gecko dotNET (" + gametitle;
                     this.Text += ")";
 
                     if (gamenameChanged)
