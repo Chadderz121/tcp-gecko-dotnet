@@ -470,8 +470,22 @@ namespace GeckoApp
                     StatusCap.Text = "Ready!";
 
                     // 8 bytes for Title ID
-                    UInt32 title_type = gecko.peek(0x1000ecb0);
-                    UInt32 title_id = gecko.peek(0x1000ecb4);
+                    UInt32 title_type, title_id, os_ver;
+                    switch (os_ver = gecko.OsVersionRequest())
+                    {
+                        case 410:
+                            title_type = gecko.peek(0x1000ecb0);
+                            title_id = gecko.peek(0x1000ecb4);
+                            break;
+                        case 500:
+                            title_type = gecko.peek(0x10013010);
+                            title_id = gecko.peek(0x10013014);
+                            break;
+                        default:
+                            title_type = 0;
+                            title_id = 0;
+                            break;
+                    }
                     String rname = title_type.ToString("X8") + "-" + title_id.ToString("X8");
 
 
@@ -502,7 +516,12 @@ namespace GeckoApp
                     }
 
                     this.Text = "Gecko dotNET (" + gametitle;
-                    this.Text += ")";
+                    this.Text += ") Handler v";
+                    this.Text += os_ver / 100;
+                    this.Text += ".";
+                    this.Text += (os_ver / 10) % 10;
+                    this.Text += ".";
+                    this.Text += os_ver % 10;
 
                     if (gamenameChanged)
                     {

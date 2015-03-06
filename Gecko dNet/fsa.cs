@@ -251,15 +251,45 @@ namespace GeckoApp
         }
         public void DumpTree(params String[] folders)
         {
-            UInt32 FSInit = 0x01060d70;
-            UInt32 FSAddClient = 0x01061290;
-            UInt32 FSDelClient = 0x0106129c;
-            UInt32 FSInitCmdBlock = 0x01061498;
-            UInt32 FSOpenDir = 0x01066f3c;
-            UInt32 FSCloseDir = 0x01066fac;
-            UInt32 FSReadDir = 0x0106702c;
-            UInt32 memalign = gecko.peek(0x10049edc);
-            UInt32 free = gecko.peek(0x100adc2c);
+            UInt32 FSInit;
+            UInt32 FSAddClient;
+            UInt32 FSDelClient;
+            UInt32 FSInitCmdBlock;
+            UInt32 FSOpenDir;
+            UInt32 FSCloseDir;
+            UInt32 FSReadDir;
+            UInt32 memalign;
+            UInt32 free;
+            switch (gecko.OsVersionRequest())
+            {
+                case 400:
+                case 410:
+                    FSInit = 0x01060d70;
+                    FSAddClient = 0x01061290;
+                    FSDelClient = 0x0106129c;
+                    FSInitCmdBlock = 0x01061498;
+                    FSOpenDir = 0x01066f3c;
+                    FSCloseDir = 0x01066fac;
+                    FSReadDir = 0x0106702c;
+                    memalign = gecko.peek(0x10049edc);
+                    free = gecko.peek(0x100adc2c);
+                    break;
+                case 500:
+                case 510:
+                    FSInit = 0x010666fc;
+                    FSAddClient = 0x01066d80;
+                    FSDelClient = 0x01066d8c;
+                    FSInitCmdBlock = 0x01066fec;
+                    FSOpenDir = 0x0106db58;
+                    FSCloseDir = 0x0106dbc8;
+                    FSReadDir = 0x0106dc48;
+                    memalign = gecko.peek(0x1004e2d0);
+                    free = gecko.peek(0x100b41fc);
+                    break;
+                default:
+                    MessageBox.Show("Unsupported Wii U OS version.", "Version mismatch", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+            }
 
             try
             {
@@ -364,15 +394,45 @@ namespace GeckoApp
 
         public void ExtractFile(ICollection<KeyValuePair<String, String>> paths)
         {
-            UInt32 FSInit = 0x01060d70;
-            UInt32 FSAddClient = 0x01061290;
-            UInt32 FSDelClient = 0x0106129c;
-            UInt32 FSInitCmdBlock = 0x01061498;
-            UInt32 FSOpenFile = 0x010668bc;
-            UInt32 FSCloseFile = 0x01066934;
-            UInt32 FSReadFile = 0x010669b4;
-            UInt32 memalign = gecko.peek(0x10049edc);
-            UInt32 free = gecko.peek(0x100adc2c);
+            UInt32 FSInit;
+            UInt32 FSAddClient;
+            UInt32 FSDelClient;
+            UInt32 FSInitCmdBlock;
+            UInt32 FSOpenFile;
+            UInt32 FSCloseFile;
+            UInt32 FSReadFile;
+            UInt32 memalign;
+            UInt32 free;
+            switch (gecko.OsVersionRequest())
+            {
+                case 400:
+                case 410:
+                    FSInit = 0x01060d70;
+                    FSAddClient = 0x01061290;
+                    FSDelClient = 0x0106129c;
+                    FSInitCmdBlock = 0x01061498;
+                    FSOpenFile = 0x010668bc;
+                    FSCloseFile = 0x01066934;
+                    FSReadFile = 0x010669b4;
+                    memalign = gecko.peek(0x10049edc);
+                    free = gecko.peek(0x100adc2c);
+                    break;
+                case 500:
+                case 510:
+                    FSInit = 0x010666fc;
+                    FSAddClient = 0x01066d80;
+                    FSDelClient = 0x01066d8c;
+                    FSInitCmdBlock = 0x01066fec;
+                    FSOpenFile = 0x0106d4d8;
+                    FSCloseFile = 0x0106d550;
+                    FSReadFile = 0x0106d5d0;
+                    memalign = gecko.peek(0x1004e2d0);
+                    free = gecko.peek(0x100b41fc);
+                    break;
+                default:
+                    MessageBox.Show("Unsupported Wii U OS version.", "Version mismatch", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+            }
 
             try
             {

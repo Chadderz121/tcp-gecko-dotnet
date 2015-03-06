@@ -293,6 +293,7 @@ namespace TCPTCPGecko
         private const Byte         cmd_rpc = 0x70;
         private const Byte cmd_nbreakpoint = 0x89;
         private const Byte     cmd_version = 0x99;
+        private const Byte  cmd_os_version = 0x9A;
 
         private const Byte         GCBPHit = 0x11;
         private const Byte           GCACK = 0xAA;
@@ -1360,6 +1361,19 @@ namespace TCPTCPGecko
             } while (retries < 3);
 
             return result;
+        }
+
+        public UInt32 OsVersionRequest()
+        {
+            if (RawCommand(cmd_os_version) != FTDICommand.CMD_OK)
+                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+
+            Byte[] buffer = new Byte[4];
+
+            if (GeckoRead(buffer, 4) != FTDICommand.CMD_OK)
+                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+
+            return ByteSwap.Swap(BitConverter.ToUInt32(buffer, 0));
         }
 
         public UInt32 peek(UInt32 address)

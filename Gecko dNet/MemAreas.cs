@@ -101,7 +101,22 @@ namespace GeckoApp
 
         public static void setDataUpper(TCPGecko upper)
         {
-            UInt32 mem = upper.peek_kern(0xffe8619c);
+            UInt32 mem;
+            switch (upper.OsVersionRequest())
+            {
+                case 400:
+                case 410:
+                    mem = upper.peek_kern(0xffe8619c);
+                    break;
+                case 500:
+                case 510:
+                    return;
+                    // TODO: This doesn't work for some reason - crashes on connection?
+                    //mem = upper.peek_kern(0xffe8591c);
+                    //break;
+                default:
+                    return;
+            }
             UInt32 tbl = upper.peek_kern(mem + 4);
             UInt32 lst = upper.peek_kern(tbl + 20);
 
