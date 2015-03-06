@@ -41,5 +41,8 @@
     <Setting Name="ViewFloatsInHex" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="hostname" Type="System.String" Scope="User">
+      <Value Profile="(Default)">192.168.1.37</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

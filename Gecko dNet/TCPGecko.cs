@@ -353,9 +353,24 @@ namespace TCPTCPGecko
             }
         }
 
-        public TCPGecko()
+        public string Host
         {
-            PTCP = new tcpconn("192.168.1.37", 7331);
+            get
+            {
+                return PTCP.Host;
+            }
+            set
+            {
+                if (!PConnected)
+                {
+                    PTCP = new tcpconn(value, PTCP.Port);
+                }
+            }
+        }
+
+        public TCPGecko(string host, int port)
+        {
+            PTCP = new tcpconn(host, port);
             PConnected = false;
             PChunkUpdate = null;
         }

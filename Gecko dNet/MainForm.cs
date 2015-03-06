@@ -93,8 +93,9 @@ namespace GeckoApp
             MainControl.TabPages.Remove(shotPage);
 
             gamename = "";
-            gecko = new TCPGecko();
+            gecko = new TCPGecko(Properties.Settings.Default.hostname, 7331);
             gecko.chunkUpdate += transfer;
+            hostTextBox.DataBindings.Add("Text", gecko, "Host", false, DataSourceUpdateMode.OnPropertyChanged);
 
             exceptionHandling = new ExceptionHandler(this);
 
@@ -401,6 +402,7 @@ namespace GeckoApp
                     int failAttempt = 0;
                     Connecting = true;
                     CTCPGecko.Text = "Cancel Connection";
+                    hostTextBox.Enabled = false;
                     while (UnknownStatus())
                     {
                         gecko.sendfail();
@@ -455,11 +457,15 @@ namespace GeckoApp
             RGame.Enabled = success;
             PGame.Enabled = success;
             OpenNotePad.Enabled = success;
+            hostTextBox.Enabled = !success;
 
             try
             {
                 if (success)
                 {
+                    Properties.Settings.Default.hostname = gecko.Host;
+                    Properties.Settings.Default.Save();
+
                     CTCPGecko.Text = "Reconnect to Gecko";
                     StatusCap.Text = "Ready!";
 
