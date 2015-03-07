@@ -418,7 +418,6 @@
             this.groupBox25.SuspendLayout();
             this.groupBoxStep.SuspendLayout();
             this.StepOutContextMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerRegASM)).BeginInit();
             this.splitContainerRegASM.Panel1.SuspendLayout();
             this.splitContainerRegASM.Panel2.SuspendLayout();
             this.splitContainerRegASM.SuspendLayout();
@@ -4194,7 +4193,6 @@
             this.StepOutContextMenu.ResumeLayout(false);
             this.splitContainerRegASM.Panel1.ResumeLayout(false);
             this.splitContainerRegASM.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerRegASM)).EndInit();
             this.splitContainerRegASM.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
