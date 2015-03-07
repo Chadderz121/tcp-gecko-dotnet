@@ -44,7 +44,7 @@ namespace GeckoApp
 
         public static readonly AddressRange[] ValidAreas = new AddressRange[] {
              new AddressRange(AddressType.Ex,  0x01000000,0x01800000),
-             new AddressRange(AddressType.Ex,  0xe3000000,0x10000000),
+             new AddressRange(AddressType.Ex,  0x0e300000,0x10000000),
              new AddressRange(AddressType.Rw,  0x10000000,0x50000000),
              new AddressRange(AddressType.Ro,  0xe0000000,0xe4000000),
              new AddressRange(AddressType.Ro,  0xe8000000,0xea000000),
