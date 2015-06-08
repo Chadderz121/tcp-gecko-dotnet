@@ -530,12 +530,14 @@ namespace GeckoApp
 
                     GameNameStored = false;
                     DisconnectButton.Enabled = true;
+
+                    PopulateThreads(os_ver);
                 }
                 else
                 {
                     DisconnectButton.Enabled = false;
                     CTCPGecko.Text = "Connect to Gecko";
-                    StatusCap.Text = "No TCP Gecko connection availible!";
+                    StatusCap.Text = "No TCP Gecko connection available!";
 
                     this.Text = "Gecko dotNET";
                 }
@@ -544,6 +546,93 @@ namespace GeckoApp
             {
                 exceptionHandling.HandleException(exc);
             }
+        }
+
+        List<string> ThreadNames = new List<string>();
+        List<bool> ThreadRunning = new List<bool>();
+        List<uint> ThreadAddress = new List<uint>();
+
+        private void PopulateThreads(uint os_ver)
+        {
+            ThreadNames.Clear();
+            ThreadRunning.Clear();
+            ThreadAddress.Clear();
+            ThreadGridView.Rows.Clear();
+            ThreadDisplayComboBox.Items.Clear();
+
+            uint tempThreadAddress;
+
+            if (os_ver == 410)
+            {
+                tempThreadAddress = 0x10032E18;
+            }
+                /*
+            else if (os_ver == 500)
+            {
+                //TODO
+            }
+                 */
+            else
+            {
+                //TODO
+                throw new NotImplementedException();
+            }
+
+            uint temp;
+
+            while ((temp = gecko.peek(tempThreadAddress + 0x390)) != 0)
+            {
+                tempThreadAddress = temp;
+            }
+
+            while ((temp = gecko.peek(tempThreadAddress + 0x38C)) != 0)
+            {
+                AddThread(tempThreadAddress);
+                tempThreadAddress = temp;
+            }
+
+            //The above while is nice, but would skip the last thread.
+            AddThread(tempThreadAddress);
+
+            
+        }
+
+        private void AddThread(uint tempThreadAddress)
+        {
+            MemoryStream ms = new MemoryStream();
+            uint nameLocation = gecko.peek(tempThreadAddress + 0x5C0);
+            string name;
+            if (nameLocation == 0)
+            {
+                name = tempThreadAddress.ToString("X8");
+            }
+            else
+            {
+                gecko.Dump(nameLocation, nameLocation + 0x100, ms);
+                name = new string(Encoding.ASCII.GetChars(ms.ToArray()));
+                if (name.Contains("\0"))
+                {
+                    name = name.Remove(name.IndexOf("\0"));
+                }
+            }
+            
+            ThreadDisplayComboBox.Items.Add(name);
+
+            ThreadNames.Add(name);
+            ThreadAddress.Add(tempThreadAddress);
+            uint threadState = gecko.peek(tempThreadAddress + 0x328);
+            if (threadState > 0xFFFFFF)
+            {
+                ThreadRunning.Add(false);
+                ThreadGridView.Rows.Add(name, "Paused", tempThreadAddress.ToString("X8"));
+            }
+            else
+            {
+                ThreadRunning.Add(true);
+                ThreadGridView.Rows.Add(name, "Running", tempThreadAddress.ToString("X8"));
+            }
+
+            
         }
 
         private void PGame_Click(object sender, EventArgs e)
@@ -3344,7 +3433,7 @@ namespace GeckoApp
         {
             foreach (Control c in parent.Controls)
             {
-                if (c is Button || c is ComboBox || c is TextBox || c is BPList || c is CheckBox)
+                if (c is Button || c is ComboBox || c is TextBox || c is BPList || c is CheckBox || c is DataGridView)
                 {
                     if (!enabled && !c.Enabled)
                     {
@@ -4205,7 +4294,7 @@ namespace GeckoApp
                     buttonStepUntil.Text = "Cancel";
                     // Repeatedly Step Into until the conditions are matched
                     MemoryStream regStream = new MemoryStream();
-                    gecko.GetRegisters(regStream);
+                    gecko.GetRegisters(regStream, bpHandler.contextAddress);
 
                     while (!bpHandler.conditions.Check(regStream, BreakpointType.Step, 0, gecko) && SteppingUntil)
                     {
@@ -4214,7 +4303,7 @@ namespace GeckoApp
                         MainControl.Update();
                         regStream.Seek(0, SeekOrigin.Begin);
                         regStream.SetLength(0);
-                        gecko.GetRegisters(regStream);
+                        gecko.GetRegisters(regStream, bpHandler.contextAddress);
                         Application.DoEvents();
                     }
                     SteppingUntil = false;
@@ -4462,7 +4551,7 @@ namespace GeckoApp
             nextFramePointer = 0;
             try
             {
-                if (gecko.status() == WiiStatus.Breakpoint)
+                if (bpHandler.contextAddress != 0)
                 {
                     // Walk the linked list
                     uint potentialNextFramePointer = gecko.peek(stackPointer);
@@ -4942,7 +5031,7 @@ namespace GeckoApp
 
         private void LoadCallStack()
         {
-            if (gecko.status() == WiiStatus.Breakpoint)
+            if (bpHandler.contextAddress != 0)
             {
                 listBoxCallStack.Items.Clear();
                 listBoxCallStack.Items.Add("Loading call stack...");
@@ -5083,5 +5172,115 @@ namespace GeckoApp
                 toolStripTextBoxAddressAddOffset.Text = (0).ToString();
             }
         }
+
+        int indexOfThreadGridView = -1;
+
+
+        private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (indexOfThreadGridView != -1)
+            {
+                string addressStringLol = (string)ThreadGridView.Rows[indexOfThreadGridView].Cells[ThreadAddressColumn.Index].Value;
+                uint address = uint.Parse(addressStringLol, System.Globalization.NumberStyles.HexNumber);
+                gecko.poke08(address + 0x328, 1);
+
+                UInt32 OSSuspendThread;
+                switch (gecko.OsVersionRequest())
+                {
+                    case 400:
+                    case 410:
+                        OSSuspendThread = 0x0103CB18;
+                        break;                        
+                    default:
+                        MessageBox.Show("Unsupported Wii U OS version.", "Version mismatch", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                }
+
+                gecko.rpc(OSSuspendThread, address);
+
+                ThreadGridView.Rows[indexOfThreadGridView].Cells[ThreadStateColumn.Index].Value = "Paused";
+                int index = ThreadAddress.IndexOf(address);
+                ThreadRunning[index] = false;
+                ThreadDisplayComboBox_SelectedIndexChanged(ThreadDisplayComboBox, EventArgs.Empty);
+            }
+        }
+
+        private void unpauseThreadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (indexOfThreadGridView != -1)
+            {
+                string addressStringLol = (string)ThreadGridView.Rows[indexOfThreadGridView].Cells[ThreadAddressColumn.Index].Value;
+                uint address = uint.Parse(addressStringLol, System.Globalization.NumberStyles.HexNumber);
+                gecko.poke08(address + 0x328, 0);
+
+                UInt32 OSResumeThread;
+                switch (gecko.OsVersionRequest())
+                {
+                    case 400:
+                    case 410:
+                        OSResumeThread = 0x0103BFEC;
+                        break;
+                    default:
+                        MessageBox.Show("Unsupported Wii U OS version.", "Version mismatch", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                }
+
+                gecko.rpc(OSResumeThread, address);
+
+                ThreadGridView.Rows[indexOfThreadGridView].Cells[ThreadStateColumn.Index].Value = "Running";
+                int index = ThreadAddress.IndexOf(address);
+                ThreadRunning[index] = true;
+                ThreadDisplayComboBox_SelectedIndexChanged(ThreadDisplayComboBox, EventArgs.Empty);
+            }
+        }
+
+        private void memoryViewerToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (indexOfThreadGridView != -1)
+            {
+                string addressStringLol = (string)ThreadGridView.Rows[indexOfThreadGridView].Cells[ThreadAddressColumn.Index].Value;
+                uint address = uint.Parse(addressStringLol, System.Globalization.NumberStyles.HexNumber);
+                CenteredMemViewSelection(sender, e, address);
+                MainControl.SelectedTab = MemView;
+            }
+        }
+
+        private void ThreadGridView_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {                    
+            if (e.RowIndex != -1 && e.Button == System.Windows.Forms.MouseButtons.Right)
+            {
+                ThreadGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Selected = true;
+                Rectangle bounds = ThreadGridView.GetCellDisplayRectangle(e.ColumnIndex, e.RowIndex, true);
+                indexOfThreadGridView = e.RowIndex;
+                ThreadContextMenuStrip.Show((Control)sender, bounds.Left + e.Location.X, bounds.Top + e.Location.Y);
+            }
+        }
+
+        private void ThreadDisplayComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ThreadDisplayComboBox.SelectedIndex != -1)
+            {
+                int index = ThreadNames.IndexOf(ThreadDisplayComboBox.Text);
+                if (ThreadRunning[index])
+                {
+                    threadStateLabel.Text = "RUNNING";
+                    bpHandler.contextAddress = 0;
+                }
+                else
+                {
+                    threadStateLabel.Text = "PAUSED";
+                    PopulateRegisters(ThreadAddress[index]);
+                }
+            }
+        }
+
+        private void PopulateRegisters(uint threadAddress)
+        {
+            bpHandler.contextAddress = threadAddress;
+            bpHandler.GetRegisters();
+        }
+        
+
+        
     }
 }

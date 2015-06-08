@@ -344,6 +344,8 @@ namespace GeckoApp
 
         public bool ShowFloatsInHex;
 
+        public uint contextAddress;
+
         public void ClearLogIndent()
         {
             logIndent = 0;
@@ -462,7 +464,7 @@ namespace GeckoApp
             }
             try
             {
-                gecko.SendRegisters(ms);
+                gecko.SendRegisters(ms, contextAddress);
                 ms.Close();
 
                 GetRegisters();
@@ -477,7 +479,7 @@ namespace GeckoApp
         {
             try
             {
-                if (gecko.status() != WiiStatus.Breakpoint)
+                if (contextAddress == 0)
                     return;
             }
             catch (ETCPGeckoException ex)
@@ -507,7 +509,7 @@ namespace GeckoApp
             MemoryStream regStream = new MemoryStream();
             try
             {
-                gecko.GetRegisters(regStream);
+                gecko.GetRegisters(regStream, contextAddress);
                 GetRegisters(regStream);
             }
             catch (ETCPGeckoException e)
@@ -541,6 +543,9 @@ namespace GeckoApp
                 {
                     regValue = GlobalFunctions.UIntToSingle(rStream).ToString("G8");
                 }
+                // skip 4 bytes - float registers are 64 bits!
+                if (i > 40)
+                    GlobalFunctions.ReadStream(regStream);
                 bpOutput.longRegTextBox[i].Text = regValue; // TODO: invoke required?
             }
             listSet = true;
@@ -816,7 +821,7 @@ namespace GeckoApp
                 if (BPHit)
                 {
                     MemoryStream regStream = new MemoryStream();
-                    gecko.GetRegisters(regStream);
+                    gecko.GetRegisters(regStream, contextAddress);
 
                     if (!conditions.Check(regStream, bpType, bpAddress, gecko))
                     {
@@ -1132,7 +1137,7 @@ namespace GeckoApp
 
         public void SetSRR0(UInt32 address)
         {
-            if (gecko.status() != WiiStatus.Breakpoint)
+            if (contextAddress == 0)
                 return;
             if (ValidMemory.rangeCheck(address) != AddressType.Ex)
                 return;

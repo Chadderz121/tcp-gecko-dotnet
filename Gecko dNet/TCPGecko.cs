@@ -1423,93 +1423,44 @@ namespace TCPTCPGecko
 
         #region register operations
         //Read registers in breakpoint cases
-        public void GetRegisters(Stream stream) 
+        public void GetRegisters(Stream stream, uint contextAddress) 
         {
-            //Check Gecko version
-            bool includeFloatRegisters = (VersionRequest() != GCNgcVer);
-
-            //In case we use a new Gecko we receive more data from the console:
-            UInt32 bytesExpected;
-            if (includeFloatRegisters)
-                bytesExpected = 0x120;
-            else
-                bytesExpected = 0x0A0;
-
-            //Send command
-            if (RawCommand(cmd_getregs) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+            UInt32 bytesExpected = 0x1B0;
 
             //Read registers
-            Byte[] buffer = new Byte[bytesExpected];
-            if (GeckoRead(buffer, bytesExpected) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
+            MemoryStream buffer = new MemoryStream();
+            Dump(contextAddress + 8, contextAddress + 8 + bytesExpected, buffer);
+
+            byte[] bytes = buffer.ToArray();
 
             //Store registers to output stream!
-            stream.Write(buffer, 0, ((Int32)bytesExpected));
+            stream.Write(bytes, 0x80, 4); // cr
+            stream.Write(bytes, 0x8c, 4); // xer
+            stream.Write(bytes, 0x88, 4); // ctr
+            stream.Write(new byte[8], 0, 8); // dsis, dar (dunno)
+            stream.Write(bytes, 0x90, 8); // srr0, srr1
+            stream.Write(bytes, 0x0, 4 * 32); // gprs
+            stream.Write(bytes, 0x84, 4); // lr
+            stream.Write(bytes, 0xb0, 8 * 32); // fprs
         }
 
         //Send registers
-        public void SendRegisters(Stream sendStream)
+        public void SendRegisters(Stream sendStream, uint contextAddress)
         {
-            InitGecko();
-
-            //FP registers cannot be sent!
-            const Int32 bytesExpected = 0xA0;
-
-            if (sendStream.Length != bytesExpected)
-                throw new ETCPGeckoException(ETCPErrorCode.REGStreamSizeInvalid);
-
-            //Fill buffer
-            Byte[] buffer = new Byte[bytesExpected];
+            MemoryStream buffer = new MemoryStream();
+            byte[] bytes = new byte[0xA0];
             sendStream.Seek(0, SeekOrigin.Begin);
-            sendStream.Read(buffer, 0, bytesExpected);
+            sendStream.Read(bytes, 0, bytes.Length);
+            buffer.Write(bytes, 0x1C, 4 * 32); // gprs
+            buffer.Write(bytes, 0x0, 4); // cr
+            buffer.Write(bytes, 0x9C, 4); // lr
+            buffer.Write(bytes, 0x8, 4); //ctr
+            buffer.Write(bytes, 0x4, 4); // xer
+            buffer.Write(bytes, 0x14, 8); // srr0, srr1
 
-            //Initialize send command
-            if (RawCommand(cmd_sendregs) != FTDICommand.CMD_OK)
-                throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
+            buffer.Seek(0, SeekOrigin.Begin);
 
-            //Check GCACK reply with 3 retries!
-            Byte retries = 0;
-            while (retries < 3)
-            {
-                Byte[] rpbuffer = new Byte[1];
-                if (GeckoRead(rpbuffer, 1) != FTDICommand.CMD_OK)
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
-
-                if (rpbuffer[0] == GCACK)
-                    break;
-
-                retries++;
-                if (retries == 3)
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDIReadDataError);
-            }
-
-            retries = 0;
-            while (retries < 3)
-            {
-                //Try to send data
-                FTDICommand answer = GeckoWrite(buffer, bytesExpected);
-                //Check answer
-                if (answer == FTDICommand.CMD_ResultError)
-                {
-                    retries++;
-                    if (retries >= 3)
-                    {
-                        //Too many retries, give up
-                        RawCommand(GCFAIL);
-                        throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
-                    }
-                    RawCommand(GCRETRY);
-                    continue;
-                }
-                else if (answer == FTDICommand.CMD_FatalError)
-                {
-                    //Major fail, give up!
-                    RawCommand(GCFAIL);
-                    throw new ETCPGeckoException(ETCPErrorCode.FTDICommandSendError);
-                }
-                break;
-            }
+            Upload(contextAddress + 8, contextAddress + 8 + 0x98, buffer);
         }
         #endregion
 
