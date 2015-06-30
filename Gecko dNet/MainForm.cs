@@ -560,39 +560,43 @@ namespace GeckoApp
             ThreadGridView.Rows.Clear();
             ThreadDisplayComboBox.Items.Clear();
 
-            uint tempThreadAddress;
-
+            uint tempThreadAddress = 0;
+            uint temp;
             if (os_ver == 410)
             {
                 tempThreadAddress = 0x10032E18;
+                while ((temp = gecko.peek(tempThreadAddress + 0x390)) != 0)
+                {
+                    tempThreadAddress = temp;
+                }
+ 
             }
-                /*
-            else if (os_ver == 500)
+            else if (os_ver == 532)
             {
-                //TODO
+                tempThreadAddress = 0x10044BF8;
             }
-                 */
             else
             {
                 //TODO
-                throw new NotImplementedException();
+                //throw new NotImplementedException();
             }
 
-            uint temp;
-
-            while ((temp = gecko.peek(tempThreadAddress + 0x390)) != 0)
+            if(tempThreadAddress != 0)
             {
-                tempThreadAddress = temp;
-            }
+                
 
-            while ((temp = gecko.peek(tempThreadAddress + 0x38C)) != 0)
-            {
+ 
+
+                while ((temp = gecko.peek(tempThreadAddress + 0x38C)) != 0)
+                {
+                    AddThread(tempThreadAddress);
+                    tempThreadAddress = temp;
+                }
+
+                //The above while is nice, but would skip the last thread.
                 AddThread(tempThreadAddress);
-                tempThreadAddress = temp;
             }
-
-            //The above while is nice, but would skip the last thread.
-            AddThread(tempThreadAddress);
+            
 
             
         }
